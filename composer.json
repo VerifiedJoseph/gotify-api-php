@@ -1,6 +1,6 @@
 {
     "name": "verifiedjoseph/gotify-api-php",
-    "description": "PHP library for interacting with a Gotify server using the Gotify REST-API ",
+    "description": "PHP library for interacting with a Gotify server using the Gotify REST-API.",
     "keywords": ["Gotify"],
     "homepage": "https://github.com/VerifiedJoseph/gotify-api-php",
     "license": "MIT",
@@ -12,6 +12,8 @@
     ],
     "require": {
         "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^7.4"
     },
     "autoload": {
