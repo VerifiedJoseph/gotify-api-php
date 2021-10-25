@@ -112,7 +112,7 @@ final class Guzzle
 	 * Make DELETE request
 	 * 
 	 * @param string $endpoint API endpoint
-	 * @return \stdClass
+	 * @return \stdClass|null
 	 */
 	public function delete(string $endpoint)
 	{
@@ -125,7 +125,7 @@ final class Guzzle
 	 * @param string $method HTTP request method
 	 * @param string $endpoint API endpoint
 	 * @param array $options HTTP request options
-	 * @return \stdClass
+	 * @return \stdClass|null
 	 * 
 	 * @throws InvalidArgumentException if HTTP request method is not supported
 	 * @throws UnauthorizedException if server returned unauthorized error
@@ -167,6 +167,10 @@ final class Guzzle
 			throw new Exception($err->getMessage());
         }
 
-        return Json::decode($response->getBody());
+		if ($method === 'delete') { // Delete requests do not return anything
+			return null;
+		}
+
+		return Json::decode($response->getBody());
 	}
 } 
