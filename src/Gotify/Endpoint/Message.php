@@ -14,7 +14,7 @@ class Message extends Api
 
 	/**
 	 * Get all message
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function getAll()
@@ -24,12 +24,12 @@ class Message extends Api
 
 	/**
 	 * Create a message
-	 * 
+	 *
 	 * @param string $title	Message title
 	 * @param string $message Message body
 	 * @param int $priority Message priority
 	 * @param array $extras Message extras
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function create(string $title, string $message, int $priority = 0, array $extras = array())
@@ -49,9 +49,9 @@ class Message extends Api
 
 	/**
 	 * Delete a message
-	 * 
+	 *
 	 * @param string $id Message Id
-	 * 
+	 *
 	 * @return null
 	 */
 	public function delete(int $id)
@@ -61,11 +61,11 @@ class Message extends Api
 
 	/**
 	 * Delete all messages
-	 * 
+	 *
 	 * @return null
 	 */
 	public function deleteAll()
 	{
 		return $this->guzzle->delete($this->endpoint);
 	}
-} 
+}

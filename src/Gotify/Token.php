@@ -11,8 +11,8 @@ final class Token
 	private string $token = '';
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 * @param string $token Authentication token
 	 */
 	function __construct(string $token)
@@ -22,11 +22,11 @@ final class Token
 
 	/**
 	 * Get authentication token
-	 * 
+	 *
 	 * @return string Returns token
 	 */
 	public function get()
 	{
 		return $this->token;
 	}
-} 
+}

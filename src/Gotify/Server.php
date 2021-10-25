@@ -13,7 +13,7 @@ final class Server
 	private string $uri = '';
 
 	/**
-	 * 
+	 *
 	 * @param string $uri Server URI
 	 */
 	function __construct(string $uri)
@@ -23,7 +23,7 @@ final class Server
 
 	/**
 	 * Get server
-	 * 
+	 *
 	 * @return string Returns server URI
 	 */
 	public function get()
@@ -33,14 +33,14 @@ final class Server
 
 	/**
 	 * Vaildate server URI
-	 * 
+	 *
 	 * Checks if server URI starts with `https://` or `http://`.
-	 * 
+	 *
 	 * Checks if server URI ends with a forward slash and adds it if misssing.
-	 * 
+	 *
 	 * @param string $uri Server URI
 	 * @return string $uri Returns vaildated server URI
-	 * 
+	 *
 	 * @throws Exception if Server URL doesn't start with `https://` or `http://`.
 	 */
 	private function vaildate(string $uri)
@@ -55,4 +55,4 @@ final class Server
 
 		return $uri;
 	}
-} 
+}

@@ -14,7 +14,7 @@ class User extends Api
 
 	/**
 	 * Get current user
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function getCurrent()
@@ -24,9 +24,9 @@ class User extends Api
 
 	/**
 	 * Update password for the current user
-	 * 
+	 *
 	 * @param string $name New password
-	 * 
+	 *
 	 * @return null
 	 */
 	public function updatePassword(string $password)
@@ -40,9 +40,9 @@ class User extends Api
 
 	/**
 	 * Get user
-	 * 
+	 *
 	 * @param int $id User Id
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function getUser(int $id)
@@ -52,7 +52,7 @@ class User extends Api
 
 	/**
 	 * Get all users
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function getUsers()
@@ -62,11 +62,11 @@ class User extends Api
 
 	/**
 	 * Create a user
-	 * 
+	 *
 	 * @param string $name Username
 	 * @param string $password Password
 	 * @param boolean $admin Admin status
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function create(string $name, string $password, bool $admin = false)
@@ -82,13 +82,13 @@ class User extends Api
 
 	/**
 	 * Delete a user
-	 * 
+	 *
 	 * @param string $id User Id
-	 * 
+	 *
 	 * @return null
 	 */
 	public function delete(int $id)
 	{
 		return $this->guzzle->delete($this->endpoint . '/' . $id);
 	}
-} 
+}

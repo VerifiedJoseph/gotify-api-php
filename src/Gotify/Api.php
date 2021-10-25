@@ -14,7 +14,7 @@ abstract class Api
 
 	/**
 	 * Create Guzzle instance
-	 * 
+	 *
 	 * @param string $uri Server URI
 	 * @param string $token Authentication token
 	 */

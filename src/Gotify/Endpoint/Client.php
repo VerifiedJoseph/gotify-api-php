@@ -14,7 +14,7 @@ class Client extends Api
 
 	/**
 	 * Get all clients
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function getAll()
@@ -24,9 +24,9 @@ class Client extends Api
 
 	/**
 	 * Create a client
-	 * 
+	 *
 	 * @param string $name Client name
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function create(string $name)
@@ -40,10 +40,10 @@ class Client extends Api
 
 	/**
 	 * Update a client
-	 * 
+	 *
 	 * @param string $id Client Id
 	 * @param string $name New client name
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function update(int $id, string $name)
@@ -57,13 +57,13 @@ class Client extends Api
 
 	/**
 	 * Delete a client
-	 * 
+	 *
 	 * @param string $id Client Id
-	 * 
+	 *
 	 * @return \stdClass|null
 	 */
 	public function delete(int $id)
 	{
 		return $this->guzzle->delete($this->endpoint . '/' . $id);
 	}
-} 
+}

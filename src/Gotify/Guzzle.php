@@ -25,7 +25,7 @@ final class Guzzle
 	private array $requestMethods = array('get', 'post', 'put', 'patch', 'delete');
 
 	/**
-	 * 
+	 *
 	 * @param string $uri Server URI
 	 * @param string $token Authentication token
 	 */
@@ -48,7 +48,7 @@ final class Guzzle
 
 	/**
 	 * Make GET request
-	 * 
+	 *
 	 * @param $endpoint API endpoint
 	 * @return \stdClass
 	 */
@@ -59,9 +59,9 @@ final class Guzzle
 
 	/**
 	 * Make POST request
-	 * 
+	 *
 	 * @param string $endpoint API endpoint
-	 * @param array $data 
+	 * @param array $data
 	 * @return \stdClass
 	 */
 	public function post(string $endpoint, array $data)
@@ -74,10 +74,10 @@ final class Guzzle
 	}
 
 	/**
-	 * Make POST request with a file 
-	 * 
+	 * Make POST request with a file
+	 *
 	 * @param string $endpoint API endpoint
-	 * @param array $data 
+	 * @param array $data
 	 * @return \stdClass
 	 */
 	public function postFile(string $endpoint, array $data)
@@ -94,7 +94,7 @@ final class Guzzle
 
 	/**
 	 * Make PUT request
-	 * 
+	 *
 	 * @param string $endpoint API endpoint
 	 * @param array $data
 	 * @return \stdClass
@@ -110,7 +110,7 @@ final class Guzzle
 
 	/**
 	 * Make DELETE request
-	 * 
+	 *
 	 * @param string $endpoint API endpoint
 	 * @return \stdClass|null
 	 */
@@ -121,28 +121,28 @@ final class Guzzle
 
 	/**
 	 * Make HTTP request
-	 * 
+	 *
 	 * @param string $method HTTP request method
 	 * @param string $endpoint API endpoint
 	 * @param array $options HTTP request options
 	 * @return \stdClass|null
-	 * 
+	 *
 	 * @throws InvalidArgumentException if HTTP request method is not supported
 	 * @throws UnauthorizedException if server returned unauthorized error
 	 */
 	private function request(string $method, string $endpoint, array $options = array())
 	{
-        try {
+		try {
 			if (in_array($method, $this->requestMethods) === false) {
 				throw new InvalidArgumentException('Request method must be get, post, put, patch, or delete');
 			}
 
-            $response = $this->client->$method($endpoint, $options);
+			$response = $this->client->$method($endpoint, $options);
 
-        } catch (ConnectException $err) {
+		} catch (ConnectException $err) {
 			throw new Exception($err->getMessage());
 
-        } catch (RequestException $err) {
+		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
 				throw new Exception($err->getMessage());
 			}
@@ -152,10 +152,9 @@ final class Guzzle
 
 			if ($contentType === 'application/json') {
 				$json = Json::decode($response->getBody());
-				$message =  $json->error . ': ' . $json->errorDescription . ' (' . $json->errorCode .')';
+				$message = $json->error . ': ' . $json->errorDescription . ' (' . $json->errorCode . ')';
 
-				switch($response->getStatusCode()) 
-				{
+				switch($response->getStatusCode()) {
 					case 401:
 						throw new UnauthorizedException($message);
 						break;
@@ -165,7 +164,7 @@ final class Guzzle
 			}
 
 			throw new Exception($err->getMessage());
-        }
+		}
 
 		if (empty($response->getBody()->getContents())) { // Some requests do not return anything
 			return null;
@@ -173,4 +172,4 @@ final class Guzzle
 
 		return Json::decode($response->getBody());
 	}
-} 
+}

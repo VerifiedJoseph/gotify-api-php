@@ -14,11 +14,11 @@ class Health extends Api
 
 	/**
 	 * Get health information
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function get()
 	{
 		return $this->guzzle->get($this->endpoint);
 	}
-} 
+}

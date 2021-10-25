@@ -14,11 +14,11 @@ class Version extends Api
 
 	/**
 	 * Get version information
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function get()
 	{
 		return $this->guzzle->get($this->endpoint);
 	}
-} 
+}

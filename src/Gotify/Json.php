@@ -12,7 +12,7 @@ final class Json
 {
 	/**
 	 * Encode JSON
-	 * 
+	 *
 	 * @param array $data
 	 * @return string
 	 */
@@ -28,11 +28,11 @@ final class Json
 
 	/**
 	 * Decode JSON
-	 * 
+	 *
 	 * @param $string $json
 	 * @return \stdClass
 	 */
-	static public function decode(string $json)
+	public static function decode(string $json)
 	{
 		try {
 			return json_decode($json, flags: JSON_THROW_ON_ERROR);
@@ -40,5 +40,5 @@ final class Json
 		} catch (JsonException $err) {
 			throw new Exception('JSON Error: ' . $err->getMessage());
 		}
-	}	
+	}
 }
