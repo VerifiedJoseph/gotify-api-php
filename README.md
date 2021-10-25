@@ -18,6 +18,10 @@ gotify-api-php is a PHP library for interacting with a [Gotify](https://github.c
   - [`JSON`](https://www.php.net/manual/en/book.json.php)
   - [`cURL`](https://secure.php.net/manual/en/book.curl.php)
 
+## Dependencies
+
+[`guzzlehttp/guzzle`](https://github.com/guzzle/guzzle/)
+
 ## Changelog
 
 All notable changes to this project are documented in the [CHANGELOG](CHANGELOG.md).
