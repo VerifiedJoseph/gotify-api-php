@@ -167,7 +167,7 @@ final class Guzzle
 			throw new Exception($err->getMessage());
         }
 
-		if ($method === 'delete') { // Delete requests do not return anything
+		if (empty($response->getBody()->getContents())) { // Some requests do not return anything
 			return null;
 		}
 
