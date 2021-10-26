@@ -60,7 +60,7 @@ class Client extends Api
 	 *
 	 * @param string $id Client Id
 	 *
-	 * @return \stdClass|null
+	 * @return null
 	 */
 	public function delete(int $id)
 	{

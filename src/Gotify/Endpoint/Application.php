@@ -64,7 +64,7 @@ class Application extends Api
 	 *
 	 * @param string $id Application Id
 	 *
-	 * @return
+	 * @return null
 	 */
 	public function delete(int $id)
 	{

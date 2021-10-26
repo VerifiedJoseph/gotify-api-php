@@ -13,7 +13,7 @@ class Message extends Api
 	private string $endpoint = 'message';
 
 	/**
-	 * Get all message
+	 * Get all messages
 	 *
 	 * @return \stdClass
 	 */
