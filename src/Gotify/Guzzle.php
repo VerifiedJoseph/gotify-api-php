@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 
 use InvalidArgumentException;
+use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
 
 // Guzzle exceptions
@@ -132,7 +133,7 @@ final class Guzzle
 			$response = $this->client->$method($endpoint, $options);
 
 		} catch (ConnectException $err) {
-			throw new EndpointException($err->getMessage());
+			throw new GotifyException($err->getMessage());
 
 		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
