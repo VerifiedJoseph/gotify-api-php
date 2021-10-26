@@ -24,6 +24,9 @@ final class Guzzle
 	/** @var array $requestMethods Array of supported HTTP request methods */
 	private array $requestMethods = array('get', 'post', 'put', 'patch', 'delete');
 
+	/** @var array $timeout Request timeout in seconds */
+	private int $timeout = 10;
+
 	/**
 	 *
 	 * @param string $uri Server URI
