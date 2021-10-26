@@ -16,10 +16,10 @@ abstract class Api
 	 * Create Guzzle instance
 	 *
 	 * @param string $uri Server URI
-	 * @param string $token Authentication token
+	 * @param array $auth Authentication
 	 */
-	final function __construct($server, $token = '')
+	final function __construct(string $server, array $auth = array())
 	{
-		$this->guzzle = new Guzzle($server, $token);
+		$this->guzzle = new Guzzle($server, $auth);
 	}
 }
