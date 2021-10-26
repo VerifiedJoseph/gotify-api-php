@@ -2,7 +2,7 @@
 
 namespace Gotify;
 
-use Exception;
+use Gotify\Exception\GotifyException;
 
 /**
  * Class for setting and vaildating a server URI
@@ -41,12 +41,12 @@ final class Server
 	 * @param string $uri Server URI
 	 * @return string $uri Returns vaildated server URI
 	 *
-	 * @throws Exception if Server URL doesn't start with `https://` or `http://`.
+	 * @throws GotifyException if Server URL doesn't start with `https://` or `http://`.
 	 */
 	private function vaildate(string $uri)
 	{
 		if(preg_match('/^https?:\/\//', $uri) === 0) {
-			throw new Exception('Server URI must start with https:// or http://');
+			throw new GotifyException('Server URI must start with https:// or http://');
 		}
 
 		if(substr($uri, -1) !== '/') {
