@@ -55,7 +55,7 @@ class User extends Api
 	 *
 	 * @return \stdClass
 	 */
-	public function getUsers()
+	public function getAll()
 	{
 		return $this->guzzle->get($this->endpoint);
 	}
