@@ -172,4 +172,60 @@ final class Guzzle
 
 		return Json::decode($response->getBody());
 	}
+
+	/**
+	 * Get GuzzleHttp client config
+	 * 
+	 * @param string $uri Server URI
+	 * @param string $auth Authentication
+	 * 
+	 * @return array
+	 */
+	private function getConfig(string $uri, array $auth) {
+		$config = array(
+			'base_uri' => $uri,
+			'Accept' => 'application/json',
+			'timeout' => $this->timeout,
+			'allow_redirects' => false,
+		);
+
+		$config = array_merge(
+			$config,
+			$this->getAuthConfig($auth)
+		);
+
+		return $config;
+	}
+
+	/**
+	 * Get authentication config
+	 * 
+	 * @param string $auth Authentication
+	 * 
+	 * @return array
+	 */
+	private function getAuthConfig(array $auth) {
+		$config = array();
+
+		if (isset($auth['method'])) {
+			switch($auth['method'])
+			{
+				case 'user':
+					$config[RequestOptions::AUTH] = array(
+						$auth['username'],
+						$auth['password']
+					);
+
+					break;
+				case 'token':
+					$config[RequestOptions::HEADERS] = array(
+						'X-Gotify-Key' => $auth['token']
+					);
+
+					break;
+			}
+		}
+
+		return $config;
+	}
 }
