@@ -30,23 +30,13 @@ final class Guzzle
 	/**
 	 *
 	 * @param string $uri Server URI
-	 * @param string $token Authentication token
+	 * @param string $auth Authentication
 	 */
-	function __construct(string $uri, string $token = '')
+	function __construct(string $uri, array $auth = array())
 	{
-		$headers = array();
+		$config = $this->getConfig($uri, $auth);
 
-		if (empty($token) === false) {
-			$headers['X-Gotify-Key'] = $token;
-		}
-
-		$this->client = new Client([
-			'base_uri' => $uri,
-			'headers' => $headers,
-			'Accept' => 'application/json',
-			'timeout' => 10,
-			'allow_redirects' => false
-		]);
+		$this->client = new Client($config);
 	}
 
 	/**
