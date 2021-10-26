@@ -1,17 +1,19 @@
 <?php
 
-namespace Gotify;
+namespace Gotify\Auth;
+
+use Gotify\Auth;
 
 /**
  * Class for setting and vaildating an authentication token
  */
-final class Token
+class Token extends Auth
 {
 	/** @var string $token Authentication token */
-	private string $token = '';
+	protected string $method = 'token';
 
 	/**
-	 *
+	 * Set authentication token
 	 *
 	 * @param string $token Authentication token
 	 */
@@ -23,10 +25,13 @@ final class Token
 	/**
 	 * Get authentication token
 	 *
-	 * @return string Returns token
+	 * @return array Returns array with auth method and token
 	 */
 	public function get()
 	{
-		return $this->token;
+		return array(
+			'method' => $this->method,
+			'token' => $this->token
+		);
 	}
 }
