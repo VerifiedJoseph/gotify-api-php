@@ -24,26 +24,19 @@ final class Guzzle
 	/** @var array $requestMethods Array of supported HTTP request methods */
 	private array $requestMethods = array('get', 'post', 'put', 'patch', 'delete');
 
+	/** @var array $timeout Request timeout in seconds */
+	private int $timeout = 10;
+
 	/**
 	 *
 	 * @param string $uri Server URI
-	 * @param string $token Authentication token
+	 * @param string $auth Authentication
 	 */
-	function __construct(string $uri, string $token = '')
+	function __construct(string $uri, array $auth = array())
 	{
-		$headers = array();
+		$config = $this->getConfig($uri, $auth);
 
-		if (empty($token) === false) {
-			$headers['X-Gotify-Key'] = $token;
-		}
-
-		$this->client = new Client([
-			'base_uri' => $uri,
-			'headers' => $headers,
-			'Accept' => 'application/json',
-			'timeout' => 10,
-			'allow_redirects' => false
-		]);
+		$this->client = new Client($config);
 	}
 
 	/**
@@ -171,5 +164,61 @@ final class Guzzle
 		}
 
 		return Json::decode($response->getBody());
+	}
+
+	/**
+	 * Get GuzzleHttp client config
+	 * 
+	 * @param string $uri Server URI
+	 * @param string $auth Authentication
+	 * 
+	 * @return array
+	 */
+	private function getConfig(string $uri, array $auth) {
+		$config = array(
+			'base_uri' => $uri,
+			'Accept' => 'application/json',
+			'timeout' => $this->timeout,
+			'allow_redirects' => false,
+		);
+
+		$config = array_merge(
+			$config,
+			$this->getAuthConfig($auth)
+		);
+
+		return $config;
+	}
+
+	/**
+	 * Get authentication config
+	 * 
+	 * @param string $auth Authentication
+	 * 
+	 * @return array
+	 */
+	private function getAuthConfig(array $auth) {
+		$config = array();
+
+		if (isset($auth['method'])) {
+			switch($auth['method'])
+			{
+				case 'user':
+					$config[RequestOptions::AUTH] = array(
+						$auth['username'],
+						$auth['password']
+					);
+
+					break;
+				case 'token':
+					$config[RequestOptions::HEADERS] = array(
+						'X-Gotify-Key' => $auth['token']
+					);
+
+					break;
+			}
+		}
+
+		return $config;
 	}
 }
