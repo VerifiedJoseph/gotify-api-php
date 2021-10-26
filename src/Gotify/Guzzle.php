@@ -6,9 +6,8 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 
-use Exception;
 use InvalidArgumentException;
-use Gotify\Exception\UnauthorizedException;
+use Gotify\Exception\EndpointException;
 
 // Guzzle exceptions
 use GuzzleHttp\Exception\ConnectException;
@@ -121,7 +120,7 @@ final class Guzzle
 	 * @return \stdClass|null
 	 *
 	 * @throws InvalidArgumentException if HTTP request method is not supported
-	 * @throws UnauthorizedException if server returned unauthorized error
+	 * @throws EndpointException if API returned an error
 	 */
 	private function request(string $method, string $endpoint, array $options = array())
 	{
@@ -133,11 +132,11 @@ final class Guzzle
 			$response = $this->client->$method($endpoint, $options);
 
 		} catch (ConnectException $err) {
-			throw new Exception($err->getMessage());
+			throw new EndpointException($err->getMessage());
 
 		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
-				throw new Exception($err->getMessage());
+				throw new EndpointException($err->getMessage(), $response->getStatusCode());
 			}
 
 			$response = $err->getResponse();
@@ -147,16 +146,10 @@ final class Guzzle
 				$json = Json::decode($response->getBody());
 				$message = $json->error . ': ' . $json->errorDescription . ' (' . $json->errorCode . ')';
 
-				switch($response->getStatusCode()) {
-					case 401:
-						throw new UnauthorizedException($message);
-						break;
-					default:
-						throw new Exception($message);
-				}
+				throw new EndpointException($message, $json->errorCode);
 			}
 
-			throw new Exception($err->getMessage());
+			throw new EndpointException($err->getMessage(), $response->getStatusCode());
 		}
 
 		if (empty($response->getBody()->getContents())) { // Some requests do not return anything
