@@ -76,7 +76,7 @@ final class Guzzle
 	public function postFile(string $endpoint, array $data)
 	{
 		$options = array(
-			'multipart' => array([
+			RequestOptions::MULTIPART => array([
 				'name' => 'file',
 				'contents' => Psr7\Utils::tryFopen($data['file'], 'r')
 			])
