@@ -3,7 +3,7 @@
 namespace Gotify;
 
 use JsonException;
-use Exception;
+use Gotify\Exception\GotifyException;
 
 /**
  * Class for encoding and decoding JSON
@@ -22,7 +22,7 @@ final class Json
 			return json_encode($data, flags: JSON_THROW_ON_ERROR);
 
 		} catch (JsonException $err) {
-			throw new Exception('JSON Error: ' . $err->getMessage());
+			throw new GotifyException('JSON Error: ' . $err->getMessage());
 		}
 	}
 
@@ -38,7 +38,7 @@ final class Json
 			return json_decode($json, flags: JSON_THROW_ON_ERROR);
 
 		} catch (JsonException $err) {
-			throw new Exception('JSON Error: ' . $err->getMessage());
+			throw new GotifyException('JSON Error: ' . $err->getMessage());
 		}
 	}
 }
