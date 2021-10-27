@@ -57,7 +57,7 @@ final class Guzzle
 	 * @param array $data
 	 * @return \stdClass
 	 */
-	public function post(string $endpoint, array $data)
+	public function post(string $endpoint, array $data = array())
 	{
 		$options = array(
 			RequestOptions::JSON => $data
