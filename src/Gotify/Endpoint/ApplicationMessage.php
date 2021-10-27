@@ -16,7 +16,7 @@ class ApplicationMessage extends Api
 	 * Get all messages for an application
 	 *
 	 * @param string $id Application Id
-	 * 
+	 *
 	 * @return \stdClass
 	 */
 	public function getAll(int $id)
@@ -28,7 +28,7 @@ class ApplicationMessage extends Api
 	 * Delete all messages for an application
 	 *
 	 * @param string $id Application Id
-	 * 
+	 *
 	 * @return null
 	 */
 	public function deleteAll(int $id)
