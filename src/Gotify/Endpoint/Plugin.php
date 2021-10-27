@@ -67,9 +67,7 @@ class Plugin extends Api
 	 */
 	public function enable(int $id)
 	{
-		$data = array();
-
-		return $this->guzzle->post($this->endpoint . '/' . $id . '/enable', $data);
+		return $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
 	}
 
 	/**
@@ -81,8 +79,6 @@ class Plugin extends Api
 	 */
 	public function disable(int $id)
 	{
-		$data = array();
-
-		return $this->guzzle->post($this->endpoint . '/' . $id . '/disable', $data);
+		return $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
 	}
 }
