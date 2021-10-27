@@ -72,17 +72,23 @@ final class Guzzle
 	 * @param string $endpoint API endpoint
 	 * @param array $data
 	 * @return \stdClass
+	 * 
+	 * @throws GotifyException if the file cannot be opened
 	 */
 	public function postFile(string $endpoint, array $data)
 	{
-		$options = array(
-			RequestOptions::MULTIPART => array([
-				'name' => 'file',
-				'contents' => Psr7\Utils::tryFopen($data['file'], 'r')
-			])
-		);
+		try {
+			$options = array(
+				RequestOptions::MULTIPART => array([
+					'name' => 'file',
+					'contents' => Psr7\Utils::tryFopen($data['file'], 'r')
+				])
+			);
 
-		return $this->request('post', $endpoint, $options);
+			return $this->request('post', $endpoint, $options);
+		} catch (\RuntimeException $err) {
+			throw new GotifyException($err->getMessage());
+		}
 	}
 
 	/**
