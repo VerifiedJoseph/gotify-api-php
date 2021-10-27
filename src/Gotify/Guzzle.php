@@ -162,10 +162,10 @@ final class Guzzle
 
 	/**
 	 * Get GuzzleHttp client config
-	 * 
+	 *
 	 * @param string $uri Server URI
 	 * @param string $auth Authentication
-	 * 
+	 *
 	 * @return array
 	 */
 	private function getConfig(string $uri, array $auth) {
@@ -186,17 +186,16 @@ final class Guzzle
 
 	/**
 	 * Get authentication config
-	 * 
+	 *
 	 * @param string $auth Authentication
-	 * 
+	 *
 	 * @return array
 	 */
 	private function getAuthConfig(array $auth) {
 		$config = array();
 
 		if (isset($auth['method'])) {
-			switch($auth['method'])
-			{
+			switch($auth['method']) {
 				case 'user':
 					$config[RequestOptions::AUTH] = array(
 						$auth['username'],
