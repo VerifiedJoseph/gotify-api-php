@@ -22,7 +22,7 @@ final class Guzzle
 	private Client $client;
 
 	/** @var array $requestMethods Array of supported HTTP request methods */
-	private array $requestMethods = array('get', 'post', 'put', 'patch', 'delete');
+	private array $requestMethods = array('GET', 'POST', 'PUT', 'DELETE');
 
 	/** @var array $timeout Request timeout in seconds */
 	private int $timeout = 10;
@@ -47,7 +47,7 @@ final class Guzzle
 	 */
 	public function get(string $endpoint)
 	{
-		return $this->request('get', $endpoint);
+		return $this->request('GET', $endpoint);
 	}
 
 	/**
@@ -63,7 +63,7 @@ final class Guzzle
 			RequestOptions::JSON => $data
 		);
 
-		return $this->request('post', $endpoint, $options);
+		return $this->request('POST', $endpoint, $options);
 	}
 
 	/**
@@ -85,7 +85,7 @@ final class Guzzle
 				])
 			);
 
-			return $this->request('post', $endpoint, $options);
+			return $this->request('POST', $endpoint, $options);
 		} catch (\RuntimeException $err) {
 			throw new GotifyException($err->getMessage());
 		}
@@ -104,7 +104,7 @@ final class Guzzle
 			RequestOptions::JSON => $data
 		);
 
-		return $this->request('put', $endpoint, $options);
+		return $this->request('PUT', $endpoint, $options);
 	}
 
 	/**
@@ -115,7 +115,7 @@ final class Guzzle
 	 */
 	public function delete(string $endpoint)
 	{
-		return $this->request('delete', $endpoint);
+		return $this->request('DELETE', $endpoint);
 	}
 
 	/**
@@ -133,10 +133,10 @@ final class Guzzle
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
-				throw new InvalidArgumentException('Request method must be get, post, put, patch, or delete');
+				throw new InvalidArgumentException('Request method must be GET, POST, PUT, or DELETE');
 			}
 
-			$response = $this->client->$method($endpoint, $options);
+			$response = $this->client->request($method, $endpoint, $options);
 
 		} catch (ConnectException $err) {
 			throw new GotifyException($err->getMessage());
