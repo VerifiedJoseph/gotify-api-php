@@ -75,11 +75,11 @@ class Application extends Api
 	 * Upload an image for the application
 	 *
 	 * @param string $id Application Id
-	 * @param mixed $image Image path
+	 * @param string $image Image path
 	 *
 	 * @return \stdClass
 	 */
-	public function uploadImage(int $id, mixed $image)
+	public function uploadImage(int $id, string $image)
 	{
 		$data = array(
 			'file' => $image
