@@ -17,7 +17,7 @@ Jump to:
 Gotify\Endpoint\Application(string $server, array $auth)
 ```
 
-Class: [Application.php](../src/Gotify/Endpoint/Application.php)
+Class: [Application](../src/Gotify/Endpoint/Application.php)
 
 API docs: [https://gotify.net/api-docs#/application](https://gotify.net/api-docs#/application)
 
@@ -59,7 +59,7 @@ uploadImage(int $id, string $image): stdClass
 Gotify\Endpoint\ApplicationMessage(string $server, array $auth)
 ```
 
-Class: [ApplicationMessage.php](../src/Gotify/Endpoint/ApplicationMessage.php)
+Class: [ApplicationMessage](../src/Gotify/Endpoint/ApplicationMessage.php)
 
 API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/message)
 
@@ -83,7 +83,7 @@ deleteAll(int $id): null
 Gotify\Endpoint\Message(string $server, array $auth)
 ```
 
-Class: [Message.php](../src/Gotify/Endpoint/Message.php)
+Class: [Message](../src/Gotify/Endpoint/Message.php)
 
 API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/message)
 
@@ -119,7 +119,7 @@ deleteAll(): null
 Gotify\Endpoint\Client(string $server, array $auth)
 ```
 
-Class: [Client.php](../src/Gotify/Endpoint/Client.php)
+Class: [Client](../src/Gotify/Endpoint/Client.php)
 
 API docs: [https://gotify.net/api-docs#/client](https://gotify.net/api-docs#/client)
 
@@ -155,7 +155,7 @@ delete(int $id): null
 Gotify\Endpoint\User(string $server, array $auth)
 ```
 
-Class: [User.php](../src/Gotify/Endpoint/User.php)
+Class: [User](../src/Gotify/Endpoint/User.php)
 
 API docs: [https://gotify.net/api-docs#/user](https://gotify.net/api-docs#/user)
 
@@ -203,7 +203,7 @@ delete(int $id): null
 Gotify\Endpoint\Health(string $server)
 ```
 
-Class: [Health.php](../src/Gotify/Endpoint/Health.php)
+Class: [Health](../src/Gotify/Endpoint/Health.php)
 
 API docs: [https://gotify.net/api-docs#/health](https://gotify.net/api-docs#/health)
 
@@ -221,7 +221,7 @@ get(): stdClass
 Gotify\Endpoint\Plugin(string server, array $auth)
 ```
 
-Class: [Plugin.php](../src/Gotify/Endpoint/Plugin.php)
+Class: [Plugin](../src/Gotify/Endpoint/Plugin.php)
 
 API docs: [https://gotify.net/api-docs#/plugin](https://gotify.net/api-docs#/plugin)
 
@@ -263,7 +263,7 @@ disable(int $id): stdClass
 Gotify\Endpoint\Version(string server)
 ```
 
-Class: [Version.php](../src/Gotify/Endpoint/Version.php)
+Class: [Version](../src/Gotify/Endpoint/Version.php)
 
 API docs: [https://gotify.net/api-docs#/version](https://gotify.net/api-docs#/version)
 
