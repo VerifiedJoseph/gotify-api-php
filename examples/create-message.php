@@ -4,7 +4,7 @@
  * 	Code example for sending a message
  */
 
-include 'vendor/autoload.php';
+include '../vendor/autoload.php';
 
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;

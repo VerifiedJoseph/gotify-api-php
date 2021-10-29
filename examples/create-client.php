@@ -4,7 +4,7 @@
  * 	Code example for creating a client
  */
 
-include 'vendor/autoload.php';
+include '../vendor/autoload.php';
 
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
