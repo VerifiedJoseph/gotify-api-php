@@ -9,7 +9,7 @@ gotify-api-php is a PHP library for interacting with a [Gotify](https://github.c
 
 ## Documentation
 
-*Add documentation*
+* [Code examples](examples/)
 
 ## Install
 
