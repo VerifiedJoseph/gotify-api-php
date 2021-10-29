@@ -14,7 +14,9 @@ gotify-api-php is a PHP library for interacting with a [Gotify](https://github.c
 
 ## Install
 
-*Add install info*
+```
+composer require verifiedjoseph/gotify-api-php
+```
 
 ## Requirements
 
