@@ -72,7 +72,7 @@ final class Guzzle
 	 * @param string $endpoint API endpoint
 	 * @param array $data
 	 * @return \stdClass
-	 * 
+	 *
 	 * @throws GotifyException if the file cannot be opened
 	 */
 	public function postFile(string $endpoint, array $data)

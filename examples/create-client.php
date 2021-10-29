@@ -18,13 +18,13 @@ try {
 		'username',
 		'password'
 	);
-	
+
 	// Create Client class instance
 	$client = new Gotify\Endpoint\Client(
 		$server->get(),
 		$auth->get()
 	);
-	
+
 	// Create a client and get its details
 	$createdClient = $client->create('Example client name');
 
