@@ -3,14 +3,15 @@
 gotify-api-php is a PHP library for interacting with a [Gotify](https://github.com/gotify/server) server using the [Gotify REST-API](https://gotify.net/api-docs).
 
 ## Todo
-* Add support for the stream endpoint.
-* Add support for paging.
-* Add class for working with message extras.
+
+- Add support for the stream endpoint.
+- Add support for paging.
+- Add class for working with message extras.
 
 ## Documentation
 
-* [Endpoint Classes](docs/endpoints.md)
-* [Code examples](examples/)
+- [Endpoint Classes](docs/endpoints.md)
+- [Code examples](examples/)
 
 ## Install
 
