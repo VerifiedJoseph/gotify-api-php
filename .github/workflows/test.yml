@@ -21,9 +21,7 @@ jobs:
       run: docker ps
 
     - name: Get gotify server health
-      uses: wei/wget@v1 
-      with:
-        args: -qO- http://127.0.0.1:8080/health
+      run: wget -qO- http://127.0.0.1:8080/health
 
     - name: Stop docker container
       run: docker-compose down
