@@ -25,7 +25,7 @@ class User extends Api
 	/**
 	 * Update password for the current user
 	 *
-	 * @param string $name New password
+	 * @param string $password New password
 	 *
 	 * @return null
 	 */
@@ -83,7 +83,7 @@ class User extends Api
 	/**
 	 * Delete a user
 	 *
-	 * @param string $id User Id
+	 * @param int $id User Id
 	 *
 	 * @return null
 	 */

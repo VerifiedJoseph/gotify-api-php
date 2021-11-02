@@ -43,7 +43,7 @@ class Application extends Api
 	/**
 	 * Update an application
 	 *
-	 * @param string $id Application Id
+	 * @param int $id Application Id
 	 * @param string $name New application name
 	 * @param string $description New application description
 	 *
@@ -62,7 +62,7 @@ class Application extends Api
 	/**
 	 * Delete an application
 	 *
-	 * @param string $id Application Id
+	 * @param int $id Application Id
 	 *
 	 * @return null
 	 */
@@ -74,7 +74,7 @@ class Application extends Api
 	/**
 	 * Upload an image for the application
 	 *
-	 * @param string $id Application Id
+	 * @param int $id Application Id
 	 * @param string $image Image path
 	 *
 	 * @return \stdClass

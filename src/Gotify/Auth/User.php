@@ -9,7 +9,7 @@ use Gotify\Auth;
  */
 class User extends Auth
 {
-	/** @var string $token Authentication token */
+	/** @var string $method Authentication method */
 	protected string $method = 'user';
 
 	/** @var string $username Username */
@@ -33,7 +33,7 @@ class User extends Auth
 	/**
 	 * Get authentication
 	 *
-	 * @return array Returns array with method, username and password
+	 * @return array<string, string> Returns array with method, username and password
 	 */
 	public function get()
 	{

@@ -25,7 +25,7 @@ class Plugin extends Api
 	/**
 	 * Get configuration for Configurer plugin.
 	 *
-	 * @param string $id Plugin Id
+	 * @param int $id Plugin Id
 	 *
 	 * @return \stdClass
 	 */
@@ -37,7 +37,7 @@ class Plugin extends Api
 	/**
 	 * Update configuration for Configurer plugin.
 	 *
-	 * @param string $id Plugin Id
+	 * @param int $id Plugin Id
 	 *
 	 * @return \stdClass
 	 */
@@ -49,7 +49,7 @@ class Plugin extends Api
 	/**
 	 * Get display info for a Displayer plugin
 	 *
-	 * @param string $id Plugin Id
+	 * @param int $id Plugin Id
 	 *
 	 * @return \stdClass
 	 */
@@ -61,7 +61,7 @@ class Plugin extends Api
 	/**
 	 * Enable a plugin.
 	 *
-	 * @param string $id Plugin Id
+	 * @param int $id Plugin Id
 	 *
 	 * @return null
 	 */
@@ -73,7 +73,7 @@ class Plugin extends Api
 	/**
 	 * Disable a plugin
 	 *
-	 * @param string $id Plugin Id
+	 * @param int $id Plugin Id
 	 *
 	 * @return null
 	 */

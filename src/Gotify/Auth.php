@@ -13,7 +13,7 @@ abstract class Auth
 	/**
 	 * Get authentication
 	 *
-	 * @return string Returns array with auth method and values
+	 * @return array<string, string> Returns array with auth method and values
 	 */
 	abstract public function get();
 }

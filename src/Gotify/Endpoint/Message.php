@@ -28,7 +28,7 @@ class Message extends Api
 	 * @param string $title	Message title
 	 * @param string $message Message body
 	 * @param int $priority Message priority
-	 * @param array $extras Message extras
+	 * @param array<string, string> $extras Message extras
 	 *
 	 * @return \stdClass
 	 */
@@ -50,7 +50,7 @@ class Message extends Api
 	/**
 	 * Delete a message
 	 *
-	 * @param string $id Message Id
+	 * @param int $id Message Id
 	 *
 	 * @return null
 	 */

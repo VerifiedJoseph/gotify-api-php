@@ -13,7 +13,7 @@ final class Json
 	/**
 	 * Encode JSON
 	 *
-	 * @param array $data
+	 * @param array<mixed> $data
 	 * @return string
 	 */
 	static function encode(array $data)
@@ -29,7 +29,7 @@ final class Json
 	/**
 	 * Decode JSON
 	 *
-	 * @param $string $json
+	 * @param string $json
 	 * @return \stdClass
 	 */
 	public static function decode(string $json)
