@@ -33,7 +33,7 @@ class User extends Auth
 	/**
 	 * Get authentication
 	 *
-	 * @return array Returns array with method, username and password
+	 * @return array<string, string> Returns array with method, username and password
 	 */
 	public function get()
 	{

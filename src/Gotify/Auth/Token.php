@@ -28,7 +28,7 @@ class Token extends Auth
 	/**
 	 * Get authentication token
 	 *
-	 * @return array Returns array with auth method and token
+	 * @return array<string, string> Returns array with auth method and token
 	 */
 	public function get()
 	{

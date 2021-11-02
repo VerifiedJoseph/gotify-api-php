@@ -21,7 +21,7 @@ final class Guzzle
 {
 	private Client $client;
 
-	/** @var array $requestMethods Array of supported HTTP request methods */
+	/** @var array<int, string> $requestMethods Array of supported HTTP request methods */
 	private array $requestMethods = array('GET', 'POST', 'PUT', 'DELETE');
 
 	/** @var int $timeout Request timeout in seconds */
@@ -30,7 +30,7 @@ final class Guzzle
 	/**
 	 *
 	 * @param string $uri Server URI
-	 * @param array $auth Authentication
+	 * @param array<string, string> $auth Authentication
 	 */
 	function __construct(string $uri, array $auth = array())
 	{
@@ -54,8 +54,8 @@ final class Guzzle
 	 * Make POST request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @param array $data
-	 * @return \stdClass
+	 * @param array<string, mixed> $data
+	 * @return \stdClass|null
 	 */
 	public function post(string $endpoint, array $data = array())
 	{
@@ -70,7 +70,7 @@ final class Guzzle
 	 * Make POST request with a file
 	 *
 	 * @param string $endpoint API endpoint
-	 * @param array $data
+	 * @param array<string, string> $data
 	 * @return \stdClass
 	 *
 	 * @throws GotifyException if the file cannot be opened
@@ -95,7 +95,7 @@ final class Guzzle
 	 * Make PUT request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @param array $data
+	 * @param array<string, string> $data
 	 * @return \stdClass
 	 */
 	public function put(string $endpoint, array $data)
@@ -123,8 +123,8 @@ final class Guzzle
 	 *
 	 * @param string $method HTTP request method
 	 * @param string $endpoint API endpoint
-	 * @param array $options HTTP request options
-	 * @return \stdClass|null
+	 * @param array<string, mixed> $options HTTP request options
+	 * @return mixed
 	 *
 	 * @throws InvalidArgumentException if HTTP request method is not supported
 	 * @throws EndpointException if API returned an error
@@ -170,9 +170,9 @@ final class Guzzle
 	 * Get GuzzleHttp client config
 	 *
 	 * @param string $uri Server URI
-	 * @param string $auth Authentication
+	 * @param array<string, string> $auth Authentication
 	 *
-	 * @return array
+	 * @return array<string, string> Returns client config array
 	 */
 	private function getConfig(string $uri, array $auth) {
 		$config = array(
@@ -193,9 +193,9 @@ final class Guzzle
 	/**
 	 * Get authentication config
 	 *
-	 * @param string $auth Authentication
+	 * @param array<string, string> $auth Authentication
 	 *
-	 * @return array
+	 * @return array<string, string>
 	 */
 	private function getAuthConfig(array $auth) {
 		$config = array();

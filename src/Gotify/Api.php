@@ -16,7 +16,7 @@ abstract class Api
 	 * Create Guzzle instance
 	 *
 	 * @param string $uri Server URI
-	 * @param array $auth Authentication
+	 * @param array<string, string> $auth Authentication
 	 */
 	final function __construct(string $uri, array $auth = array())
 	{
