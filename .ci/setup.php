@@ -41,8 +41,6 @@ function createClient() {
 function MakePostRequest(string $endpoint, array $data) {
 	global $serverUri, $username, $password;
 
-	var_dump($serverUri);
-
 	$content = json_encode($data);
 
 	$auth = base64_encode($username . ':' . $password);
@@ -74,4 +72,4 @@ function writeFile(string $path, string $data) {
 
 function output($text) {
 	echo $text . " \n";
-} 
+}
