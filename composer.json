@@ -20,5 +20,8 @@
         "psr-4": {
             "Gotify\\": "src/Gotify"
         }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.0"
     }
 }
