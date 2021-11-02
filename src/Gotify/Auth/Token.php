@@ -9,8 +9,11 @@ use Gotify\Auth;
  */
 class Token extends Auth
 {
-	/** @var string $token Authentication token */
+	/** @var string $method Authentication method */
 	protected string $method = 'token';
+
+	/** @var string $token Authentication token */
+	protected string $token = '';
 
 	/**
 	 * Set authentication token
