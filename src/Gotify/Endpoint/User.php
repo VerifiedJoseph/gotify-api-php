@@ -25,7 +25,7 @@ class User extends Api
 	/**
 	 * Update password for the current user
 	 *
-	 * @param string $name New password
+	 * @param string $password New password
 	 *
 	 * @return null
 	 */

@@ -29,7 +29,7 @@ final class Json
 	/**
 	 * Decode JSON
 	 *
-	 * @param $string $json
+	 * @param string $json
 	 * @return \stdClass
 	 */
 	public static function decode(string $json)
