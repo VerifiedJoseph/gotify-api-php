@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
+      GOTIFY_SERVER_URI: "http://127.0.0.1:8080"
 
     steps:
     - name: Checkout code
@@ -20,8 +21,11 @@ jobs:
     - name: Check docker container list
       run: docker ps
 
+    - name: Setup Gotify
+      run: php .ci/setup.php
+
     - name: Get gotify server health
-      run: wget -qO- http://127.0.0.1:8080/health
+      run: wget -qO- $GOTIFY_SERVER_URI/health
 
     - name: Stop docker container
       run: docker-compose down
