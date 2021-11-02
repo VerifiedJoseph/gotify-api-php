@@ -24,13 +24,13 @@ final class Guzzle
 	/** @var array $requestMethods Array of supported HTTP request methods */
 	private array $requestMethods = array('GET', 'POST', 'PUT', 'DELETE');
 
-	/** @var array $timeout Request timeout in seconds */
+	/** @var int $timeout Request timeout in seconds */
 	private int $timeout = 10;
 
 	/**
 	 *
 	 * @param string $uri Server URI
-	 * @param string $auth Authentication
+	 * @param array $auth Authentication
 	 */
 	function __construct(string $uri, array $auth = array())
 	{
@@ -42,7 +42,7 @@ final class Guzzle
 	/**
 	 * Make GET request
 	 *
-	 * @param $endpoint API endpoint
+	 * @param string $endpoint API endpoint
 	 * @return \stdClass
 	 */
 	public function get(string $endpoint)
@@ -143,7 +143,7 @@ final class Guzzle
 
 		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
-				throw new EndpointException($err->getMessage(), $response->getStatusCode());
+				return new EndpointException($err->getMessage(), 0);
 			}
 
 			$response = $err->getResponse();
