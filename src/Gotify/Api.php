@@ -18,8 +18,8 @@ abstract class Api
 	 * @param string $uri Server URI
 	 * @param array $auth Authentication
 	 */
-	final function __construct(string $server, array $auth = array())
+	final function __construct(string $uri, array $auth = array())
 	{
-		$this->guzzle = new Guzzle($server, $auth);
+		$this->guzzle = new Guzzle($uri, $auth);
 	}
 }
