@@ -13,7 +13,7 @@ final class Json
 	/**
 	 * Encode JSON
 	 *
-	 * @param array $data
+	 * @param array<mixed> $data
 	 * @return string
 	 */
 	static function encode(array $data)
