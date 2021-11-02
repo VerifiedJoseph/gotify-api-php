@@ -50,7 +50,7 @@ class Message extends Api
 	/**
 	 * Delete a message
 	 *
-	 * @param string $id Message Id
+	 * @param int $id Message Id
 	 *
 	 * @return null
 	 */

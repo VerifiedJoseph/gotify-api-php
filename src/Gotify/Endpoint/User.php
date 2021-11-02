@@ -83,7 +83,7 @@ class User extends Api
 	/**
 	 * Delete a user
 	 *
-	 * @param string $id User Id
+	 * @param int $id User Id
 	 *
 	 * @return null
 	 */

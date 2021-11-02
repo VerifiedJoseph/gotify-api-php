@@ -41,7 +41,7 @@ class Client extends Api
 	/**
 	 * Update a client
 	 *
-	 * @param string $id Client Id
+	 * @param int $id Client Id
 	 * @param string $name New client name
 	 *
 	 * @return \stdClass
@@ -58,7 +58,7 @@ class Client extends Api
 	/**
 	 * Delete a client
 	 *
-	 * @param string $id Client Id
+	 * @param int $id Client Id
 	 *
 	 * @return null
 	 */
