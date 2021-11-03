@@ -18,6 +18,9 @@ jobs:
     - name: Start docker container
       run: docker-compose up -d
 
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist --no-dev
+
     - name: Run phpunit
       run: phpunit --configuration phpunit.xml
 
