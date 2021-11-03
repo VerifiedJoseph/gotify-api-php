@@ -19,7 +19,7 @@ jobs:
       run: docker-compose up -d
 
     - name: Run phpunit
-      run: php vendor/bin/phpunit --configuration phpunit.xml
+      run: phpunit --configuration phpunit.xml
 
     - name: Stop docker container
       run: docker-compose down
