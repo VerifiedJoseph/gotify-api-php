@@ -28,7 +28,7 @@ class UserTest extends TestCase
 
 		$this->assertIsObject($current);
 	}
-	
+
 	/**
 	 * Test getting a user
 	 */

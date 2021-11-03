@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
 
 	public static function setUpBeforeClass(): void
 	{
- 		self::$server = new Gotify\Server(self::$serverUri);
+		self::$server = new Gotify\Server(self::$serverUri);
 		self::$auth = new Gotify\Auth\User(self::$username, self::$password);
 	}
 

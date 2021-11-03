@@ -31,7 +31,7 @@ class ApplicationTest extends TestCase
 	}
 
 	/**
-	 * Test getting all applications 
+	 * Test getting all applications
 	 */
 	public function testGetAll()
 	{
