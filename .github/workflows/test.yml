@@ -4,7 +4,7 @@ on:
     paths:
       - "**.php"
   push:
-    branches: master
+    branches: main
     paths:
       - "**.php"
 
