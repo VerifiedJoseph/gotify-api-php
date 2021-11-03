@@ -2,7 +2,6 @@
 
 class HealthTest extends TestCase
 {
-
 	/**
 	 * Test getting server health status
 	 */

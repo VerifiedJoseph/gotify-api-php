@@ -2,7 +2,6 @@
 
 class VersionTest extends TestCase
 {
-
 	/**
 	 * Test getting server version
 	 */
