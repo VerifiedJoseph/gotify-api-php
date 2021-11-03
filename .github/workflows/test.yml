@@ -18,11 +18,8 @@ jobs:
     - name: Start docker container
       run: docker-compose up -d
 
-    - name: Setup Gotify
-      run: php .ci/setup.php
-
-    - name: Get gotify server health
-      run: wget -qO- $GOTIFY_SERVER_URI/health
+    - name: Run phpunit
+      run: php vendor/bin/phpunit --configuration phpunit.xml
 
     - name: Stop docker container
       run: docker-compose down
