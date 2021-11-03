@@ -15,7 +15,7 @@ class Application extends Api
 	/**
 	 * Get all applications
 	 *
-	 * @return \stdClass
+	 * @return array<int, object>
 	 */
 	public function getAll()
 	{

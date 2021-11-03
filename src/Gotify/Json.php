@@ -30,7 +30,7 @@ final class Json
 	 * Decode JSON
 	 *
 	 * @param string $json
-	 * @return \stdClass
+	 * @return \stdClass|array<mixed>
 	 */
 	public static function decode(string $json)
 	{

@@ -53,7 +53,7 @@ class User extends Api
 	/**
 	 * Get all users
 	 *
-	 * @return \stdClass
+	 * @return array<int, object>
 	 */
 	public function getAll()
 	{
