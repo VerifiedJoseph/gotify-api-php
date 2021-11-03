@@ -17,7 +17,7 @@ class ClientTest extends TestCase
 	}
 
 	/**
-	 * Test creating an client
+	 * Test creating a client
 	 */
 	public function testCreate()
 	{
@@ -44,7 +44,7 @@ class ClientTest extends TestCase
 	}
 
 	/**
-	 * Test updating an client
+	 * Test updating a client
 	 */
 	public function testUpdate()
 	{
@@ -57,7 +57,7 @@ class ClientTest extends TestCase
 	}
 
 	/**
-	 * Test deleting an application
+	 * Test deleting a client
 	 */
 	public function testDelete()
 	{
