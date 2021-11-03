@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Run tests
+    name: PHPUnit
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
