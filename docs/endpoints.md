@@ -26,7 +26,7 @@ API docs: [https://gotify.net/api-docs#/application](https://gotify.net/api-docs
 Get all applications
 
 ```PHP
-getAll(): stdClass
+getAll(): array
 ```
 
 Create an application
@@ -128,7 +128,7 @@ API docs: [https://gotify.net/api-docs#/client](https://gotify.net/api-docs#/cli
 Get all clients
 
 ```PHP
-getAll(): stdClass
+getAll(): array
 ```
 
 Create a client
@@ -182,7 +182,7 @@ getUser(int $id): stdClass
 Get all users
 
 ```PHP
-getAll(): stdClass
+getAll(): array
 ```
 
 Create a user
