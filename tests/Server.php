@@ -5,7 +5,7 @@ class ServerTest extends TestCase
 	/**
 	 * Test server URI validator
 	 */
-	public function testServerUriValidator()
+	public function testServerUriValidator(): void
 	{
 		$this->expectException(Gotify\Exception\GotifyException::class);
 

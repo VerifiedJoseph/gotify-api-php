@@ -29,7 +29,7 @@ class MessageTest extends TestCase
 	/**
 	 * Test creating a message
 	 */
-	public function testCreate()
+	public function testCreate(): void
 	{
 		// Authenticate as test application via its token
 		$auth = new Gotify\Auth\Token(self::$appToken);
@@ -51,7 +51,7 @@ class MessageTest extends TestCase
 	/**
 	 * Test getting all messages
 	 */
-	public function testGetAll()
+	public function testGetAll(): void
 	{
 		$messages = self::$message->getAll();
 
@@ -62,7 +62,7 @@ class MessageTest extends TestCase
 	/**
 	 * Test deleting a message
 	 */
-	public function testDelete()
+	public function testDelete(): void
 	{
 		$deleted = self::$message->delete(self::$messageId);
 		$this->assertNull($deleted);
@@ -71,7 +71,7 @@ class MessageTest extends TestCase
 	/**
 	 * Test deleting all messages
 	 */
-	public function testDeleteAll()
+	public function testDeleteAll(): void
 	{
 		$deleted = self::$message->deleteAll();
 		$this->assertNull($deleted);

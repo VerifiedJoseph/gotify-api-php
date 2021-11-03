@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
  */
 abstract class TestCase extends BaseTestCase
 {
-	protected static $serverUri = 'http://127.0.0.1:8080/';
+	protected static string $serverUri = 'http://127.0.0.1:8080/';
 	protected static string $username = 'admin';
 	protected static string $password = 'admin';
 
@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
 	/**
 	 * Retruns app image path
 	 */
-	protected function getAppImagePath()
+	protected function getAppImagePath(): string
 	{
 		$path = __DIR__ . '/TestAssets/' . $this->appImage;
 

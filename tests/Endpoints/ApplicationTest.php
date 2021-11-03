@@ -19,7 +19,7 @@ class ApplicationTest extends TestCase
 	/**
 	 * Test creating an application
 	 */
-	public function testCreate()
+	public function testCreate(): void
 	{
 		$created = self::$application->create(
 			'test application',
@@ -33,7 +33,7 @@ class ApplicationTest extends TestCase
 	/**
 	 * Test getting all applications
 	 */
-	public function testGetAll()
+	public function testGetAll(): void
 	{
 		$apps = self::$application->getAll();
 
@@ -47,7 +47,7 @@ class ApplicationTest extends TestCase
 	/**
 	 * Test updating an application
 	 */
-	public function testUpdate()
+	public function testUpdate(): void
 	{
 		$updated = self::$application->update(
 			self::$appId,
@@ -61,7 +61,7 @@ class ApplicationTest extends TestCase
 	/**
 	 * Test uploading an image for the application
 	 */
-	public function testUploadImage()
+	public function testUploadImage(): void
 	{
 		$path = $this->getAppImagePath();
 		$uploaded = self::$application->uploadImage(self::$appId, $path);
@@ -72,7 +72,7 @@ class ApplicationTest extends TestCase
 	/**
 	 * Test deleting an application
 	 */
-	public function testDelete()
+	public function testDelete(): void
 	{
 		$deleted = self::$application->delete(self::$appId);
 		$this->assertNull($deleted);

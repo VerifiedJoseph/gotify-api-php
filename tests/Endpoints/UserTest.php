@@ -22,7 +22,7 @@ class UserTest extends TestCase
 	/**
 	 * Test getting the current user
 	 */
-	public function testGetCurrent()
+	public function testGetCurrent(): void
 	{
 		$current = self::$user->getCurrent();
 
@@ -32,7 +32,7 @@ class UserTest extends TestCase
 	/**
 	 * Test getting a user
 	 */
-	public function testGetUser()
+	public function testGetUser(): void
 	{
 		$user = self::$user->getUser(self::$userId);
 
@@ -42,7 +42,7 @@ class UserTest extends TestCase
 	/**
 	 * Test getting all users
 	 */
-	public function testGetAll()
+	public function testGetAll(): void
 	{
 		$users = self::$user->getAll();
 
@@ -56,7 +56,7 @@ class UserTest extends TestCase
 	/**
 	 * Test creating a user
 	 */
-	public function testCreate()
+	public function testCreate(): void
 	{
 		$created = self::$user->create(
 			self::$testUsername,
@@ -71,7 +71,7 @@ class UserTest extends TestCase
 	/**
 	 * Test updating passwrod for the current user
 	 */
-	public function testUpdatePassword()
+	public function testUpdatePassword(): void
 	{
 		// Login as test user
 		$auth = new Gotify\Auth\User(self::$testUsername, self::$testPassword);
@@ -87,7 +87,7 @@ class UserTest extends TestCase
 	/**
 	 * Test deleting a user
 	 */
-	public function testDelete()
+	public function testDelete(): void
 	{
 		$deleted = self::$user->delete(self::$userId);
 		$this->assertNull($deleted);

@@ -19,7 +19,7 @@ class ClientTest extends TestCase
 	/**
 	 * Test creating a client
 	 */
-	public function testCreate()
+	public function testCreate(): void
 	{
 		$client = self::$client->create(
 			'test client',
@@ -32,7 +32,7 @@ class ClientTest extends TestCase
 	/**
 	 * Test getting all clients
 	 */
-	public function testGetAll()
+	public function testGetAll(): void
 	{
 		$clients = self::$client->getAll();
 
@@ -46,7 +46,7 @@ class ClientTest extends TestCase
 	/**
 	 * Test updating a client
 	 */
-	public function testUpdate()
+	public function testUpdate(): void
 	{
 		$updated = self::$client->update(
 			self::$clientId,
@@ -59,7 +59,7 @@ class ClientTest extends TestCase
 	/**
 	 * Test deleting a client
 	 */
-	public function testDelete()
+	public function testDelete(): void
 	{
 		$deleted = self::$client->delete(self::$clientId);
 		$this->assertNull($deleted);

@@ -28,7 +28,7 @@ class ApplicationMessageTest extends TestCase
 	/**
 	 * Test getting all messages for an application
 	 */
-	public function testGetAll()
+	public function testGetAll(): void
 	{
 		$messages = self::$applicationMessage->getAll(self::$appId);
 
@@ -39,7 +39,7 @@ class ApplicationMessageTest extends TestCase
 	/**
 	 * Test deleting all messages for an application
 	 */
-	public function testDeleteAll()
+	public function testDeleteAll(): void
 	{
 		$deleted = self::$applicationMessage->deleteAll(self::$appId);
 		$this->assertNull($deleted);

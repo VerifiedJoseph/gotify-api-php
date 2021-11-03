@@ -5,7 +5,7 @@ class VersionTest extends TestCase
 	/**
 	 * Test getting server version
 	 */
-	public function testGet()
+	public function testGet(): void
 	{
 		$version = new Gotify\Endpoint\Version(
 			self::$server->get()
