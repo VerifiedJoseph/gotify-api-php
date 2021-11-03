@@ -19,7 +19,7 @@ jobs:
       run: docker-compose up -d
 
     - name: Install dependencies with composer
-      run: composer install --prefer-dist --no-dev
+      run: composer install --prefer-dist
 
     - name: Run phpunit
       run: phpunit --configuration phpunit.xml
