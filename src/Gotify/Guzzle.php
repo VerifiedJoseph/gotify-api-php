@@ -43,7 +43,7 @@ final class Guzzle
 	 * Make GET request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @return \stdClass|array
+	 * @return \stdClass|array<mixed>
 	 */
 	public function get(string $endpoint)
 	{
@@ -172,9 +172,10 @@ final class Guzzle
 	 * @param string $uri Server URI
 	 * @param array<string, string> $auth Authentication
 	 *
-	 * @return array<string, string> Returns client config array
+	 * @return array<string, mixed> Returns client config array
 	 */
-	private function getConfig(string $uri, array $auth) {
+	private function getConfig(string $uri, array $auth)
+	{
 		$config = array(
 			'base_uri' => $uri,
 			'Accept' => 'application/json',
@@ -195,9 +196,10 @@ final class Guzzle
 	 *
 	 * @param array<string, string> $auth Authentication
 	 *
-	 * @return array<string, string>
+	 * @return array<string, array<int|string, string>>
 	 */
-	private function getAuthConfig(array $auth) {
+	private function getAuthConfig(array $auth)
+	{
 		$config = array();
 
 		if (isset($auth['method'])) {
