@@ -1,6 +1,6 @@
 <?php
 
-class messageTest extends TestCase
+class MessageTest extends TestCase
 {
 	private static Gotify\Endpoint\Message $message;
 
