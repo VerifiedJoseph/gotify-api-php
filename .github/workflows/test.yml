@@ -1,11 +1,16 @@
 name: Tests
 on:
   pull_request:
-  push: { branches: master }
+    paths:
+      - "**.php"
+  push:
+    branches: master
+    paths:
+      - "**.php"
 
 jobs:
   test:
-    name: Run test
+    name: Run tests
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
