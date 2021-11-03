@@ -18,9 +18,6 @@ jobs:
     - name: Start docker container
       run: docker-compose up -d
 
-    - name: test app
-      run: curl -u admin:admin $GOTIFY_SERVER_URI/application -F "name=test" -F "description=tutorial"
-
     - name: Setup Gotify
       run: php .ci/setup.php
 

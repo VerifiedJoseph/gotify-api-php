@@ -16,18 +16,23 @@ try {
 }
 
 function createClient() {
+	global $serverUri, $username, $password;
+
 	output('Creating client');
 
 	$data = array(
 		'name' => 'Github action'
 	);
 
-	$response = MakePostRequest('client', $data);
-	if ($response === false) {
-		throw new Exception('Request to client endpoint failed');
-	}
+	$output = null;
 
-	$client = json_decode($response);
+	// Replace this with cURL
+	exec('curl -u '. $username .':'. $password .' ' . $serverUri . '/client -F "name=test"', $output);
+	$client = json_decode($output[0]);
+
+	if ($client === null) {
+		throw new Exception('JSON decoding failed');
+	}
 
 	if (isset($client->error)) {
 		throw new Exception('Gotify API error: ' . $client->errorDescription);
@@ -35,31 +40,7 @@ function createClient() {
 
 	output('Client: ' . $client->id);
 
-	writeFile('clientId.json', $response);
-}
-
-function MakePostRequest(string $endpoint, array $data) {
-	global $serverUri, $username, $password;
-
-	$content = json_encode($data);
-
-	$auth = base64_encode($username . ':' . $password);
-	$context = stream_context_create([
-    	'http' => [
-			'header' => 'Authorization: Basic '. $auth,
-			'method'  => 'POST',
-				'header'  => 'Content-Type: application/json',
-				'content' => $content
-    	]
-	]);
-
-	$response = file_get_contents($serverUri . '/' . $endpoint, false, $context);
-
-	if ($response === false) {
-		throw new Exception('Request to client endpoint failed');
-	}
-
-	return $response;
+	writeFile('clientId.json', $output[0]);
 }
 
 function writeFile(string $path, string $data) {
