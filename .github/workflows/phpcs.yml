@@ -6,6 +6,12 @@ on:
       - "**.php"
       - "phpcs.xml"
       - ".github/workflows/phpcs.yml"
+  push:
+    branches: main
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+      - ".github/workflows/phpcs.yml"
 
 jobs:
   phpcs:
