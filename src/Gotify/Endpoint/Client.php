@@ -15,7 +15,7 @@ class Client extends Api
 	/**
 	 * Get all clients
 	 *
-	 * @return \stdClass
+	 * @return array<int, object>
 	 */
 	public function getAll()
 	{

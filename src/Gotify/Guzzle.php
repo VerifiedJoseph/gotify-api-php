@@ -43,7 +43,7 @@ final class Guzzle
 	 * Make GET request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @return \stdClass
+	 * @return \stdClass|array
 	 */
 	public function get(string $endpoint)
 	{
