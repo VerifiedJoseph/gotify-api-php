@@ -1,0 +1,33 @@
+name: Tests
+on:
+  pull_request:
+    paths:
+      - "**.php"
+  push:
+    branches: master
+    paths:
+      - "**.php"
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: .ci/docker-compose.yml
+      GOTIFY_SERVER_URI: "http://127.0.0.1:8080"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Start docker container
+      run: docker-compose up -d
+
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist
+
+    - name: Run phpunit
+      run: phpunit --configuration phpunit.xml
+
+    - name: Stop docker container
+      run: docker-compose down
