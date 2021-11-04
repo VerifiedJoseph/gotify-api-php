@@ -20,9 +20,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Start docker container
-      run: docker-compose up -d
-
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
@@ -39,8 +36,11 @@ jobs:
     - name: Install dependencies with composer
       run: composer install --prefer-dist
 
+    - name: Start gotify docker container
+      run: docker-compose up -d
+
     - name: Run phpunit
       run: phpunit --configuration phpunit.xml
 
-    - name: Stop docker container
+    - name: Stop gotify docker container
       run: docker-compose down
