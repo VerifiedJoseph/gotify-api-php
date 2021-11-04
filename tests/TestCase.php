@@ -34,4 +34,17 @@ abstract class TestCase extends BaseTestCase
 
 		return $path;
 	}
+
+	/**
+	 * Retruns app image as a base64 encoded string
+	 */
+	protected function getAppImageBase64(): string
+	{
+		$imageData = file_get_contents($this->getAppImagePath());
+		$imageMimeType = mime_content_type($this->getAppImagePath());
+
+		$encoded = base64_encode($imageData);
+
+		return 'data:' . $imageMimeType . ';base64,' . $encoded;
+	}
 }
