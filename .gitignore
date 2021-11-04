@@ -1,6 +1,9 @@
 # Composer
 /vendor/
 
+# phpunit
+.phpunit.result.cache
+
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
