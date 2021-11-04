@@ -97,9 +97,9 @@ class GuzzleTest extends TestCase
 			$username,
 			$password
 		);
-		
+
 		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
-		$response = $guzzle->get('basic-auth/'. $username . '/' . $password);
+		$response = $guzzle->get('basic-auth/' . $username . '/' . $password);
 
 		$this->assertIsObject($response);
 		$this->assertObjectHasAttribute('authenticated', $response);
@@ -117,7 +117,7 @@ class GuzzleTest extends TestCase
 		$token = 'HelloWorld';
 
 		$auth = new \Gotify\Auth\Token($token);
-		
+
 		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
 		$response = $guzzle->get('get');
 
