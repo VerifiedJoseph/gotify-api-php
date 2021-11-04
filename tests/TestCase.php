@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 abstract class TestCase extends BaseTestCase
 {
 	protected static string $serverUri = 'http://127.0.0.1:8080/';
+	protected static string $httpBinUri = 'https://httpbin.org/';
+
 	protected static string $username = 'admin';
 	protected static string $password = 'admin';
 
