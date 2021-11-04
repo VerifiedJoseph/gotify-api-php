@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 abstract class TestCase extends BaseTestCase
 {
 	protected static string $serverUri = 'http://127.0.0.1:8080/';
+	protected static string $httpBinUri = 'https://httpbin.org/';
+
 	protected static string $username = 'admin';
 	protected static string $password = 'admin';
 
@@ -33,5 +35,18 @@ abstract class TestCase extends BaseTestCase
 		$this->assertFileExists($path);
 
 		return $path;
+	}
+
+	/**
+	 * Retruns app image as a base64 encoded string
+	 */
+	protected function getAppImageBase64(): string
+	{
+		$imageData = file_get_contents($this->getAppImagePath());
+		$imageMimeType = mime_content_type($this->getAppImagePath());
+
+		$encoded = base64_encode($imageData);
+
+		return 'data:' . $imageMimeType . ';base64,' . $encoded;
 	}
 }
