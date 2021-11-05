@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
-      GOTIFY_SERVER_URI: "http://127.0.0.1:8080"
+      GOTIFY_URI: "http://127.0.0.1:8080"
+      HTTPBIN_URI: "http://127.0.0.1:8081"
 
     steps:
     - name: Checkout code
