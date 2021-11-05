@@ -52,7 +52,7 @@ abstract class TestCase extends BaseTestCase
 
 	/**
 	 * Retruns Gotify server URI
-	 * 
+	 *
 	 * Return value of `self::$gotifyUri` or environment variable `GOTIFY_URI` if set.
 	 */
 	protected static function getGotifyUri(): string
@@ -66,7 +66,7 @@ abstract class TestCase extends BaseTestCase
 
 	/**
 	 * Retruns httpbin server URI
-	 * 
+	 *
 	 * Return value of `self::$gotifyUri` or  environment variable `HTTPBIN_URI` if set.
 	 */
 	protected static function getHttpBinUri(): string
