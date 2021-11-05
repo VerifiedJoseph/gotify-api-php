@@ -41,5 +41,5 @@ jobs:
         php-version: '8.0'
         tools: cs2pr, phpcs
 
-      - name: Run phpcs
-        run: phpcs --report=checkstyle | cs2pr
+    - name: Run phpcs
+      run: phpcs --report=checkstyle | cs2pr
