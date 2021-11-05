@@ -8,7 +8,7 @@ class GuzzleTest extends TestCase
 
 	public static function setUpBeforeClass(): void
 	{
-		self::$guzzle = new Guzzle(self::$httpBinUri);
+		self::$guzzle = new Guzzle(self::getHttpBinUri());
 	}
 
 	/**
@@ -98,7 +98,7 @@ class GuzzleTest extends TestCase
 			$password
 		);
 
-		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
+		$guzzle = new Gotify\Guzzle(self::getHttpBinUri(), $auth->get());
 		$response = $guzzle->get('basic-auth/' . $username . '/' . $password);
 
 		$this->assertIsObject($response);

@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
-      GOTIFY_SERVER_URI: "http://127.0.0.1:8080"
+      GOTIFY_URI: "http://127.0.0.1:8080"
+      HTTPBIN_URI: "http://127.0.0.1:8081"
 
     steps:
     - name: Checkout code
@@ -39,11 +40,11 @@ jobs:
     - name: Install dependencies with composer
       run: composer install --prefer-dist
 
-    - name: Start gotify docker container
+    - name: Start gotify & httpbin docker containers
       run: docker-compose up -d
 
     - name: Run phpunit
       run: phpunit --configuration phpunit.xml
 
-    - name: Stop gotify docker container
+    - name: Stop gotify & httpbin docker docker containers
       run: docker-compose down
