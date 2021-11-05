@@ -48,4 +48,4 @@ jobs:
         tools: cs2pr, phpcs
 
     - name: Run phpcs
-      run: phpcs --report=checkstyle | cs2pr
+      run: phpcs src tests --report=checkstyle | cs2pr
