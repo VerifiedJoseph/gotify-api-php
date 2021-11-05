@@ -27,7 +27,7 @@ jobs:
         tools: phpstan
 
     - name: Run PHPStan
-      run: phpstan analyse analyse -c phpstan.neon
+      run: phpstan analyse -c phpstan.neon
 
   phpcs:
     runs-on: ubuntu-latest
