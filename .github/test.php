@@ -1,3 +1,7 @@
 <?php
 
-echo 'hello';
+function test () {		
+	echo 45;
+}
+
+test();
