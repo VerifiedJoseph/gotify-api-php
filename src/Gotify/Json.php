@@ -15,7 +15,7 @@ final class Json
 	 *
 	 * @param array<mixed> $data
 	 * @return string
-	 * 
+	 *
 	 * @throws GotifyException if array could not be encoded
 	 */
 	static function encode(array $data)
@@ -33,7 +33,7 @@ final class Json
 	 *
 	 * @param string $json
 	 * @return \stdClass|array<mixed>
-	 * 
+	 *
 	 * @throws GotifyException if JSON could not be decoded
 	 */
 	public static function decode(string $json)
