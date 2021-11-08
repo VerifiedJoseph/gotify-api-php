@@ -61,6 +61,8 @@ class MessageTest extends TestCase
 
 	/**
 	 * Test deleting a message
+	 * 
+	 * @depends testCreate
 	 */
 	public function testDelete(): void
 	{
