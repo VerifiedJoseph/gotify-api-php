@@ -21,16 +21,26 @@ class ClientTest extends TestCase
 	 */
 	public function testCreate(): void
 	{
+		$name = 'PHPUnit client';
+
 		$client = self::$client->create(
-			'test client',
+			$name,
 		);
 
 		$this->assertIsObject($client);
+		$this->assertObjectHasAttribute('id', $client);
+		$this->assertObjectHasAttribute('name', $client);
+		$this->assertObjectHasAttribute('token', $client);
+
+		$this->assertEquals($name, $client->name);
+
 		self::$clientId = $client->id;
 	}
 
 	/**
 	 * Test getting all clients
+	 *
+	 * @depends testCreate
 	 */
 	public function testGetAll(): void
 	{
@@ -40,24 +50,36 @@ class ClientTest extends TestCase
 
 		if (count($clients) > 0) {
 			$this->assertIsObject($clients[0]);
+			$this->assertObjectHasAttribute('id', $clients[0]);
+			$this->assertObjectHasAttribute('name', $clients[0]);
+			$this->assertObjectHasAttribute('token', $clients[0]);
 		}
 	}
 
 	/**
 	 * Test updating a client
+	 *
+	 * @depends testCreate
 	 */
 	public function testUpdate(): void
 	{
+		$name = 'New test client';
+
 		$updated = self::$client->update(
 			self::$clientId,
-			'New test client',
+			$name
 		);
 
 		$this->assertIsObject($updated);
+		$this->assertObjectHasAttribute('name', $updated);
+
+		$this->assertEquals($name, $updated->name);
 	}
 
 	/**
 	 * Test deleting a client
+	 *
+	 * @depends testCreate
 	 */
 	public function testDelete(): void
 	{

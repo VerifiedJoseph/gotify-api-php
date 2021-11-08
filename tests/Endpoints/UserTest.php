@@ -27,6 +27,12 @@ class UserTest extends TestCase
 		$current = self::$user->getCurrent();
 
 		$this->assertIsObject($current);
+
+		$this->assertObjectHasAttribute('id', $current);
+		$this->assertObjectHasAttribute('name', $current);
+		$this->assertObjectHasAttribute('admin', $current);
+
+		$this->assertEquals(self::$username, $current->name);
 	}
 
 	/**
@@ -70,6 +76,8 @@ class UserTest extends TestCase
 
 	/**
 	 * Test updating passwrod for the current user
+	 *
+	 * @depends testCreate
 	 */
 	public function testUpdatePassword(): void
 	{
@@ -86,6 +94,8 @@ class UserTest extends TestCase
 
 	/**
 	 * Test deleting a user
+	 *
+	 * @depends testCreate
 	 */
 	public function testDelete(): void
 	{
