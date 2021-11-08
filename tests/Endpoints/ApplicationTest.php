@@ -21,17 +21,29 @@ class ApplicationTest extends TestCase
 	 */
 	public function testCreate(): void
 	{
+		$name = 'test application';
+		$description = 'A test application created via a unit test';
+
 		$created = self::$application->create(
-			'test application',
-			'A test application created via a unit test'
+			$name,
+			$description
 		);
 
 		$this->assertIsObject($created);
+		$this->assertObjectHasAttribute('id', $created);
+		$this->assertObjectHasAttribute('name', $created);
+		$this->assertObjectHasAttribute('description', $created);
+
+		$this->assertEquals($name, $created->name);
+		$this->assertEquals($description, $created->description);
+
 		self::$appId = $created->id;
 	}
 
 	/**
 	 * Test getting all applications
+	 * 
+	 * @depends testCreate
 	 */
 	public function testGetAll(): void
 	{
@@ -41,25 +53,41 @@ class ApplicationTest extends TestCase
 
 		if (count($apps) > 0) {
 			$this->assertIsObject($apps[0]);
+			$this->assertObjectHasAttribute('id', $apps[0]);
+			$this->assertObjectHasAttribute('name', $apps[0]);
+			$this->assertObjectHasAttribute('description', $apps[0]);
+			$this->assertObjectHasAttribute('token', $apps[0]);
 		}
 	}
 
 	/**
 	 * Test updating an application
+	 * 
+	 * @depends testCreate
 	 */
 	public function testUpdate(): void
 	{
+		$name = 'test application';
+		$description = 'A test application updated via a unit test';
+
 		$updated = self::$application->update(
 			self::$appId,
-			'test application',
-			'A test application updated via a unit test'
+			$name,
+			$description
 		);
 
 		$this->assertIsObject($updated);
+		$this->assertObjectHasAttribute('name', $updated);
+		$this->assertObjectHasAttribute('description', $updated);
+
+		$this->assertEquals($name, $updated->name);
+		$this->assertEquals($description, $updated->description);
 	}
 
 	/**
 	 * Test uploading an image for the application
+	 * 
+	 * @depends testCreate
 	 */
 	public function testUploadImage(): void
 	{
@@ -67,10 +95,13 @@ class ApplicationTest extends TestCase
 		$uploaded = self::$application->uploadImage(self::$appId, $path);
 
 		$this->assertIsObject($uploaded);
+		$this->assertObjectHasAttribute('image', $uploaded);
 	}
 
 	/**
 	 * Test deleting an application
+	 * 
+	 * @depends testCreate
 	 */
 	public function testDelete(): void
 	{
