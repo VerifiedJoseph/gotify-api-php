@@ -42,7 +42,7 @@ class ApplicationTest extends TestCase
 
 	/**
 	 * Test getting all applications
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testGetAll(): void
@@ -62,7 +62,7 @@ class ApplicationTest extends TestCase
 
 	/**
 	 * Test updating an application
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testUpdate(): void
@@ -86,7 +86,7 @@ class ApplicationTest extends TestCase
 
 	/**
 	 * Test uploading an image for the application
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testUploadImage(): void
@@ -100,7 +100,7 @@ class ApplicationTest extends TestCase
 
 	/**
 	 * Test deleting an application
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testDelete(): void

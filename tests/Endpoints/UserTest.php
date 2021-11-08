@@ -76,7 +76,7 @@ class UserTest extends TestCase
 
 	/**
 	 * Test updating passwrod for the current user
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testUpdatePassword(): void
@@ -94,7 +94,7 @@ class UserTest extends TestCase
 
 	/**
 	 * Test deleting a user
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testDelete(): void

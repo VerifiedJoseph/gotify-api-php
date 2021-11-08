@@ -39,7 +39,7 @@ class ClientTest extends TestCase
 
 	/**
 	 * Test getting all clients
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testGetAll(): void
@@ -58,7 +58,7 @@ class ClientTest extends TestCase
 
 	/**
 	 * Test updating a client
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testUpdate(): void
@@ -78,7 +78,7 @@ class ClientTest extends TestCase
 
 	/**
 	 * Test deleting a client
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testDelete(): void
