@@ -41,10 +41,10 @@ class Plugin extends Api
 	 *
 	 * @return \stdClass
 	 */
-	public function updateConfig(int $id)
+	/*public function updateConfig(int $id)
 	{
 		// Todo: Add action
-	}
+	}*/
 
 	/**
 	 * Get display info for a Displayer plugin
