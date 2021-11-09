@@ -5,6 +5,8 @@ class MessageTest extends TestCase
 	private static Gotify\Endpoint\Message $message;
 
 	private static string $appToken = '';
+	private static int $appId = 0;
+
 	private static int $messageId = 0;
 
 	public static function setUpBeforeClass(): void
@@ -23,7 +25,19 @@ class MessageTest extends TestCase
 		);
 
 		$app = $application->create('test app', '');
+		self::$appId = $app->id;
 		self::$appToken = $app->token;
+	}
+
+	public static function tearDownAfterClass(): void
+	{
+		// Delete test application
+		$application = new Gotify\Endpoint\Application(
+			self::$server->get(),
+			self::$auth->get()
+		);
+
+		$application->delete(self::$appId);
 	}
 
 	/**
