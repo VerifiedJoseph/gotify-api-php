@@ -13,15 +13,22 @@ class ApplicationMessage extends Api
 	private string $endpoint = 'application';
 
 	/**
-	 * Get all messages for an application
+	 * Get all messages for an application (ordered by most recent)
 	 *
 	 * @param int $id Application Id
+	 * @param int $limit Maximum number of messages to return
+	 * @param int $since Return all messages after a message id
 	 *
 	 * @return \stdClass
 	 */
-	public function getAll(int $id)
+	public function getAll(int $id, int $limit = 100, int $since = 0)
 	{
-		return $this->guzzle->get($this->endpoint . '/' . $id . '/message');
+		$query = array(
+			'limit' => $limit,
+			'since' => $since
+		);
+
+		return $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
 	}
 
 	/**
