@@ -68,7 +68,7 @@ API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/me
 Get all messages for an application
 
 ```PHP
-getAll(int $id): stdClass
+getAll(int $id, int $limit = 100, int $since = 0): stdClass
 ```
 
 Delete all messages for an application
@@ -92,7 +92,7 @@ API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/me
 Get all messages
 
 ```PHP
-getAll(): stdClass
+getAll(int $limit = 100, int $since = 0): stdClass
 ```
 
 Create a message
