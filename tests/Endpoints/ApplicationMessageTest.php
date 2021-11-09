@@ -25,6 +25,17 @@ class ApplicationMessageTest extends TestCase
 		self::$appId = $app->id;
 	}
 
+	public static function tearDownAfterClass(): void
+	{
+		// Delete test application
+		$application = new Gotify\Endpoint\Application(
+			self::$server->get(),
+			self::$auth->get()
+		);
+
+		$application->delete(self::$appId);
+	}
+
 	/**
 	 * Test getting all messages for an application
 	 */
