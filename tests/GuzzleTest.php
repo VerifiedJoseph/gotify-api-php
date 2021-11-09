@@ -17,7 +17,7 @@ class GuzzleTest extends TestCase
 	public function testGet(): void
 	{
 		$query = array(
-			'test' => 'HelloWorld' 
+			'test' => 'HelloWorld'
 		);
 
 		$response = self::$guzzle->get('get', $query);
