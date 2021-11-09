@@ -13,13 +13,21 @@ class Message extends Api
 	private string $endpoint = 'message';
 
 	/**
-	 * Get all messages
+	 * Get all messages (ordered by most recent)
+	 *
+	 * @param int $limit Maximum number of messages to return
+	 * @param int $since Return all messages after a message id
 	 *
 	 * @return \stdClass
 	 */
-	public function getAll()
+	public function getAll(int $limit = 100, int $since = 0)
 	{
-		return $this->guzzle->get($this->endpoint);
+		$query = array(
+			'limit' => $limit,
+			'since' => $since
+		);
+
+		return $this->guzzle->get($this->endpoint, $query);
 	}
 
 	/**
