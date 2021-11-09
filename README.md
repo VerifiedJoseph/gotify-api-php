@@ -1,5 +1,8 @@
 # gotify-api-php
 
+[![Latest Version](https://img.shields.io/github/release/VerifiedJoseph/gotify-api-php.svg?style=flat-square)](https://github.com/VerifiedJoseph/gotify-api-php/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
 gotify-api-php is a PHP library for interacting with a [Gotify](https://github.com/gotify/server) server using the [Gotify REST-API](https://gotify.net/api-docs).
 
 ## Todo
