@@ -43,11 +43,16 @@ final class Guzzle
 	 * Make GET request
 	 *
 	 * @param string $endpoint API endpoint
+	 * @param array<string, mixed> $query HTTP Query data
 	 * @return \stdClass|array<mixed>
 	 */
-	public function get(string $endpoint)
+	public function get(string $endpoint, array $query = array())
 	{
-		return $this->request('GET', $endpoint);
+		$options = array(
+			RequestOptions::QUERY => $query
+		);
+
+		return $this->request('GET', $endpoint, $options);
 	}
 
 	/**
