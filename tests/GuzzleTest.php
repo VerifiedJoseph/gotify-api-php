@@ -16,7 +16,11 @@ class GuzzleTest extends TestCase
 	 */
 	public function testGet(): void
 	{
-		$response = self::$guzzle->get('get?test=HelloWorld');
+		$query = array(
+			'test' => 'HelloWorld'
+		);
+
+		$response = self::$guzzle->get('get', $query);
 
 		$this->assertIsObject($response);
 		$this->assertObjectHasAttribute('args', $response);
