@@ -74,7 +74,7 @@ class User extends Api
 		$response = $this->guzzle->get($this->endpoint);
 		$users = Json::decode($response->getBody());
 
-		return (object) $users;
+		return (object) ['users' => $users];
 	}
 
 	/**
