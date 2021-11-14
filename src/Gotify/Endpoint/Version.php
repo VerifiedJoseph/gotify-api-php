@@ -2,7 +2,8 @@
 
 namespace Gotify\Endpoint;
 
-Use Gotify\Api;
+use Gotify\Api;
+use Gotify\Json;
 
 /**
  * Class for interacting with version API endpoint
@@ -19,6 +20,9 @@ class Version extends Api
 	 */
 	public function get()
 	{
-		return $this->guzzle->get($this->endpoint);
+		$response = $this->guzzle->get($this->endpoint);
+		$version = Json::decode($response->getBody());
+
+		return (object) $version;
 	}
 }
