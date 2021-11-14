@@ -89,7 +89,7 @@ class GuzzleTest extends TestCase
 	 */
 	public function testDelete(): void
 	{
-		$response =  self::$guzzle->delete('delete');
+		$response = self::$guzzle->delete('delete');
 		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
@@ -131,7 +131,7 @@ class GuzzleTest extends TestCase
 		$auth = new \Gotify\Auth\Token($token);
 
 		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
-		
+
 		$response = $guzzle->get('get');
 		$body = (object) Json::decode($response->getBody());
 

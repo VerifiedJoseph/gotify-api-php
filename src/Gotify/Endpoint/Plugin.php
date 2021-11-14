@@ -35,7 +35,7 @@ class Plugin extends Api
 	 */
 	public function getConfig(int $id)
 	{
-		$response =  $this->guzzle->get($this->endpoint . '/' . $id . '/config');
+		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/config');
 		$config = Json::decode($response->getBody());
 
 		return (object) $config;
@@ -62,7 +62,7 @@ class Plugin extends Api
 	 */
 	public function getDisplayInfo(int $id)
 	{
-		$response =  $this->guzzle->get($this->endpoint . '/' . $id . '/display');;
+		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');;
 		$displayInfo = Json::decode($response->getBody());
 
 		return (object) $displayInfo;
@@ -96,7 +96,7 @@ class Plugin extends Api
 	 */
 	public function disable(int $id)
 	{
-		$response =  $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
+		$response = $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
 		$body = $response->getBody()->getContents();
 
 		if (empty($body) === true) {

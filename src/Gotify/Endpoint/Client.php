@@ -69,7 +69,7 @@ class Client extends Api
 	 * Delete a client
 	 *
 	 * @param int $id Client Id
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function delete(int $id)
