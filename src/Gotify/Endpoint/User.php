@@ -4,6 +4,7 @@ namespace Gotify\Endpoint;
 
 use Gotify\Api;
 use Gotify\Json;
+use stdClass;
 
 /**
  * Class for interacting with client user endpoint
@@ -16,9 +17,9 @@ class User extends Api
 	/**
 	 * Get current user
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getCurrent()
+	public function getCurrent(): stdClass
 	{
 		$response = $this->guzzle->get('current/user');
 		$current = Json::decode($response->getBody());
@@ -33,7 +34,7 @@ class User extends Api
 	 *
 	 * @return boolean
 	 */
-	public function updatePassword(string $password)
+	public function updatePassword(string $password): bool
 	{
 		$data = array(
 			'pass' => $password,
@@ -54,9 +55,9 @@ class User extends Api
 	 *
 	 * @param int $id User Id
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getUser(int $id)
+	public function getUser(int $id): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id);
 		$user = Json::decode($response->getBody());
@@ -67,9 +68,9 @@ class User extends Api
 	/**
 	 * Get all users
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getAll()
+	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
 		$users = Json::decode($response->getBody());
@@ -84,9 +85,9 @@ class User extends Api
 	 * @param string $password Password
 	 * @param boolean $admin Admin status
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function create(string $name, string $password, bool $admin = false)
+	public function create(string $name, string $password, bool $admin = false): stdClass
 	{
 		$data = array(
 			'name' => $name,
@@ -107,7 +108,7 @@ class User extends Api
 	 *
 	 * @return boolean
 	 */
-	public function delete(int $id)
+	public function delete(int $id): bool
 	{
 		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
 		$body = $response->getBody()->getContents();
