@@ -46,13 +46,18 @@ class ClientTest extends TestCase
 	{
 		$clients = self::$client->getAll();
 
-		$this->assertIsArray($clients);
+		$this->assertIsObject($clients);
+		$this->assertIsObject($clients);
+		$this->assertObjectHasAttribute('clients', $clients);
 
-		if (count($clients) > 0) {
-			$this->assertIsObject($clients[0]);
-			$this->assertObjectHasAttribute('id', $clients[0]);
-			$this->assertObjectHasAttribute('name', $clients[0]);
-			$this->assertObjectHasAttribute('token', $clients[0]);
+		if (count($clients->clients) > 0) {
+			$this->assertIsObject($clients->clients[0]);
+
+			$client = $clients->clients[0];
+
+			$this->assertObjectHasAttribute('id', $client);
+			$this->assertObjectHasAttribute('name', $client);
+			$this->assertObjectHasAttribute('token', $client);
 		}
 	}
 
@@ -84,6 +89,8 @@ class ClientTest extends TestCase
 	public function testDelete(): void
 	{
 		$deleted = self::$client->delete(self::$clientId);
-		$this->assertNull($deleted);
+
+		$this->assertIsBool($deleted);
+		$this->assertEquals(true, $deleted);
 	}
 }
