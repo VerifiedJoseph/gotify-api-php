@@ -132,14 +132,15 @@ final class Guzzle
 	 * @param array<string, mixed> $options HTTP request options
 	 * @return ResponseInterface
 	 *
-	 * @throws InvalidArgumentException if HTTP request method is not supported
+	 * @throws GotifyException if HTTP request method is not supported
+	 * @throws GotifyException if a connection cannot be established
 	 * @throws EndpointException if API returned an error
 	 */
 	private function request(string $method, string $endpoint, array $options = array()): ResponseInterface
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
-				throw new InvalidArgumentException('Request method must be GET, POST, PUT, or DELETE');
+				throw new GotifyException('Request method must be GET, POST, PUT, or DELETE');
 			}
 
 			$response = $this->client->request($method, $endpoint, $options);
