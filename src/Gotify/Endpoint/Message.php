@@ -2,8 +2,9 @@
 
 namespace Gotify\Endpoint;
 
-Use Gotify\Api;
-Use Gotify\Json;
+use Gotify\Api;
+use Gotify\Json;
+use stdClass;
 
 /**
  * Class for interacting with Message API endpoint
@@ -19,9 +20,9 @@ class Message extends Api
 	 * @param int $limit Maximum number of messages to return
 	 * @param int $since Return all messages after a message id
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getAll(int $limit = 100, int $since = 0)
+	public function getAll(int $limit = 100, int $since = 0): stdClass
 	{
 		$query = array(
 			'limit' => $limit,
@@ -42,9 +43,9 @@ class Message extends Api
 	 * @param int $priority Message priority
 	 * @param array<string, string> $extras Message extras
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function create(string $title, string $message, int $priority = 0, array $extras = array())
+	public function create(string $title, string $message, int $priority = 0, array $extras = array()): stdClass
 	{
 		$data = array(
 			'title' => $title,
@@ -68,7 +69,7 @@ class Message extends Api
 	 * @param int $id Message Id
 	 * @return boolean
 	 */
-	public function delete(int $id)
+	public function delete(int $id): bool
 	{
 		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
 		$body = $response->getBody()->getContents();
@@ -84,7 +85,7 @@ class Message extends Api
 	 * Delete all messages
 	 * @return boolean
 	 */
-	public function deleteAll()
+	public function deleteAll(): bool
 	{
 		$response = $this->guzzle->delete($this->endpoint);
 		$body = $response->getBody()->getContents();
