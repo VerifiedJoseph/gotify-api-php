@@ -31,7 +31,7 @@ class User extends Api
 	 *
 	 * @param string $password New password
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public function updatePassword(string $password)
 	{
@@ -39,7 +39,14 @@ class User extends Api
 			'pass' => $password,
 		);
 
-		$this->guzzle->post('current/user/password', $data);
+		$response = $this->guzzle->post('current/user/password', $data);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -98,10 +105,17 @@ class User extends Api
 	 *
 	 * @param int $id User Id
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public function delete(int $id)
 	{
-		$this->guzzle->delete($this->endpoint . '/' . $id);
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

@@ -40,10 +40,17 @@ class ApplicationMessage extends Api
 	 *
 	 * @param int $id Application Id
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public function deleteAll(int $id)
 	{
-		$this->guzzle->delete($this->endpoint . '/' . $id . '/message');
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

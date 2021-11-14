@@ -74,11 +74,18 @@ class Application extends Api
 	 *
 	 * @param int $id Application Id
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public function delete(int $id)
 	{
-		$this->guzzle->delete($this->endpoint . '/' . $id);
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

@@ -66,19 +66,33 @@ class Message extends Api
 	 * Delete a message
 	 *
 	 * @param int $id Message Id
-	 * @return void
+	 * @return boolean
 	 */
 	public function delete(int $id)
 	{
-		$this->guzzle->delete($this->endpoint . '/' . $id);
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
 	 * Delete all messages
-	 * @return void
+	 * @return boolean
 	 */
 	public function deleteAll()
 	{
-		$this->guzzle->delete($this->endpoint);
+		$response = $this->guzzle->delete($this->endpoint);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

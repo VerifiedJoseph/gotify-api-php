@@ -73,11 +73,18 @@ class Plugin extends Api
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public function enable(int $id)
 	{
-		$this->guzzle->post($this->endpoint . '/' . $id . '/enable');
+		$response = $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -85,10 +92,17 @@ class Plugin extends Api
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public function disable(int $id)
 	{
-		$this->guzzle->post($this->endpoint . '/' . $id . '/disable');
+		$response =  $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }
