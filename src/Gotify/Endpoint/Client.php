@@ -3,6 +3,7 @@
 namespace Gotify\Endpoint;
 
 Use Gotify\Api;
+Use Gotify\Json;
 
 /**
  * Class for interacting with client API endpoint
@@ -15,11 +16,14 @@ class Client extends Api
 	/**
 	 * Get all clients
 	 *
-	 * @return array<int, object>
+	 * @return \stdClass
 	 */
 	public function getAll()
 	{
-		return $this->guzzle->get($this->endpoint);
+		$response = $this->guzzle->get($this->endpoint);
+		$clients = Json::decode($response->getBody());
+
+		return (object) ['clients' => $clients];
 	}
 
 	/**
@@ -35,7 +39,10 @@ class Client extends Api
 			'name' => $name,
 		);
 
-		return $this->guzzle->post($this->endpoint, $data);
+		$response = $this->guzzle->post($this->endpoint, $data);
+		$client = Json::decode($response->getBody());
+
+		return (object) $client;
 	}
 
 	/**
@@ -52,7 +59,10 @@ class Client extends Api
 			'name' => $name,
 		);
 
-		return $this->guzzle->put($this->endpoint . '/' . $id, $data);
+		$response = $this->guzzle->put($this->endpoint . '/' . $id, $data);
+		$client = Json::decode($response->getBody());
+
+		return (object) $client;
 	}
 
 	/**
@@ -60,10 +70,17 @@ class Client extends Api
 	 *
 	 * @param int $id Client Id
 	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function delete(int $id)
 	{
-		return $this->guzzle->delete($this->endpoint . '/' . $id);
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

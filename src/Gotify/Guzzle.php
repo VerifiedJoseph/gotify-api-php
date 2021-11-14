@@ -5,6 +5,7 @@ namespace Gotify;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use Psr\Http\Message\ResponseInterface;
 
 use InvalidArgumentException;
 use Gotify\Exception\GotifyException;
@@ -44,7 +45,7 @@ final class Guzzle
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param array<string, mixed> $query HTTP Query data
-	 * @return \stdClass|array<mixed>
+	 * @return ResponseInterface
 	 */
 	public function get(string $endpoint, array $query = array())
 	{
@@ -60,7 +61,7 @@ final class Guzzle
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param array<string, mixed> $data
-	 * @return \stdClass|null
+	 * @return ResponseInterface
 	 */
 	public function post(string $endpoint, array $data = array())
 	{
@@ -76,7 +77,7 @@ final class Guzzle
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param array<string, string> $data
-	 * @return \stdClass
+	 * @return ResponseInterface
 	 *
 	 * @throws GotifyException if the file cannot be opened
 	 */
@@ -101,7 +102,7 @@ final class Guzzle
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param array<string, string> $data
-	 * @return \stdClass
+	 * @return ResponseInterface
 	 */
 	public function put(string $endpoint, array $data)
 	{
@@ -116,7 +117,7 @@ final class Guzzle
 	 * Make DELETE request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @return \stdClass|null
+	 * @return ResponseInterface
 	 */
 	public function delete(string $endpoint)
 	{
@@ -129,7 +130,7 @@ final class Guzzle
 	 * @param string $method HTTP request method
 	 * @param string $endpoint API endpoint
 	 * @param array<string, mixed> $options HTTP request options
-	 * @return mixed
+	 * @return ResponseInterface
 	 *
 	 * @throws InvalidArgumentException if HTTP request method is not supported
 	 * @throws EndpointException if API returned an error
@@ -155,7 +156,7 @@ final class Guzzle
 			$contentType = $response->getHeaderLine('Content-Type');
 
 			if ($contentType === 'application/json') {
-				$json = Json::decode($response->getBody());
+				$json = (object) Json::decode($response->getBody());
 				$message = $json->error . ': ' . $json->errorDescription . ' (' . $json->errorCode . ')';
 
 				throw new EndpointException($message, $json->errorCode);
@@ -164,11 +165,7 @@ final class Guzzle
 			throw new EndpointException($err->getMessage(), $response->getStatusCode());
 		}
 
-		if (empty($response->getBody()->getContents())) { // Some requests do not return anything
-			return null;
-		}
-
-		return Json::decode($response->getBody());
+		return $response;
 	}
 
 	/**

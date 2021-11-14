@@ -3,6 +3,7 @@
 namespace Gotify\Endpoint;
 
 Use Gotify\Api;
+Use Gotify\Json;
 
 /**
  * Class for interacting with application API endpoint
@@ -15,11 +16,14 @@ class Application extends Api
 	/**
 	 * Get all applications
 	 *
-	 * @return array<int, object>
+	 * @return \stdClass
 	 */
 	public function getAll()
 	{
-		return $this->guzzle->get($this->endpoint);
+		$response = $this->guzzle->get($this->endpoint);
+		$applications = Json::decode($response->getBody());
+
+		return (object) ['apps' => $applications];
 	}
 
 	/**
@@ -37,7 +41,10 @@ class Application extends Api
 			'description' => $description
 		);
 
-		return $this->guzzle->post($this->endpoint, $data);
+		$response = $this->guzzle->post($this->endpoint, $data);
+		$application = Json::decode($response->getBody());
+
+		return (object) $application;
 	}
 
 	/**
@@ -56,7 +63,10 @@ class Application extends Api
 			'description' => $description
 		);
 
-		return $this->guzzle->put($this->endpoint . '/' . $id, $data);
+		$response = $this->guzzle->put($this->endpoint . '/' . $id, $data);
+		$application = Json::decode($response->getBody());
+
+		return (object) $application;
 	}
 
 	/**
@@ -64,11 +74,18 @@ class Application extends Api
 	 *
 	 * @param int $id Application Id
 	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function delete(int $id)
 	{
-		return $this->guzzle->delete($this->endpoint . '/' . $id);
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -85,6 +102,9 @@ class Application extends Api
 			'file' => $image
 		);
 
-		return $this->guzzle->postFile($this->endpoint . '/' . $id . '/image', $data);
+		$response = $this->guzzle->postFile($this->endpoint . '/' . $id . '/image', $data);
+		$application = Json::decode($response->getBody());
+
+		return (object) $application;
 	}
 }

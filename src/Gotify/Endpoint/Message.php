@@ -3,6 +3,7 @@
 namespace Gotify\Endpoint;
 
 Use Gotify\Api;
+Use Gotify\Json;
 
 /**
  * Class for interacting with Message API endpoint
@@ -27,7 +28,10 @@ class Message extends Api
 			'since' => $since
 		);
 
-		return $this->guzzle->get($this->endpoint, $query);
+		$response = $this->guzzle->get($this->endpoint, $query);
+		$messages = Json::decode($response->getBody());
+
+		return (object) $messages;
 	}
 
 	/**
@@ -52,28 +56,43 @@ class Message extends Api
 			$data['extras'] = $extras;
 		}
 
-		return $this->guzzle->post($this->endpoint, $data);
+		$response = $this->guzzle->post($this->endpoint, $data);
+		$message = Json::decode($response->getBody());
+
+		return (object) $message;
 	}
 
 	/**
 	 * Delete a message
 	 *
 	 * @param int $id Message Id
-	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function delete(int $id)
 	{
-		return $this->guzzle->delete($this->endpoint . '/' . $id);
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
 	 * Delete all messages
-	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function deleteAll()
 	{
-		return $this->guzzle->delete($this->endpoint);
+		$response = $this->guzzle->delete($this->endpoint);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

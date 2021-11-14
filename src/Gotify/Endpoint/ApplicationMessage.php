@@ -2,7 +2,8 @@
 
 namespace Gotify\Endpoint;
 
-Use Gotify\Api;
+use Gotify\Api;
+use Gotify\Json;
 
 /**
  * Class for interacting with Application message API endpoint
@@ -28,7 +29,10 @@ class ApplicationMessage extends Api
 			'since' => $since
 		);
 
-		return $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
+		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
+		$messages = Json::decode($response->getBody());
+
+		return (object) $messages;
 	}
 
 	/**
@@ -36,10 +40,17 @@ class ApplicationMessage extends Api
 	 *
 	 * @param int $id Application Id
 	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function deleteAll(int $id)
 	{
-		return $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
+		$response = $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

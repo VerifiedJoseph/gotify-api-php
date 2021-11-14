@@ -53,6 +53,8 @@ class ApplicationMessageTest extends TestCase
 	public function testDeleteAll(): void
 	{
 		$deleted = self::$applicationMessage->deleteAll(self::$appId);
-		$this->assertNull($deleted);
+
+		$this->assertIsBool($deleted);
+		$this->assertEquals(true, $deleted);
 	}
 }

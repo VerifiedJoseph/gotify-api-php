@@ -26,7 +26,7 @@ API docs: [https://gotify.net/api-docs#/application](https://gotify.net/api-docs
 Get all applications
 
 ```PHP
-getAll(): array
+getAll(): stdClass
 ```
 
 Create an application
@@ -44,7 +44,7 @@ update(int $id, string $name, string $description): stdClass
 Delete an application
 
 ```PHP
-delete(int $id): null
+delete(int $id): boolean
 ```
 
 Upload image for an application
@@ -74,7 +74,7 @@ getAll(int $id, int $limit = 100, int $since = 0): stdClass
 Delete all messages for an application
 
 ```PHP
-deleteAll(int $id): null
+deleteAll(int $id): boolean
 ```
 
 ## Message
@@ -104,13 +104,13 @@ create(string $title, string $message, int $priority = 0, array $extras = array(
 Delete a message
 
 ```PHP
-delete(int $id): null
+delete(int $id): boolean
 ```
 
 Delete all messages
 
 ```PHP
-deleteAll(): null
+deleteAll(): boolean
 ```
 
 ## Client
@@ -128,7 +128,7 @@ API docs: [https://gotify.net/api-docs#/client](https://gotify.net/api-docs#/cli
 Get all clients
 
 ```PHP
-getAll(): array
+getAll()stdClass
 ```
 
 Create a client
@@ -146,7 +146,7 @@ Update a client
 Delete a client
 
 ```PHP
-delete(int $id): null
+delete(int $id): boolean
 ```
 
 ## User
@@ -170,7 +170,7 @@ getCurrent(): stdClass
 Update password for the current user
 
 ```PHP
-updatePassword(string $password): null
+updatePassword(string $password): boolean
 ```
 
 Get a user
@@ -182,7 +182,7 @@ getUser(int $id): stdClass
 Get all users
 
 ```PHP
-getAll(): array
+getAll()stdClass
 ```
 
 Create a user
@@ -194,7 +194,7 @@ create(string $name, string $password, bool $admin = false): stdClass
 Delete a user
 
 ```PHP
-delete(int $id): null
+delete(int $id): boolean
 ```
 
 ## Health
