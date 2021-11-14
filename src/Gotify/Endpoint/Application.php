@@ -23,7 +23,7 @@ class Application extends Api
 		$response = $this->guzzle->get($this->endpoint);
 		$applications = Json::decode($response->getBody());
 
-		return (object) $applications;
+		return (object) ['apps' => $applications];
 	}
 
 	/**
