@@ -2,8 +2,9 @@
 
 namespace Gotify\Endpoint;
 
-Use Gotify\Api;
-Use Gotify\Json;
+use Gotify\Api;
+use Gotify\Json;
+use stdClass;
 
 /**
  * Class for interacting with application API endpoint
@@ -16,9 +17,9 @@ class Application extends Api
 	/**
 	 * Get all applications
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getAll()
+	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
 		$applications = Json::decode($response->getBody());
@@ -32,9 +33,9 @@ class Application extends Api
 	 * @param string $name Application name
 	 * @param string $description Application description
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function create(string $name, string $description)
+	public function create(string $name, string $description): stdClass
 	{
 		$data = array(
 			'name' => $name,
@@ -54,9 +55,9 @@ class Application extends Api
 	 * @param string $name New application name
 	 * @param string $description New application description
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function update(int $id, string $name, string $description)
+	public function update(int $id, string $name, string $description): stdClass
 	{
 		$data = array(
 			'name' => $name,
@@ -76,7 +77,7 @@ class Application extends Api
 	 *
 	 * @return boolean
 	 */
-	public function delete(int $id)
+	public function delete(int $id): bool
 	{
 		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
 		$body = $response->getBody()->getContents();
@@ -94,9 +95,9 @@ class Application extends Api
 	 * @param int $id Application Id
 	 * @param string $image Image path
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function uploadImage(int $id, string $image)
+	public function uploadImage(int $id, string $image): stdClass
 	{
 		$data = array(
 			'file' => $image

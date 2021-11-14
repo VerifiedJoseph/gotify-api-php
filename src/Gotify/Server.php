@@ -26,7 +26,7 @@ final class Server
 	 *
 	 * @return string Returns server URI
 	 */
-	public function get()
+	public function get(): string
 	{
 		return $this->uri;
 	}
@@ -43,7 +43,7 @@ final class Server
 	 *
 	 * @throws GotifyException if Server URL doesn't start with `https://` or `http://`.
 	 */
-	private function vaildate(string $uri)
+	private function vaildate(string $uri): string
 	{
 		if(preg_match('/^https?:\/\//', $uri) === 0) {
 			throw new GotifyException('Server URI must start with https:// or http://');

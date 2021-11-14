@@ -30,7 +30,7 @@ class Token extends Auth
 	 *
 	 * @return array<string, string> Returns array with auth method and token
 	 */
-	public function get()
+	public function get(): array
 	{
 		return array(
 			'method' => $this->method,

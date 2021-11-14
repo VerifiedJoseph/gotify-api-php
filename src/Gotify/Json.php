@@ -2,6 +2,8 @@
 
 namespace Gotify;
 
+use stdClass;
+
 use JsonException;
 use Gotify\Exception\GotifyException;
 
@@ -18,7 +20,7 @@ final class Json
 	 *
 	 * @throws GotifyException if array could not be encoded
 	 */
-	static function encode(array $data)
+	static function encode(array $data): string
 	{
 		try {
 			return json_encode($data, flags: JSON_THROW_ON_ERROR);
@@ -36,7 +38,7 @@ final class Json
 	 *
 	 * @throws GotifyException if JSON could not be decoded
 	 */
-	public static function decode(string $json)
+	public static function decode(string $json): stdClass|array
 	{
 		try {
 			return json_decode($json, flags: JSON_THROW_ON_ERROR);

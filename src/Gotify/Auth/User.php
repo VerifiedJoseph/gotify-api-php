@@ -35,7 +35,7 @@ class User extends Auth
 	 *
 	 * @return array<string, string> Returns array with method, username and password
 	 */
-	public function get()
+	public function get(): array
 	{
 		return array(
 			'method' => $this->method,
