@@ -47,16 +47,20 @@ class ApplicationTest extends TestCase
 	 */
 	public function testGetAll(): void
 	{
-		$apps = self::$application->getAll();
+		$applications = self::$application->getAll();
 
-		$this->assertIsArray($apps);
+		$this->assertIsObject($applications);
+		$this->assertObjectHasAttribute('apps', $applications);
 
-		if (count($apps) > 0) {
-			$this->assertIsObject($apps[0]);
-			$this->assertObjectHasAttribute('id', $apps[0]);
-			$this->assertObjectHasAttribute('name', $apps[0]);
-			$this->assertObjectHasAttribute('description', $apps[0]);
-			$this->assertObjectHasAttribute('token', $apps[0]);
+		if (count($applications->apps) > 0) {
+			$this->assertIsObject($applications->apps[0]);
+
+			$app = $applications->apps[0];
+
+			$this->assertObjectHasAttribute('id', $app);
+			$this->assertObjectHasAttribute('name', $app);
+			$this->assertObjectHasAttribute('description', $app);
+			$this->assertObjectHasAttribute('token', $app);
 		}
 	}
 
@@ -106,6 +110,8 @@ class ApplicationTest extends TestCase
 	public function testDelete(): void
 	{
 		$deleted = self::$application->delete(self::$appId);
-		$this->assertNull($deleted);
+
+		$this->assertIsBool($deleted);
+		$this->assertEquals(true, $deleted);
 	}
 }
