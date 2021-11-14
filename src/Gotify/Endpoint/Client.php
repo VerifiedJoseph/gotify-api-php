@@ -23,7 +23,7 @@ class Client extends Api
 		$response = $this->guzzle->get($this->endpoint);
 		$clients = Json::decode($response->getBody());
 
-		return (object) $clients;
+		return (object) ['clients' => $clients];
 	}
 
 	/**
