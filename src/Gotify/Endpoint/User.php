@@ -2,7 +2,8 @@
 
 namespace Gotify\Endpoint;
 
-Use Gotify\Api;
+use Gotify\Api;
+use Gotify\Json;
 
 /**
  * Class for interacting with client user endpoint
@@ -19,7 +20,10 @@ class User extends Api
 	 */
 	public function getCurrent()
 	{
-		return $this->guzzle->get('current/user');
+		$response = $this->guzzle->get('current/user');
+		$current = Json::decode($response->getBody());
+
+		return (object) $current;
 	}
 
 	/**
@@ -27,7 +31,7 @@ class User extends Api
 	 *
 	 * @param string $password New password
 	 *
-	 * @return null
+	 * @return void
 	 */
 	public function updatePassword(string $password)
 	{
@@ -35,7 +39,7 @@ class User extends Api
 			'pass' => $password,
 		);
 
-		return $this->guzzle->post('current/user/password', $data);
+		$this->guzzle->post('current/user/password', $data);
 	}
 
 	/**
@@ -47,17 +51,23 @@ class User extends Api
 	 */
 	public function getUser(int $id)
 	{
-		return $this->guzzle->get($this->endpoint . '/' . $id);
+		$response = $this->guzzle->get($this->endpoint . '/' . $id);
+		$user = Json::decode($response->getBody());
+
+		return (object) $user;
 	}
 
 	/**
 	 * Get all users
 	 *
-	 * @return array<int, object>
+	 * @return \stdClass
 	 */
 	public function getAll()
 	{
-		return $this->guzzle->get($this->endpoint);
+		$response = $this->guzzle->get($this->endpoint);
+		$users = Json::decode($response->getBody());
+
+		return (object) $users;
 	}
 
 	/**
@@ -77,7 +87,10 @@ class User extends Api
 			'admin' => $admin
 		);
 
-		return $this->guzzle->post($this->endpoint, $data);
+		$response = $this->guzzle->post($this->endpoint, $data);
+		$user = Json::decode($response->getBody());
+
+		return (object) $user;
 	}
 
 	/**
@@ -85,10 +98,10 @@ class User extends Api
 	 *
 	 * @param int $id User Id
 	 *
-	 * @return null
+	 * @return void
 	 */
 	public function delete(int $id)
 	{
-		return $this->guzzle->delete($this->endpoint . '/' . $id);
+		$this->guzzle->delete($this->endpoint . '/' . $id);
 	}
 }
