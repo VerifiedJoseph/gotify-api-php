@@ -31,7 +31,7 @@ class Message extends Api
 		$response = $this->guzzle->get($this->endpoint, $query);
 		$messages = Json::decode($response->getBody());
 
-		return $messages;
+		return (object) $messages;
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Message extends Api
 		$response = $this->guzzle->post($this->endpoint, $data);
 		$message = Json::decode($response->getBody());
 
-		return $message;
+		return (object) $message;
 	}
 
 	/**
