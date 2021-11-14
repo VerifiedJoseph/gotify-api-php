@@ -3,5 +3,3 @@ parameters:
 	paths:
 		- src
 		- tests
-	ignoreErrors:
-		- '#Dead catch - JsonException is never thrown in the try block.#'
