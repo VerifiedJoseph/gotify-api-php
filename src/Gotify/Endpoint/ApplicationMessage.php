@@ -4,6 +4,7 @@ namespace Gotify\Endpoint;
 
 use Gotify\Api;
 use Gotify\Json;
+use stdClass;
 
 /**
  * Class for interacting with Application message API endpoint
@@ -20,9 +21,9 @@ class ApplicationMessage extends Api
 	 * @param int $limit Maximum number of messages to return
 	 * @param int $since Return all messages after a message id
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getAll(int $id, int $limit = 100, int $since = 0)
+	public function getAll(int $id, int $limit = 100, int $since = 0): stdClass
 	{
 		$query = array(
 			'limit' => $limit,
@@ -42,7 +43,7 @@ class ApplicationMessage extends Api
 	 *
 	 * @return boolean
 	 */
-	public function deleteAll(int $id)
+	public function deleteAll(int $id): bool
 	{
 		$response = $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
 		$body = $response->getBody()->getContents();
