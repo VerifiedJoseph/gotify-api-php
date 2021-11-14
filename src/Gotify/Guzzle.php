@@ -148,7 +148,7 @@ final class Guzzle
 
 		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
-				return new EndpointException($err->getMessage(), 0);
+				throw new EndpointException($err->getMessage(), 0);
 			}
 
 			$response = $err->getResponse();
