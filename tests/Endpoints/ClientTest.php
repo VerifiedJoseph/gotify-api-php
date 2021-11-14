@@ -47,7 +47,6 @@ class ClientTest extends TestCase
 		$clients = self::$client->getAll();
 
 		$this->assertIsObject($clients);
-		$this->assertIsObject($clients);
 		$this->assertObjectHasAttribute('clients', $clients);
 
 		if (count($clients->clients) > 0) {
