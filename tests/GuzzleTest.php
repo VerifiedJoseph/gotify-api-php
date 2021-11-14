@@ -1,6 +1,7 @@
 <?php
 
 use Gotify\Guzzle;
+use Gotify\Json;
 
 class GuzzleTest extends TestCase
 {
@@ -21,11 +22,12 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->get('get', $query);
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
-		$this->assertObjectHasAttribute('args', $response);
-		$this->assertObjectHasAttribute('test', $response->args);
-		$this->assertEquals('HelloWorld', $response->args->test);
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('args', $body);
+		$this->assertObjectHasAttribute('test', $body->args);
+		$this->assertEquals('HelloWorld', $body->args->test);
 	}
 
 	/**
@@ -38,11 +40,12 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->post('post', $data);
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
-		$this->assertObjectHasAttribute('json', $response);
-		$this->assertObjectHasAttribute('test', $response->json);
-		$this->assertEquals('HelloWorld', $response->json->test);
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('json', $body);
+		$this->assertObjectHasAttribute('test', $body->json);
+		$this->assertEquals('HelloWorld', $body->json->test);
 	}
 
 	/**
@@ -55,11 +58,12 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->postFile('post', $data);
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
-		$this->assertObjectHasAttribute('files', $response);
-		$this->assertObjectHasAttribute('file', $response->files);
-		$this->assertEquals($this->getAppImageBase64(), $response->files->file);
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('files', $body);
+		$this->assertObjectHasAttribute('file', $body->files);
+		$this->assertEquals($this->getAppImageBase64(), $body->files->file);
 	}
 
 	/**
@@ -72,11 +76,12 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->put('put', $data);
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
-		$this->assertObjectHasAttribute('json', $response);
-		$this->assertObjectHasAttribute('test', $response->json);
-		$this->assertEquals('HelloWorld', $response->json->test);
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('json', $body);
+		$this->assertObjectHasAttribute('test', $body->json);
+		$this->assertEquals('HelloWorld', $body->json->test);
 	}
 
 	/**
@@ -84,9 +89,10 @@ class GuzzleTest extends TestCase
 	 */
 	public function testDelete(): void
 	{
-		$response = self::$guzzle->delete('delete');
+		$response =  self::$guzzle->delete('delete');
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
+		$this->assertIsObject($body);
 	}
 
 	/**
@@ -103,14 +109,16 @@ class GuzzleTest extends TestCase
 		);
 
 		$guzzle = new Gotify\Guzzle(self::getHttpBinUri(), $auth->get());
+
 		$response = $guzzle->get('basic-auth/' . $username . '/' . $password);
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
-		$this->assertObjectHasAttribute('authenticated', $response);
-		$this->assertObjectHasAttribute('user', $response);
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('authenticated', $body);
+		$this->assertObjectHasAttribute('user', $body);
 
-		$this->assertEquals(true, $response->authenticated);
-		$this->assertEquals($username, $response->user);
+		$this->assertEquals(true, $body->authenticated);
+		$this->assertEquals($username, $body->user);
 	}
 
 	/**
@@ -123,13 +131,15 @@ class GuzzleTest extends TestCase
 		$auth = new \Gotify\Auth\Token($token);
 
 		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
+		
 		$response = $guzzle->get('get');
+		$body = Json::decode($response->getBody());
 
-		$this->assertIsObject($response);
-		$this->assertObjectHasAttribute('headers', $response);
-		$this->assertObjectHasAttribute('X-Gotify-Key', $response->headers);
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('headers', $body);
+		$this->assertObjectHasAttribute('X-Gotify-Key', $body->headers);
 
-		$headers = get_object_vars($response->headers);
+		$headers = get_object_vars($body->headers);
 
 		$this->assertEquals($token, $headers['X-Gotify-Key']);
 	}
