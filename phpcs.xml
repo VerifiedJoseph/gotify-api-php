@@ -20,12 +20,12 @@
       <property name="ignoreNewlines" value="true"/>
     </properties>
   </rule>
-  <!-- One line should not have more than 100 characters -->
+  <!-- One line should not have more than 110 characters -->
   <!-- One line must never exceed 120 characters -->
   <rule ref="Generic.Files.LineLength">
     <properties>
-      <property name="lineLimit" value="100"/>
-      <property name="absoluteLineLimit" value="120"/>
+      <property name="lineLimit" value="120"/>
+      <property name="absoluteLineLimit" value="140"/>
     </properties>
   </rule>
   <!-- When calling a function: -->

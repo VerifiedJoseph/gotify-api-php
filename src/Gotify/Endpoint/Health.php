@@ -3,6 +3,7 @@
 namespace Gotify\Endpoint;
 
 Use Gotify\Api;
+Use Gotify\Json;
 
 /**
  * Class for interacting with health API endpoint
@@ -19,6 +20,9 @@ class Health extends Api
 	 */
 	public function get()
 	{
-		return $this->guzzle->get($this->endpoint);
+		$response = $this->guzzle->get($this->endpoint);
+		$health = Json::decode($response->getBody());
+
+		return (object) $health;
 	}
 }

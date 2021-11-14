@@ -81,7 +81,9 @@ class MessageTest extends TestCase
 	public function testDelete(): void
 	{
 		$deleted = self::$message->delete(self::$messageId);
-		$this->assertNull($deleted);
+
+		$this->assertIsBool($deleted);
+		$this->assertEquals(true, $deleted);
 	}
 
 	/**
@@ -90,6 +92,8 @@ class MessageTest extends TestCase
 	public function testDeleteAll(): void
 	{
 		$deleted = self::$message->deleteAll();
-		$this->assertNull($deleted);
+
+		$this->assertIsBool($deleted);
+		$this->assertEquals(true, $deleted);
 	}
 }

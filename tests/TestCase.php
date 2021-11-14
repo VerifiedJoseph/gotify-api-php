@@ -42,7 +42,7 @@ abstract class TestCase extends BaseTestCase
 	 */
 	protected function getAppImageBase64(): string
 	{
-		$imageData = file_get_contents($this->getAppImagePath());
+		$imageData = (string) file_get_contents($this->getAppImagePath());
 		$imageMimeType = mime_content_type($this->getAppImagePath());
 
 		$encoded = base64_encode($imageData);

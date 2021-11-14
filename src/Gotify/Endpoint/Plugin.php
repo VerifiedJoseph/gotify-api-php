@@ -2,7 +2,8 @@
 
 namespace Gotify\Endpoint;
 
-Use Gotify\Api;
+use Gotify\Api;
+use Gotify\Json;
 
 /**
  * Class for interacting with plugin API endpoint
@@ -19,7 +20,10 @@ class Plugin extends Api
 	 */
 	public function getAll()
 	{
-		return $this->guzzle->get($this->endpoint);
+		$response = $this->guzzle->get($this->endpoint);
+		$plugins = Json::decode($response->getBody());
+
+		return (object) $plugins;
 	}
 
 	/**
@@ -31,7 +35,10 @@ class Plugin extends Api
 	 */
 	public function getConfig(int $id)
 	{
-		return $this->guzzle->get($this->endpoint . '/' . $id . '/config');
+		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/config');
+		$config = Json::decode($response->getBody());
+
+		return (object) $config;
 	}
 
 	/**
@@ -55,7 +62,10 @@ class Plugin extends Api
 	 */
 	public function getDisplayInfo(int $id)
 	{
-		return $this->guzzle->get($this->endpoint . '/' . $id . '/display');
+		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');;
+		$displayInfo = Json::decode($response->getBody());
+
+		return (object) $displayInfo;
 	}
 
 	/**
@@ -63,11 +73,18 @@ class Plugin extends Api
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function enable(int $id)
 	{
-		return $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
+		$response = $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -75,10 +92,17 @@ class Plugin extends Api
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return null
+	 * @return boolean
 	 */
 	public function disable(int $id)
 	{
-		return $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
+		$response = $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
 	}
 }

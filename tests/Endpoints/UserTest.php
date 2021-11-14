@@ -52,10 +52,11 @@ class UserTest extends TestCase
 	{
 		$users = self::$user->getAll();
 
-		$this->assertIsArray($users);
+		$this->assertIsObject($users);
+		$this->assertObjectHasAttribute('users', $users);
 
-		if (count($users) > 0) {
-			$this->assertIsObject($users[0]);
+		if (count($users->users) > 0) {
+			$this->assertIsObject($users->users[0]);
 		}
 	}
 
@@ -89,7 +90,9 @@ class UserTest extends TestCase
 		);
 
 		$updated = $user->updatePassword('NewPassword');
-		$this->assertNull($updated);
+
+		$this->assertIsBool($updated);
+		$this->assertEquals(true, $updated);
 	}
 
 	/**
@@ -100,6 +103,8 @@ class UserTest extends TestCase
 	public function testDelete(): void
 	{
 		$deleted = self::$user->delete(self::$userId);
-		$this->assertNull($deleted);
+
+		$this->assertIsBool($deleted);
+		$this->assertEquals(true, $deleted);
 	}
 }
