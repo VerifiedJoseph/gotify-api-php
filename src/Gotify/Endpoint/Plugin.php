@@ -4,6 +4,7 @@ namespace Gotify\Endpoint;
 
 use Gotify\Api;
 use Gotify\Json;
+use stdClass;
 
 /**
  * Class for interacting with plugin API endpoint
@@ -16,9 +17,9 @@ class Plugin extends Api
 	/**
 	 * Get all plugins
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getAll()
+	public function getAll():stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
 		$plugins = Json::decode($response->getBody());
@@ -31,9 +32,9 @@ class Plugin extends Api
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getConfig(int $id)
+	public function getConfig(int $id):stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/config');
 		$config = Json::decode($response->getBody());
@@ -58,9 +59,9 @@ class Plugin extends Api
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
-	public function getDisplayInfo(int $id)
+	public function getDisplayInfo(int $id): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');;
 		$displayInfo = Json::decode($response->getBody());
@@ -75,7 +76,7 @@ class Plugin extends Api
 	 *
 	 * @return boolean
 	 */
-	public function enable(int $id)
+	public function enable(int $id): bool
 	{
 		$response = $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
 		$body = $response->getBody()->getContents();
@@ -94,7 +95,7 @@ class Plugin extends Api
 	 *
 	 * @return boolean
 	 */
-	public function disable(int $id)
+	public function disable(int $id): bool
 	{
 		$response = $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
 		$body = $response->getBody()->getContents();
