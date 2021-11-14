@@ -22,7 +22,7 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->get('get', $query);
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 		$this->assertObjectHasAttribute('args', $body);
@@ -40,7 +40,7 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->post('post', $data);
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 		$this->assertObjectHasAttribute('json', $body);
@@ -58,7 +58,7 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->postFile('post', $data);
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 		$this->assertObjectHasAttribute('files', $body);
@@ -76,7 +76,7 @@ class GuzzleTest extends TestCase
 		);
 
 		$response = self::$guzzle->put('put', $data);
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 		$this->assertObjectHasAttribute('json', $body);
@@ -90,7 +90,7 @@ class GuzzleTest extends TestCase
 	public function testDelete(): void
 	{
 		$response =  self::$guzzle->delete('delete');
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 	}
@@ -111,7 +111,7 @@ class GuzzleTest extends TestCase
 		$guzzle = new Gotify\Guzzle(self::getHttpBinUri(), $auth->get());
 
 		$response = $guzzle->get('basic-auth/' . $username . '/' . $password);
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 		$this->assertObjectHasAttribute('authenticated', $body);
@@ -133,7 +133,7 @@ class GuzzleTest extends TestCase
 		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
 		
 		$response = $guzzle->get('get');
-		$body = Json::decode($response->getBody());
+		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
 		$this->assertObjectHasAttribute('headers', $body);
