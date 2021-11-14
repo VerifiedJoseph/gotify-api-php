@@ -47,7 +47,7 @@ final class Guzzle
 	 * @param array<string, mixed> $query HTTP Query data
 	 * @return ResponseInterface
 	 */
-	public function get(string $endpoint, array $query = array())
+	public function get(string $endpoint, array $query = array()): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::QUERY => $query
@@ -63,7 +63,7 @@ final class Guzzle
 	 * @param array<string, mixed> $data
 	 * @return ResponseInterface
 	 */
-	public function post(string $endpoint, array $data = array())
+	public function post(string $endpoint, array $data = array()): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::JSON => $data
@@ -81,7 +81,7 @@ final class Guzzle
 	 *
 	 * @throws GotifyException if the file cannot be opened
 	 */
-	public function postFile(string $endpoint, array $data)
+	public function postFile(string $endpoint, array $data): ResponseInterface
 	{
 		try {
 			$options = array(
@@ -104,7 +104,7 @@ final class Guzzle
 	 * @param array<string, string> $data
 	 * @return ResponseInterface
 	 */
-	public function put(string $endpoint, array $data)
+	public function put(string $endpoint, array $data): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::JSON => $data
@@ -119,7 +119,7 @@ final class Guzzle
 	 * @param string $endpoint API endpoint
 	 * @return ResponseInterface
 	 */
-	public function delete(string $endpoint)
+	public function delete(string $endpoint): ResponseInterface
 	{
 		return $this->request('DELETE', $endpoint);
 	}
@@ -135,7 +135,7 @@ final class Guzzle
 	 * @throws InvalidArgumentException if HTTP request method is not supported
 	 * @throws EndpointException if API returned an error
 	 */
-	private function request(string $method, string $endpoint, array $options = array())
+	private function request(string $method, string $endpoint, array $options = array()): ResponseInterface
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
@@ -176,7 +176,7 @@ final class Guzzle
 	 *
 	 * @return array<string, mixed> Returns client config array
 	 */
-	private function getConfig(string $uri, array $auth)
+	private function getConfig(string $uri, array $auth): array
 	{
 		$config = array(
 			'base_uri' => $uri,
@@ -200,7 +200,7 @@ final class Guzzle
 	 *
 	 * @return array<string, array<int|string, string>>
 	 */
-	private function getAuthConfig(array $auth)
+	private function getAuthConfig(array $auth): array
 	{
 		$config = array();
 
