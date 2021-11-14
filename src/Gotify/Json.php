@@ -45,7 +45,7 @@ final class Json
 
 			if (is_array($decoded)) {
 				return (array) $decoded;
-	
+
 			} else {
 				return (object) $decoded;
 			}
