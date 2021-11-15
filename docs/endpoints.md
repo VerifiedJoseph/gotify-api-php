@@ -21,6 +21,10 @@ Class: [Application](../src/Gotify/Endpoint/Application.php)
 
 API docs: [https://gotify.net/api-docs#/application](https://gotify.net/api-docs#/application)
 
+Examples:
+- [Get all applications](../examples/Application/get.php)
+- [Create an application](../examples/Application/create.php)
+
 ### Methods
 
 Get all applications
@@ -87,6 +91,10 @@ Class: [Message](../src/Gotify/Endpoint/Message.php)
 
 API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/message)
 
+Examples:
+- [Get all messages](../examples/Message/get.php)
+- [Create a message](../examples/Message/create.php)
+
 ### Methods
 
 Get all messages
@@ -123,12 +131,16 @@ Class: [Client](../src/Gotify/Endpoint/Client.php)
 
 API docs: [https://gotify.net/api-docs#/client](https://gotify.net/api-docs#/client)
 
+Examples: 
+- [Create a client](../examples/Client/create.php)
+- [Get all Clients](../examples/Client/get.php)
+
 ### Methods
 
 Get all clients
 
 ```PHP
-getAll()stdClass
+getAll(): stdClass
 ```
 
 Create a client
@@ -159,6 +171,9 @@ Class: [User](../src/Gotify/Endpoint/User.php)
 
 API docs: [https://gotify.net/api-docs#/user](https://gotify.net/api-docs#/user)
 
+Examples:
+- [Create a user](../examples/User/create.php)
+
 ### Methods
 
 Get current user
@@ -182,7 +197,7 @@ getUser(int $id): stdClass
 Get all users
 
 ```PHP
-getAll()stdClass
+getAll(): stdClass
 ```
 
 Create a user
@@ -266,6 +281,9 @@ Gotify\Endpoint\Version(string server)
 Class: [Version](../src/Gotify/Endpoint/Version.php)
 
 API docs: [https://gotify.net/api-docs#/version](https://gotify.net/api-docs#/version)
+
+Examples: 
+- [Get version information](../examples/Version/get.php)
 
 ### Methods
 
