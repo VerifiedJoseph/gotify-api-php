@@ -1,4 +1,4 @@
-# Endpoint Method Examples
+# Code Examples
 
 Jump to:
 
