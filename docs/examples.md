@@ -10,18 +10,18 @@ Jump to:
 
 ## Application
 
-- [Create an application](../examples/Application/create.php)
 - [Get all applications](../examples/Application/get.php)
+- [Create an application](../examples/Application/create.php)
 
 ## Message
 
-- [Create a message](../examples/Message/create.php)
 - [Get all messages](../examples/Message/get.php)
+- [Create a message](../examples/Message/create.php)
 
 ## Client
 
-- [Create a client](../examples/Client/create.php)
 - [Get all Clients](../examples/Client/get.php)
+- [Create a client](../examples/Client/create.php)
 
 ## User
 
@@ -29,4 +29,4 @@ Jump to:
 
 ## Version
 
-- [Get version details](../examples/Version/get.php)
+- [Get version information](../examples/Version/get.php)
