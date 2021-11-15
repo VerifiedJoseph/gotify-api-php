@@ -14,7 +14,7 @@ gotify-api-php is a PHP library for interacting with a [Gotify](https://github.c
 
 - [Endpoint Classes](docs/endpoints.md)
 - [Exceptions](docs/exceptions.md)
-- [Code examples](examples/)
+- [Code examples](docs/examples.md)
 
 ## Install
 
