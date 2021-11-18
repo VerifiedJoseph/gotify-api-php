@@ -8,6 +8,8 @@ use stdClass;
 
 /**
  * Class for interacting with Message API endpoint
+ * 
+ * @see https://gotify.net/api-docs#/message API docs for message endpoint
  */
 class Message extends Api
 {
@@ -21,6 +23,8 @@ class Message extends Api
 	 * @param int $since Return all messages after a message id
 	 *
 	 * @return stdClass
+	 * 
+	 * @see https://gotify.net/api-docs#/message/getMessages API docs for getting all messages
 	 */
 	public function getAll(int $limit = 100, int $since = 0): stdClass
 	{
@@ -44,6 +48,10 @@ class Message extends Api
 	 * @param array<string, array<string, array<string, mixed>>> $extras Message extras
 	 *
 	 * @return stdClass
+	 * 
+	 * @see https://gotify.net/docs/msgextras Documentation for message extras
+	 * @see https://github.com/gotify/android#message-priorities Message priority levels
+	 * @see https://gotify.net/api-docs#/message/createMessage API docs for creating a message
 	 */
 	public function create(string $title, string $message, int $priority = 0, array $extras = array()): stdClass
 	{
@@ -68,6 +76,8 @@ class Message extends Api
 	 *
 	 * @param int $id Message Id
 	 * @return boolean
+	 * 
+	 * @see https://gotify.net/api-docs#/message/deleteMessage API docs for deleting a message
 	 */
 	public function delete(int $id): bool
 	{
@@ -83,7 +93,10 @@ class Message extends Api
 
 	/**
 	 * Delete all messages
+	 *
 	 * @return boolean
+	 * 
+	 * @see https://gotify.net/api-docs#/message/deleteMessages API docs for deleting all messages
 	 */
 	public function deleteAll(): bool
 	{
