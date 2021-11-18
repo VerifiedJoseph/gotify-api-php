@@ -7,7 +7,9 @@ use Gotify\Json;
 use stdClass;
 
 /**
- * Class for interacting with health API endpoint
+ * Class for interacting with the health API endpoint
+ *  
+ * @see https://gotify.net/api-docs#/health API docs for the health endpoint
  */
 class Health extends Api
 {
@@ -18,6 +20,8 @@ class Health extends Api
 	 * Get health information
 	 *
 	 * @return stdClass
+	 * 
+  	 * @see https://gotify.net/api-docs#/client/getClients API docs for getting health information
 	 */
 	public function get(): stdClass
 	{
