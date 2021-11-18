@@ -9,6 +9,10 @@ class MessageTest extends TestCase
 
 	private static int $messageId = 0;
 
+	private static string $testTitle = 'Test message';
+	private static string $testMessage = 'Hello World. This is a test message.';
+	private static int $testPriority = 8;
+
 	public static function setUpBeforeClass(): void
 	{
 		parent::setUpBeforeClass();
@@ -47,19 +51,67 @@ class MessageTest extends TestCase
 	{
 		// Authenticate as test application via its token
 		$auth = new Gotify\Auth\Token(self::$appToken);
-		$message = new Gotify\Endpoint\Message(
+		$endpoint = new Gotify\Endpoint\Message(
 			self::$server->get(),
 			$auth->get()
 		);
 
-		$created = $message->create(
-			'Test message',
-			'Hello World. This is a test message.',
-			8 // Message priority
+		$message = $endpoint->create(
+			self::$testTitle,
+			self::$testMessage,
+			self::$testPriority
 		);
 
-		$this->assertIsObject($created);
-		self::$messageId = $created->id;
+		$this->assertIsObject($message);
+		$this->assertObjectHasAttribute('id', $message);
+		$this->assertObjectHasAttribute('title', $message);
+		$this->assertObjectHasAttribute('message', $message);
+		$this->assertObjectHasAttribute('priority', $message);
+
+		$this->assertEquals(self::$testTitle, $message->title);
+		$this->assertEquals(self::$testMessage, $message->message);
+		$this->assertEquals(self::$testPriority, $message->priority);
+
+		self::$messageId = $message->id;
+	}
+
+	/**
+	 * Test creating a message with extras
+	 * 
+	 * @depends testCreate
+	 */
+	public function testCreateWithExtras(): void
+	{
+		// Authenticate as test application via its token
+		$auth = new Gotify\Auth\Token(self::$appToken);
+		$endpoint = new Gotify\Endpoint\Message(
+			self::$server->get(),
+			$auth->get()
+		);
+
+		$extras = array(
+			'client::notification' => array(
+				'click' => array('url' => 'https://example.com')
+			)
+		);
+
+		$message = $endpoint->create(
+			self::$testTitle,
+			self::$testMessage,
+			self::$testPriority,
+			$extras
+		);
+
+		$this->assertIsObject($message);
+		$this->assertObjectHasAttribute('extras', $message);
+		$this->assertObjectHasAttribute('client::notification', $message->extras);
+		$this->assertObjectHasAttribute('click', $message->extras->{'client::notification'});
+		$this->assertObjectHasAttribute('url', $message->extras->{'client::notification'}->click);
+
+		$this->assertEquals(
+			$extras['client::notification']['click']['url'],
+			$message->extras->{'client::notification'}->click->url
+		);
 	}
 
 	/**
