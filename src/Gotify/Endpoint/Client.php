@@ -8,7 +8,7 @@ use stdClass;
 
 /**
  * Class for interacting with client API endpoint
- * 
+ *
   * @see https://gotify.net/api-docs#/client API docs for client endpoint
  */
 class Client extends Api
@@ -20,8 +20,8 @@ class Client extends Api
 	 * Get all clients
 	 *
 	 * @return stdClass
-	 *  
-  	 * @see https://gotify.net/api-docs#/client/getClients API docs for gettings all clients
+	 *
+	 * @see https://gotify.net/api-docs#/client/getClients API docs for gettings all clients
 	 */
 	public function getAll(): stdClass
 	{
@@ -37,8 +37,8 @@ class Client extends Api
 	 * @param string $name Client name
 	 *
 	 * @return stdClass
-	 *  
-  	 * @see https://gotify.net/api-docs#/client/createClient API docs for creating a client
+	 *
+	 * @see https://gotify.net/api-docs#/client/createClient API docs for creating a client
 	 */
 	public function create(string $name): stdClass
 	{
@@ -59,8 +59,8 @@ class Client extends Api
 	 * @param string $name New client name
 	 *
 	 * @return stdClass
-	 *  
-  	 * @see https://gotify.net/api-docs#/client/updateClient API docs for updating a client
+	 *
+	 * @see https://gotify.net/api-docs#/client/updateClient API docs for updating a client
 	 */
 	public function update(int $id, string $name): stdClass
 	{
@@ -80,8 +80,8 @@ class Client extends Api
 	 * @param int $id Client Id
 	 *
 	 * @return boolean
-	 *  
-  	 * @see https://gotify.net/api-docs#/client/deleteClient API docs for deleting a client
+	 *
+	 * @see https://gotify.net/api-docs#/client/deleteClient API docs for deleting a client
 	 */
 	public function delete(int $id): bool
 	{
