@@ -7,7 +7,9 @@ use Gotify\Json;
 use stdClass;
 
 /**
- * Class for interacting with plugin API endpoint
+ * Class for interacting with the plugin API endpoint
+ *
+ * @see https://gotify.net/api-docs#/plugin API docs for the user endpoint
  */
 class Plugin extends Api
 {
@@ -18,6 +20,8 @@ class Plugin extends Api
 	 * Get all plugins
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/plugin/getPlugins API docs for getting all plugins
 	 */
 	public function getAll():stdClass
 	{
@@ -33,6 +37,8 @@ class Plugin extends Api
 	 * @param int $id Plugin Id
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/plugin/getPluginConfig API docs for getting the configuration for a plugin
 	 */
 	public function getConfig(int $id):stdClass
 	{
@@ -48,6 +54,8 @@ class Plugin extends Api
 	 * @param int $id Plugin Id
 	 *
 	 * @return \stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/plugin/updatePluginConfig API docs for updating the configuration for a plugin
 	 */
 	/*public function updateConfig(int $id)
 	{
@@ -60,6 +68,8 @@ class Plugin extends Api
 	 * @param int $id Plugin Id
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/plugin/getPluginDisplay API docs for getting the display info for a plugin
 	 */
 	public function getDisplayInfo(int $id): stdClass
 	{
@@ -75,6 +85,8 @@ class Plugin extends Api
 	 * @param int $id Plugin Id
 	 *
 	 * @return boolean
+	 *
+	 * @see https://gotify.net/api-docs#/plugin/enablePlugin API docs for enabling a plugin
 	 */
 	public function enable(int $id): bool
 	{
@@ -94,6 +106,8 @@ class Plugin extends Api
 	 * @param int $id Plugin Id
 	 *
 	 * @return boolean
+	 *
+	 * @see https://gotify.net/api-docs#/plugin/disablePlugin API docs for disabling a plugin
 	 */
 	public function disable(int $id): bool
 	{

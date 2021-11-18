@@ -7,7 +7,9 @@ use Gotify\Json;
 use stdClass;
 
 /**
- * Class for interacting with version API endpoint
+ * Class for interacting with the version API endpoint
+ *
+ * @see https://gotify.net/api-docs#/version API docs for the version endpoint
  */
 class Version extends Api
 {
@@ -18,6 +20,8 @@ class Version extends Api
 	 * Get version information
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/version/getVersion API docs for getting version information
 	 */
 	public function get(): stdClass
 	{

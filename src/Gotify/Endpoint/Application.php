@@ -8,6 +8,8 @@ use stdClass;
 
 /**
  * Class for interacting with application API endpoint
+ *
+  * @see https://gotify.net/api-docs#/application API docs for message endpoint
  */
 class Application extends Api
 {
@@ -18,6 +20,8 @@ class Application extends Api
 	 * Get all applications
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/application/getApps API docs for gettings all applications
 	 */
 	public function getAll(): stdClass
 	{
@@ -34,6 +38,8 @@ class Application extends Api
 	 * @param string $description Application description
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/application/createApp API docs for creating an application
 	 */
 	public function create(string $name, string $description): stdClass
 	{
@@ -56,6 +62,8 @@ class Application extends Api
 	 * @param string $description New application description
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/application/updateApplication API docs for updating an application
 	 */
 	public function update(int $id, string $name, string $description): stdClass
 	{
@@ -76,6 +84,8 @@ class Application extends Api
 	 * @param int $id Application Id
 	 *
 	 * @return boolean
+	 *
+	 * @see https://gotify.net/api-docs#/application/deleteApp API docs for deleting an application
 	 */
 	public function delete(int $id): bool
 	{
@@ -96,6 +106,8 @@ class Application extends Api
 	 * @param string $image Image path
 	 *
 	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/application/uploadAppImage API docs for uploading an application image
 	 */
 	public function uploadImage(int $id, string $image): stdClass
 	{
