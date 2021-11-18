@@ -233,7 +233,7 @@ get(): stdClass
 ## Plugin
 
 ```PHP
-Gotify\Endpoint\Plugin(string server, array $auth)
+Gotify\Endpoint\Plugin(string $server, array $auth)
 ```
 
 Class: [Plugin](../src/Gotify/Endpoint/Plugin.php)
@@ -275,7 +275,7 @@ disable(int $id): stdClass
 ## Version
 
 ```PHP
-Gotify\Endpoint\Version(string server)
+Gotify\Endpoint\Version(string $server)
 ```
 
 Class: [Version](../src/Gotify/Endpoint/Version.php)
