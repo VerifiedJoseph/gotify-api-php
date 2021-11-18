@@ -77,7 +77,7 @@ class MessageTest extends TestCase
 
 	/**
 	 * Test creating a message with extras
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testCreateWithExtras(): void
