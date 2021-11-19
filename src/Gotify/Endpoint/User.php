@@ -114,6 +114,32 @@ class User extends Api
 	}
 
 	/**
+	 * Update a user
+	 *
+	 * @param int $id User Id
+	 * @param string $name New username
+	 * @param string $password New password (leave if no change)
+	 * @param boolean $admin Admin status
+	 *
+	 * @return stdClass
+	 *
+	 * @see https://gotify.net/api-docs#/user/updateUser API docs for updating a user
+	 */
+	public function update(int $id, string $name, string $password = '', bool $admin = false): stdClass
+	{
+		$data = array(
+			'name' => $name,
+			'pass' => $password,
+			'admin' => $admin
+		);
+
+		$response = $this->guzzle->post($this->endpoint . '/' . $id, $data);
+		$user = Json::decode($response->getBody());
+
+		return (object) $user;
+	}
+
+	/**
 	 * Delete a user
 	 *
 	 * @param int $id User Id
