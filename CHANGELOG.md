@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-## [1.3.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.2.0) - 2021-11-14
+## [1.3.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.3.0) - 2021-11-14
 
 * Refactored Endpoint methods & Guzzle class. ([#29](https://github.com/VerifiedJoseph/gotify-api-php/pull/29))
 * Added more code examples. ([#28](https://github.com/VerifiedJoseph/gotify-api-php/pull/28))
