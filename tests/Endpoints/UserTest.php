@@ -76,6 +76,26 @@ class UserTest extends TestCase
 	}
 
 	/**
+	 * Test updating a user
+	 */
+	public function testUpdate(): void
+	{
+		$newTestUsername = 'test1';
+
+		$updated = self::$user->update(
+			self::$userId,
+			$newTestUsername
+		);
+
+		$this->assertIsObject($updated);
+		$this->assertObjectHasAttribute('name', $updated);
+		$this->assertObjectHasAttribute('id', $updated);
+
+		$this->assertEquals(self::$userId, $updated->id);
+		$this->assertEquals($newTestUsername, $updated->name);
+	}
+
+	/**
 	 * Test updating passwrod for the current user
 	 *
 	 * @depends testCreate
