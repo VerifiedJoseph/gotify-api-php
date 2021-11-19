@@ -97,7 +97,7 @@ class UserTest extends TestCase
 
 	/**
 	 * Test updating a user
-	 * 
+	 *
 	 * @depends testCreate
 	 */
 	public function testUpdate(): void
