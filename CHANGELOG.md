@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.4.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.4.0) - 2021-11-19
+
+* Added method for updating a user in `Endpoint\User`. ([#36](https://github.com/VerifiedJoseph/gotify-api-php/pull/36), [#37](https://github.com/VerifiedJoseph/gotify-api-php/pull/37), [`f406266`](https://github.com/VerifiedJoseph/gotify-api-php/commit/f406266917ae9b96a195da34a928861ac18b8986))
+* Added test for creating a message with extras. ([`817ca56`](https://github.com/VerifiedJoseph/gotify-api-php/commit/817ca5600b54bce1837592fb0f22953e937ccc5e))
+* Rearranged code examples and improved documentation. ([#33](https://github.com/VerifiedJoseph/gotify-api-php/pull/33), [#35](https://github.com/VerifiedJoseph/gotify-api-php/pull/35))
+
 ## [1.3.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.3.0) - 2021-11-14
 
 * Refactored Endpoint methods & Guzzle class. ([#29](https://github.com/VerifiedJoseph/gotify-api-php/pull/29))
