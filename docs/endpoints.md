@@ -206,6 +206,12 @@ Create a user
 create(string $name, string $password, bool $admin = false): stdClass
 ```
 
+Update a user
+
+```PHP
+update(int $id, string $name, string $password = '', bool $admin = false): stdClass
+```
+
 Delete a user
 
 ```PHP
