@@ -94,6 +94,7 @@ API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/me
 Examples:
 - [Get all messages](../examples/Message/get.php)
 - [Create a message](../examples/Message/create.php)
+- [Create a message with extras](../examples/Message/create-with-extras.php)
 
 ### Methods
 
