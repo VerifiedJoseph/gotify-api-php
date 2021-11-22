@@ -24,9 +24,9 @@ try {
 
 	// Send a message
 	$sentMessage = $message->create(
-		'hello?', // Title
-		'Hello World', // Message
-		8 // Priority
+		title: 'hello?',
+		message: 'Hello World',
+		priority: 8,
 	);
 
 	// Dump sent message details
