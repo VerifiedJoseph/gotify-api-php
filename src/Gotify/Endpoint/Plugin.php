@@ -32,35 +32,41 @@ class Plugin extends Api
 	}
 
 	/**
-	 * Get configuration for Configurer plugin.
+	 * Get configuration for a plugin.
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return stdClass
+	 * @return string
 	 *
 	 * @see https://gotify.net/api-docs#/plugin/getPluginConfig API docs for getting the configuration for a plugin
 	 */
-	public function getConfig(int $id):stdClass
+	public function getConfig(int $id): string
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/config');
-		$config = Json::decode($response->getBody());
-
-		return (object) $config;
+		return (string) $response->getBody();
 	}
 
 	/**
-	 * Update configuration for Configurer plugin.
+	 * Update configuration for a plugin.
 	 *
 	 * @param int $id Plugin Id
+	 * @param string $config Configuration in YAML
 	 *
-	 * @return \stdClass
+	 * @return boolean
 	 *
 	 * @see https://gotify.net/api-docs#/plugin/updatePluginConfig API docs for updating the configuration for a plugin
 	 */
-	/*public function updateConfig(int $id)
+	public function updateConfig(int $id, string $config): bool
 	{
-		// Todo: Add action
-	}*/
+		$response = $this->guzzle->postYaml($this->endpoint . '/' . $id . '/config', $config);
+		$body = $response->getBody()->getContents();
+
+		if (empty($body) === true) {
+			return true;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Get display info for a Displayer plugin

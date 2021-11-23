@@ -255,10 +255,16 @@ Get all plugins
 getAll(): stdClass
 ```
 
-Get configuration for Configurer plugin.
+Get configuration for a plugin.
 
 ```PHP
-getConfig(int $id): stdClass
+getConfig(int $id): string
+```
+
+Update configuration for a plugin.
+
+```PHP
+updateConfig(int $id, string $config): bool
 ```
 
 Get display info for a Displayer plugin

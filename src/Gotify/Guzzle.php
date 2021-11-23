@@ -57,7 +57,7 @@ final class Guzzle
 	}
 
 	/**
-	 * Make POST request
+	 * Make POST request a JOSN payload
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param array<string, mixed> $data
@@ -67,6 +67,25 @@ final class Guzzle
 	{
 		$options = array(
 			RequestOptions::JSON => $data
+		);
+
+		return $this->request('POST', $endpoint, $options);
+	}
+
+	/**
+	 * Make POST request with a YAML payload
+	 *
+	 * @param string $endpoint API endpoint
+	 * @param string $data
+	 * @return ResponseInterface
+	 */
+	public function postYaml(string $endpoint, string $data): ResponseInterface
+	{
+		$options = array(
+			'headers' => [
+				'content-type' => 'application/x-yaml',
+			],
+			'body' => $data
 		);
 
 		return $this->request('POST', $endpoint, $options);
