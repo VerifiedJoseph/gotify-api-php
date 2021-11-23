@@ -50,7 +50,7 @@ class Plugin extends Api
 	 * Update configuration for a plugin.
 	 *
 	 * @param int $id Plugin Id
-	 * @param int $config Configuration in YAML
+	 * @param string $config Configuration in YAML
 	 *
 	 * @return boolean
 	 *
