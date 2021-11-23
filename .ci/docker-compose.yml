@@ -13,8 +13,8 @@ services:
     volumes:
       - "~/gotify-data:/app/data"
 
-  #httpbin:
-  #  container_name: httpbin
-  #  image: kennethreitz/httpbin
-  #  ports:
-  #    - "127.0.0.1:8081:80"
+  httpbin:
+    container_name: httpbin
+    image: kennethreitz/httpbin
+    ports:
+      - "127.0.0.1:8081:80"

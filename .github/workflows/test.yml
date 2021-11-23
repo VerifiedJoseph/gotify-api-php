@@ -54,8 +54,8 @@ jobs:
     - name: test
       run: php .ci/was-loaded.php
 
-    #- name: Run phpunit
-    #  run: phpunit --configuration phpunit.xml
+    - name: Run phpunit
+      run: phpunit --configuration phpunit.xml
 
     - name: Stop gotify & httpbin docker docker containers
       run: docker-compose down
