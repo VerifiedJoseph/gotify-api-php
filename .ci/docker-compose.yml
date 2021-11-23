@@ -2,7 +2,6 @@ version: "3"
 
 services:
   gotify:
-    container_name: Gotify
     image: ghcr.io/gotify/server:2.1.0
     ports:
       - "127.0.0.1:8080:80"
@@ -10,7 +9,9 @@ services:
       - GOTIFY_DEFAULTUSER_NAME=admin
       - GOTIFY_DEFAULTUSER_PASS=admin
       - GOTIFY_DATABASE_DIALECT=sqlite3
-      - GOTIFY_DATABASE_CONNECTION=/app/data/gotify.db
+      - GOTIFY_DATABASE_CONNECTION=/app/gotify.db
+    volumes:
+      - "/gotify-data:/app/data"
 
   httpbin:
     container_name: httpbin
