@@ -23,12 +23,12 @@ class Plugin extends Api
 	 *
 	 * @see https://gotify.net/api-docs#/plugin/getPlugins API docs for getting all plugins
 	 */
-	public function getAll():stdClass
+	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
 		$plugins = Json::decode($response->getBody());
 
-		return (object) $plugins;
+		return (object) ['plugins' => $plugins];
 	}
 
 	/**
