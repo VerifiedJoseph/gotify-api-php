@@ -1,6 +1,6 @@
 <?php
 
-include '/home/runner/work/vendor/autoload.php';
+include '/home/runner/work/gotify-api-php/gotify-api-php/vendor/autoload.php';
 
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
