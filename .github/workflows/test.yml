@@ -51,8 +51,8 @@ jobs:
     - name: Start gotify & httpbin docker containers
       run: docker-compose up -d
 
-    - name: Run phpunit
-      run: phpunit --configuration phpunit.xml
+    #- name: Run phpunit
+    #  run: phpunit --configuration phpunit.xml
 
     - name: Stop gotify & httpbin docker docker containers
       run: docker-compose down
