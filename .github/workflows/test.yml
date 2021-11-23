@@ -45,6 +45,9 @@ jobs:
     - name: Fetch & setup gotify plugin
       run: bash .ci/setup-plugin.sh
 
+    - name: test
+      run: echo "hello"
+
     - name: Start gotify & httpbin docker containers
       run: docker-compose up -d
 
