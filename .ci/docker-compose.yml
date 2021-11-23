@@ -13,7 +13,7 @@ services:
     volumes:
       - "/gotify-data:/app/data"
 
- httpbin:
+  httpbin:
     container_name: httpbin
     image: kennethreitz/httpbin
     ports:
