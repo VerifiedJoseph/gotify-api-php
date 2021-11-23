@@ -11,7 +11,7 @@ services:
       - GOTIFY_DATABASE_DIALECT=sqlite3
       - GOTIFY_DATABASE_CONNECTION=/app/gotify.db
     volumes:
-      - "/gotify-data:/app/data"
+      - "~/gotify-data:/app/data"
 
   httpbin:
     container_name: httpbin
