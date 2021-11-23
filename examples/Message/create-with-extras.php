@@ -2,7 +2,7 @@
 
 /**
  * Code example for sending a message with message extras
- * 
+ *
  * see: https://gotify.net/docs/msgextras
  */
 
