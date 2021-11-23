@@ -7,3 +7,5 @@ URL="https://github.com/eternal-flame-AD/gotify-broadcast/releases/download/v0.3
 mkdir -p $FOLDER
 
 wget $URL -P $FOLDER
+
+ls FOLDER
