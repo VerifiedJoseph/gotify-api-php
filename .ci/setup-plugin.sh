@@ -8,4 +8,4 @@ mkdir -p $FOLDER
 
 wget $URL -P $FOLDER
 
-ls FOLDER
+ls $FOLDER
