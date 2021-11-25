@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.5.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.5.0) - 2021-11-25
+
+* Updated `Endpoint\Plugin` method `getDisplayInfo()` to return a string. ([#44](https://github.com/VerifiedJoseph/gotify-api-php/pull/44))
+* Added unit tests for `Endpoint\Plugin`. ([#40](https://github.com/VerifiedJoseph/gotify-api-php/pull/40))
+* Added method for updating a plugin config in `Endpoint\Plugin`. ([#39](https://github.com/VerifiedJoseph/gotify-api-php/pull/39))
+* Added support for testing `Endpoint\Plugin` methods via action `test.yml`. ([#41](https://github.com/VerifiedJoseph/gotify-api-php/pull/41))
+* Added example for create a message with extras. ([`2ae5470`](https://github.com/VerifiedJoseph/gotify-api-php/commit/2ae54704794cff828298f50ec24b0b7aa5897e3d))
+
 ## [1.4.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.4.0) - 2021-11-19
 
 * Added method for updating a user in `Endpoint\User`. ([#36](https://github.com/VerifiedJoseph/gotify-api-php/pull/36), [#37](https://github.com/VerifiedJoseph/gotify-api-php/pull/37), [`f406266`](https://github.com/VerifiedJoseph/gotify-api-php/commit/f406266917ae9b96a195da34a928861ac18b8986))
