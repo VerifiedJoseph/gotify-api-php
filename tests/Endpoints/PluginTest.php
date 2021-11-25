@@ -51,7 +51,7 @@ class PluginTest extends TestCase
 	{
 		$info = self::$plugin->getDisplayInfo(self::$pluginId);
 
-		$this->assertNotEmpty($info);	
+		$this->assertNotEmpty($info);
 	}
 
 	/**
