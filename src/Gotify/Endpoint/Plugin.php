@@ -69,20 +69,18 @@ class Plugin extends Api
 	}
 
 	/**
-	 * Get display info for a Displayer plugin
+	 * Get display info for a plugin
 	 *
 	 * @param int $id Plugin Id
 	 *
-	 * @return stdClass
+	 * @return string
 	 *
 	 * @see https://gotify.net/api-docs#/plugin/getPluginDisplay API docs for getting the display info for a plugin
 	 */
-	public function getDisplayInfo(int $id): stdClass
+	public function getDisplayInfo(int $id): string
 	{
-		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');;
-		$displayInfo = Json::decode($response->getBody());
-
-		return (object) $displayInfo;
+		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');
+		return $response->getBody()->getContents();
 	}
 
 	/**
