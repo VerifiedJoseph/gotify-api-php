@@ -47,6 +47,13 @@ class PluginTest extends TestCase
 		$this->assertNotEmpty($config);
 	}
 
+	public function testGetDisplayInfo(): void
+	{
+		$info = self::$plugin->getDisplayInfo(self::$pluginId);
+
+		$this->assertNotEmpty($info);
+	}
+
 	/**
 	 * Test enabling a plugin
 	 */

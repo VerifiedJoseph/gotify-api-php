@@ -267,10 +267,10 @@ Update configuration for a plugin.
 updateConfig(int $id, string $config): bool
 ```
 
-Get display info for a Displayer plugin
+Get display info for a plugin
 
 ```PHP
-getDisplayInfo(int $id): stdClass
+getDisplayInfo(int $id): string
 ```
 
 Enable a plugin
