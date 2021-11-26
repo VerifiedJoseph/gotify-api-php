@@ -80,7 +80,9 @@ class Plugin extends Api
 	public function getDisplayInfo(int $id): string
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');
-		return $response->getBody()->getContents();
+		$info = (object) Json::decode('{"data": ' . $response->getBody() . '}');
+
+		return $info->data;
 	}
 
 	/**
