@@ -1,13 +1,5 @@
 # Code Examples
 
-Jump to:
-
-- [Application](#application)
-- [Message](#message)
-- [Client](#client)
-- [User](#user)
-- [Version](#version)
-
 ## Application
 
 - [Get all applications](../examples/Application/get.php)
