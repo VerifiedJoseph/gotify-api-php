@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.5.2](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.5.2) - 2021-12-14
+
+* Updated dependency `guzzlehttp/guzzle` from 7.4.0 to 7.4.1. ([#47](https://github.com/VerifiedJoseph/gotify-api-php/pull/47))
+
 ## [1.5.1](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.5.1) - 2021-11-26
 
 * Refactor `Endpoint\Plugin` method `getDisplayInfo()`. ([`64a3636`](https://github.com/VerifiedJoseph/gotify-api-php/commit/64a3636d486c29fbc37a4c78bb5af9b125ac2a6a))
