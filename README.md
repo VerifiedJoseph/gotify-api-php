@@ -5,17 +5,43 @@
 
 gotify-api-php is a PHP library for interacting with a [Gotify](https://github.com/gotify/server) server using the [Gotify REST-API](https://gotify.net/api-docs).
 
-## Documentation
-
-- [Endpoint Classes](docs/endpoints.md)
-- [Exceptions](docs/exceptions.md)
-- [Code examples](docs/examples.md)
+Supported Gotify server version: 2.1.3
 
 ## Install
 
 ```
 composer require verifiedjoseph/gotify-api-php
 ```
+
+## Quick Start
+```PHP
+require __DIR__ . '/vendor/autoload.php';
+
+// Set server
+$server = new Gotify\Server('https://gotify.example.com/');
+
+// Set application token
+$auth = new Gotify\Auth\Token('ApplicationTokenHere');
+
+// Create a message class instance
+$message = new Gotify\Endpoint\Message(
+  $server->get(),
+  $auth->get()
+);
+
+// Send a message
+$message->create(
+  title: 'hello?',
+  message: 'Hello World',
+  priority: 8,
+);
+```
+
+## Documentation
+
+- [Endpoint Classes](docs/endpoints.md)
+- [Exceptions](docs/exceptions.md)
+- [Code examples](docs/examples.md)
 
 ## Requirements
 
