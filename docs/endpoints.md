@@ -21,7 +21,7 @@ Class: [Application](../src/Gotify/Endpoint/Application.php)
 
 API docs: [https://gotify.net/api-docs#/application](https://gotify.net/api-docs#/application)
 
-Examples:
+### Examples
 - [Get all applications](../examples/Application/get.php)
 - [Create an application](../examples/Application/create.php)
 
@@ -91,7 +91,7 @@ Class: [Message](../src/Gotify/Endpoint/Message.php)
 
 API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/message)
 
-Examples:
+### Examples
 - [Get all messages](../examples/Message/get.php)
 - [Create a message](../examples/Message/create.php)
 - [Create a message with extras](../examples/Message/create-with-extras.php)
@@ -132,7 +132,7 @@ Class: [Client](../src/Gotify/Endpoint/Client.php)
 
 API docs: [https://gotify.net/api-docs#/client](https://gotify.net/api-docs#/client)
 
-Examples: 
+### Examples 
 - [Create a client](../examples/Client/create.php)
 - [Get all Clients](../examples/Client/get.php)
 
@@ -172,7 +172,7 @@ Class: [User](../src/Gotify/Endpoint/User.php)
 
 API docs: [https://gotify.net/api-docs#/user](https://gotify.net/api-docs#/user)
 
-Examples:
+### Examples
 - [Create a user](../examples/User/create.php)
 
 ### Methods
@@ -295,7 +295,7 @@ Class: [Version](../src/Gotify/Endpoint/Version.php)
 
 API docs: [https://gotify.net/api-docs#/version](https://gotify.net/api-docs#/version)
 
-Examples: 
+### Examples
 - [Get version information](../examples/Version/get.php)
 
 ### Methods
