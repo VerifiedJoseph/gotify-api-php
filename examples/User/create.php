@@ -23,14 +23,16 @@ try {
 	);
 
 	// Create a user and get its details
-	$createduser = $user->create(
+	$details = $user->create(
 		name: 'Bob',
 		password: 'BobPassword1',
 		admin: false,
 	);
 
-	// Dump user details
-	var_dump($createduser);
+	// Dsiplay user details
+	echo 'Id:' . $details->name . PHP_EOL;
+	echo 'Username:' . $details->name . PHP_EOL;
+	echo 'Is admin:' . $details->admin . PHP_EOL;
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();
