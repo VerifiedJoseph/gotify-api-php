@@ -2,12 +2,14 @@ name: Tests
 on:
   pull_request:
     paths:
-      - "**.php"
+      - "src/Gotify/**.php"
+      - "tests/**.php"
       - ".github/workflows/test.yml"
   push:
     branches: main
     paths:
-      - "**.php"
+      - "src/Gotify/**.php"
+      - "tests/**.php"
       - ".github/workflows/test.yml"
 
 jobs:
