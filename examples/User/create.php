@@ -30,9 +30,9 @@ try {
 	);
 
 	// Dsiplay user details
-	echo 'Id:' . $details->name . PHP_EOL;
-	echo 'Username:' . $details->name . PHP_EOL;
-	echo 'Is admin:' . $details->admin . PHP_EOL;
+	echo 'Id: ' . $details->name . PHP_EOL;
+	echo 'Username: ' . $details->name . PHP_EOL;
+	echo 'Is admin: ' . $details->admin . PHP_EOL;
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();
