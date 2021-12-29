@@ -31,7 +31,7 @@ try {
 	// Display client details
 	echo 'Id: ' . $details->id . PHP_EOL;
 	echo 'Name: ' . $details->name . PHP_EOL;
-	echo 'Token: ' . $details->title . PHP_EOL;
+	echo 'Token: ' . $details->token . PHP_EOL;
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();
