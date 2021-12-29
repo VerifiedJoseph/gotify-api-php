@@ -19,7 +19,11 @@ try {
 	);
 
 	// Get version details
-	var_dump($version->get());
+	$details = $version->get();
+
+	echo 'Version: ' . $details->version . PHP_EOL;
+	echo 'Commit: ' . $details->commit . PHP_EOL;
+	echo 'Build date: ' . $details->buildDate . PHP_EOL;
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();

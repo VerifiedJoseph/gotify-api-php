@@ -24,8 +24,12 @@ try {
 
 	$apps = $application->getAll();
 
-	foreach ($apps->apps as $app) {
-		var_dump($app);
+	foreach ($apps->apps as $details) {
+		echo 'Id: ' . $details->id . PHP_EOL;
+		echo 'Name: ' . $details->name . PHP_EOL;
+		echo 'Description: ' . $details->description . PHP_EOL;
+		echo 'Token: ' . $details->token . PHP_EOL;
+		echo PHP_EOL;
 	}
 
 } catch (EndpointException | GotifyException $err) {

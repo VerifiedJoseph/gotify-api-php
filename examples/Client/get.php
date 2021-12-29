@@ -24,8 +24,11 @@ try {
 
 	$clients = $client->getAll();
 
-	foreach ($clients->clients as $c) {
-		var_dump($c);
+	foreach ($clients->clients as $details) {
+		echo 'Id: ' . $details->id . PHP_EOL;
+		echo 'Name: ' . $details->name . PHP_EOL;
+		echo 'Token: ' . $details->token . PHP_EOL;
+		echo PHP_EOL;
 	}
 
 } catch (EndpointException | GotifyException $err) {

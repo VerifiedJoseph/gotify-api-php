@@ -26,10 +26,12 @@ try {
 	);
 
 	// Create a client and get its details
-	$createdClient = $client->create('Example client name');
+	$details = $client->create('Example client name');
 
-	// Dump client details
-	var_dump($createdClient);
+	// Display client details
+	echo 'Id: ' . $details->id . PHP_EOL;
+	echo 'Name: ' . $details->name . PHP_EOL;
+	echo 'Token: ' . $details->token . PHP_EOL;
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();

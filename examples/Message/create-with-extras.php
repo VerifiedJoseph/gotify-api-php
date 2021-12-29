@@ -32,7 +32,7 @@ try {
 		)
 	);
 
-	// Send a message
+	// Send message and get details
 	$sentMessage = $message->create(
 		title: 'hello?',
 		message: 'Hello World',
@@ -40,8 +40,16 @@ try {
 		extras: $extras
 	);
 
-	// Dump sent message details
-	var_dump($sentMessage);
+	// Display sent message details
+	echo 'Id: ' . $details->id . PHP_EOL;
+	echo 'Date: ' . $details->date . PHP_EOL;
+	echo 'Title: ' . $details->title . PHP_EOL;
+	echo 'Message: ' . $details->message . PHP_EOL;
+	echo 'Priority: ' . $details->priority . PHP_EOL;
+	echo 'App Id: ' . $details->appid . PHP_EOL;
+
+	echo 'Extras: ' . PHP_EOL;
+	var_dump($details->extras);
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();

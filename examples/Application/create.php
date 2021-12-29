@@ -23,13 +23,16 @@ try {
 	);
 
 	// Create an application and get its details
-	$createdApp = $application->create(
-		'Application name',
-		'Application description'
+	$details = $application->create(
+		name: 'Test app',
+		description: 'A test app'
 	);
 
-	// Dump application details
-	var_dump($createdApp);
+	// Display application details
+	echo 'Id: ' . $details->id . PHP_EOL;
+	echo 'Name: ' . $details->name . PHP_EOL;
+	echo 'Description: ' . $details->description . PHP_EOL;
+	echo 'Token: ' . $details->token . PHP_EOL;
 
 } catch (EndpointException | GotifyException $err) {
 	echo $err->getMessage();
