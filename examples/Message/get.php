@@ -24,8 +24,14 @@ try {
 
 	$messages = $message->getAll();
 
-	foreach ($messages->messages as $m) {
-		var_dump($m);
+	foreach ($messages->messages as $details) {
+		echo 'Id: ' . $details->id . PHP_EOL;
+		echo 'Date: ' . $details->date . PHP_EOL;
+		echo 'Title: ' . $details->title . PHP_EOL;
+		echo 'Message: ' . $details->message . PHP_EOL;
+		echo 'Priority: ' . $details->priority . PHP_EOL;
+		echo 'App Id: ' . $details->appid . PHP_EOL;
+		echo PHP_EOL;
 	}
 
 } catch (EndpointException | GotifyException $err) {
