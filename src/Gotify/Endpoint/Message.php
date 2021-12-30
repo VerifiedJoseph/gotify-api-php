@@ -13,6 +13,34 @@ use stdClass;
  */
 class Message extends Api
 {
+	/**
+	 * High message priority
+	 *
+	 * @see https://github.com/gotify/android#message-priorities
+	 */
+	public const PRIORITY_HIGH = 8;
+
+	/**
+	 * Default message priority
+	 *
+	 * @see https://github.com/gotify/android#message-priorities
+	 */
+	public const PRIORITY_DEFAULT = 4;
+
+	/**
+	 * Low message priority
+	 *
+	 * @see https://github.com/gotify/android#message-priorities
+	 */
+	public const PRIORITY_LOW = 1;
+
+	/**
+	 * Minimum  message priority
+	 *
+	 * @see https://github.com/gotify/android#message-priorities
+	 */
+	public const PRIORITY_MIN = 0;
+
 	/** @var string $endpoint API endpoint */
 	private string $endpoint = 'message';
 
