@@ -15,6 +15,7 @@ abstract class TestCase extends BaseTestCase
 	protected static string $password = 'admin';
 
 	protected string $appImage = 'appImage.png';
+	protected string $yaml = 'broadcaster-config.yaml';
 
 	protected static Gotify\Server $server;
 	protected static Gotify\Auth\User $auth;
@@ -23,6 +24,18 @@ abstract class TestCase extends BaseTestCase
 	{
 		self::$server = new Gotify\Server(self::getGotifyUri());
 		self::$auth = new Gotify\Auth\User(self::$username, self::$password);
+	}
+
+	/**
+	 * Retruns YAML path
+	 */
+	protected function getYamlPath(): string
+	{
+		$path = __DIR__ . '/TestAssets/' . $this->yaml;
+
+		$this->assertFileExists($path);
+
+		return $path;
 	}
 
 	/**
@@ -48,6 +61,15 @@ abstract class TestCase extends BaseTestCase
 		$encoded = base64_encode($imageData);
 
 		return 'data:' . $imageMimeType . ';base64,' . $encoded;
+	}
+
+	/**
+	 * Retruns example broadcaster config YAML
+	 */
+	protected function getYaml(): string
+	{
+		$data = (string) file_get_contents($this->getYamlPath());
+		return $data;
 	}
 
 	/**
