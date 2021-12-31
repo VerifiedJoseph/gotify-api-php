@@ -47,6 +47,21 @@ class PluginTest extends TestCase
 		$this->assertNotEmpty($config);
 	}
 
+	/**
+	 * Test updating config for a plugin
+	 */
+	public function testUpdateConfig(): void
+	{
+		$updated = self::$plugin->updateConfig(self::$pluginId, $this->getYaml());
+
+		$this->assertIsBool($updated);
+		$this->assertEquals(true, $updated);
+
+		$config = self::$plugin->getConfig(self::$pluginId);
+
+		$this->assertEquals($config, $this->getYaml());
+	}
+
 	public function testGetDisplayInfo(): void
 	{
 		$info = self::$plugin->getDisplayInfo(self::$pluginId);
