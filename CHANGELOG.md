@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.6.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.6.0) - 2021-12-31
+
+* Added message priority constants. ([#53](https://github.com/VerifiedJoseph/gotify-api-php/pull/53), [`cb53aef`](https://github.com/VerifiedJoseph/gotify-api-php/commit/cb53aefc24e7bfc387943649bbc944e2e75f7b00))
+* Added unit tests for `Gotify\Endpoint\Plugin\updateConfig()` and `Gotify\Guzzle\postYaml()`. ([#55](https://github.com/VerifiedJoseph/gotify-api-php/pull/55), [`3d9f329`](https://github.com/VerifiedJoseph/gotify-api-php/commit/3d9f329f2aee074781df4dc9dbcefbf97f07bb06))
+* Improved code examples. ([#50](https://github.com/VerifiedJoseph/gotify-api-php/pull/50), [`08fd812`](https://github.com/VerifiedJoseph/gotify-api-php/commit/08fd812c4e076086a31c7338721e56896ea7655a))
+* Updated dev dependency `phpstan/phpstan` from 1.2.0 to 1.3.0. ([#52](https://github.com/VerifiedJoseph/gotify-api-php/pull/52), [`b14d038`](https://github.com/VerifiedJoseph/gotify-api-php/commit/b14d03818f0324116cfa45dc1fe4c3f3d23a2197))
+* Updated dev dependency `phpunit/phpunit` from 9.5.10 to 9.5.11. ([#49](https://github.com/VerifiedJoseph/gotify-api-php/pull/49), [`ebf642b`](https://github.com/VerifiedJoseph/gotify-api-php/commit/ebf642b4ed73604f020dc193c49bf19a2621c62f))
+
 ## [1.5.2](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.5.2) - 2021-12-14
 
 * Updated dependency `guzzlehttp/guzzle` from 7.4.0 to 7.4.1. ([#47](https://github.com/VerifiedJoseph/gotify-api-php/pull/47))
