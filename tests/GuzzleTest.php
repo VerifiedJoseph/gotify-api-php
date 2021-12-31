@@ -49,6 +49,21 @@ class GuzzleTest extends TestCase
 	}
 
 	/**
+	 * Test making a POST request with a YAML body
+	 */
+	public function testPostYaml(): void
+	{
+		$data = $this->getYaml();
+
+		$response = self::$guzzle->PostYaml('post', $data);
+		$body = (object) Json::decode($response->getBody());
+
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('data', $body);
+		$this->assertEquals($data, $body->data);
+	}
+
+	/**
 	 * Test making a POST request with a file
 	 */
 	public function testPostFile(): void
