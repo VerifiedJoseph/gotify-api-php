@@ -1,0 +1,26 @@
+channels:
+- name: example
+  public: false
+sender_filter:
+- match:
+  - mode: user_name
+    user_name: my_server
+  - mode: message_text
+    regex: true
+    message_text: ^\[(INFO|DEBUG)\]
+  action: reject
+- match:
+  - mode: user_name
+    user_name: some_one_i_dont_want_to_see_broadcast_from
+  action: reject
+- match:
+  - mode: any
+  action: accept
+receiver_filter:
+- match:
+  - mode: user_name
+    user_name: some_one_i_dont_want_to_send_broadcast_to
+  action: reject
+- match:
+  - mode: any
+  action: accept
