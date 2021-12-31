@@ -17,14 +17,18 @@ composer require verifiedjoseph/gotify-api-php
 ```PHP
 require __DIR__ . '/vendor/autoload.php';
 
+use Gotify\Server;
+use Gotify\Auth\Token;
+use Gotify\Endpoint\Message;
+
 // Set server
-$server = new Gotify\Server('https://gotify.example.com/');
+$server = new Server('https://gotify.example.com/');
 
 // Set application token
-$auth = new Gotify\Auth\Token('ApplicationTokenHere');
+$auth = new Token('ApplicationTokenHere');
 
 // Create a message class instance
-$message = new Gotify\Endpoint\Message(
+$message = new Message(
   $server->get(),
   $auth->get()
 );
@@ -33,7 +37,7 @@ $message = new Gotify\Endpoint\Message(
 $message->create(
   title: 'hello?',
   message: 'Hello World',
-  priority: 8,
+  priority: Message::PRIORITY_HIGH,
 );
 ```
 

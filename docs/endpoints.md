@@ -96,6 +96,32 @@ API docs: [https://gotify.net/api-docs#/message](https://gotify.net/api-docs#/me
 - [Create a message](../examples/Message/create.php)
 - [Create a message with extras](../examples/Message/create-with-extras.php)
 
+### Constants
+
+High message priority
+
+```PHP
+Gotify\Endpoint\Message::PRIORITY_HIGH
+```
+
+Default message priority
+
+```PHP
+Gotify\Endpoint\Message::PRIORITY_DEFAULT
+```
+
+Low message priority
+
+```PHP
+Gotify\Endpoint\Message::PRIORITY_LOW
+```
+
+Minimum message priority
+
+```PHP
+Gotify\Endpoint\Message::PRIORITY_MIN
+```
+
 ### Methods
 
 Get all messages

@@ -6,18 +6,22 @@
 
 include '../vendor/autoload.php';
 
+use Gotify\Server;
+use Gotify\Auth\Token;
+use Gotify\Endpoint\Message;
+
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
 
 try {
 	// Set server
-	$server = new Gotify\Server('https://gotify.example.com/');
+	$server = new Server('https://gotify.example.com/');
 
 	// Set application token
-	$auth = new Gotify\Auth\Token('TokenHere');
+	$auth = new Token('TokenHere');
 
 	// Create Message class instance
-	$message = new Gotify\Endpoint\Message(
+	$message = new Message(
 		$server->get(),
 		$auth->get()
 	);
@@ -26,7 +30,7 @@ try {
 	$details = $message->create(
 		title: 'hello?',
 		message: 'Hello World',
-		priority: 8,
+		priority: Message::PRIORITY_HIGH,
 	);
 
 	// Dsiplay sent message details
