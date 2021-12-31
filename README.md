@@ -42,8 +42,8 @@ $message->create(
 ```
 
 ## Documentation
-
-- [Endpoint Classes](docs/endpoints.md)
+- [Authentication](docs/auth.md)
+- [Endpoints](docs/endpoints.md)
 - [Exceptions](docs/exceptions.md)
 - [Code examples](docs/examples.md)
 
