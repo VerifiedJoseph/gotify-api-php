@@ -43,12 +43,11 @@ final class Json
 		try {
 			$decoded = json_decode($json, flags: JSON_THROW_ON_ERROR);
 
-			if (is_array($decoded)) {
+			if (is_array($decoded) === true) {
 				return (array) $decoded;
-
-			} else {
-				return (object) $decoded;
 			}
+			
+			return (object) $decoded;
 		} catch (JsonException $err) {
 			throw new GotifyException('JSON Error: ' . $err->getMessage());
 		}
