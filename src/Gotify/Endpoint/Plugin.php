@@ -3,8 +3,9 @@
 namespace Gotify\Endpoint;
 
 use Gotify\Api;
-use Gotify\Json;
 use stdClass;
+
+use function Gotify\json_decode;
 
 /**
  * Class for interacting with the plugin API endpoint
@@ -26,7 +27,7 @@ class Plugin extends Api
 	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
-		$plugins = Json::decode($response->getBody());
+		$plugins = json_decode($response->getBody());
 
 		return (object) ['plugins' => $plugins];
 	}
@@ -80,7 +81,7 @@ class Plugin extends Api
 	public function getDisplayInfo(int $id): string
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');
-		$info = (object) Json::decode('{"data": ' . $response->getBody() . '}');
+		$info = (object) json_decode('{"data": ' . $response->getBody() . '}');
 
 		return $info->data;
 	}

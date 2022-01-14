@@ -3,8 +3,9 @@
 namespace Gotify\Endpoint;
 
 use Gotify\Api;
-use Gotify\Json;
 use stdClass;
+
+use function Gotify\json_decode;
 
 /**
  * Class for interacting with Message API endpoint
@@ -62,7 +63,7 @@ class Message extends Api
 		);
 
 		$response = $this->guzzle->get($this->endpoint, $query);
-		$messages = Json::decode($response->getBody());
+		$messages = json_decode($response->getBody());
 
 		return (object) $messages;
 	}
@@ -94,7 +95,7 @@ class Message extends Api
 		}
 
 		$response = $this->guzzle->post($this->endpoint, $data);
-		$message = Json::decode($response->getBody());
+		$message = json_decode($response->getBody());
 
 		return (object) $message;
 	}

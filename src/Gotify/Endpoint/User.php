@@ -3,8 +3,9 @@
 namespace Gotify\Endpoint;
 
 use Gotify\Api;
-use Gotify\Json;
 use stdClass;
+
+use function Gotify\json_decode;
 
 /**
  * Class for interacting with the user endpoint
@@ -26,7 +27,7 @@ class User extends Api
 	public function getCurrent(): stdClass
 	{
 		$response = $this->guzzle->get('current/user');
-		$current = Json::decode($response->getBody());
+		$current = json_decode($response->getBody());
 
 		return (object) $current;
 	}
@@ -68,7 +69,7 @@ class User extends Api
 	public function getUser(int $id): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint . '/' . $id);
-		$user = Json::decode($response->getBody());
+		$user = json_decode($response->getBody());
 
 		return (object) $user;
 	}
@@ -83,7 +84,7 @@ class User extends Api
 	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
-		$users = Json::decode($response->getBody());
+		$users = json_decode($response->getBody());
 
 		return (object) ['users' => $users];
 	}
@@ -108,7 +109,7 @@ class User extends Api
 		);
 
 		$response = $this->guzzle->post($this->endpoint, $data);
-		$user = Json::decode($response->getBody());
+		$user = json_decode($response->getBody());
 
 		return (object) $user;
 	}
@@ -134,7 +135,7 @@ class User extends Api
 		);
 
 		$response = $this->guzzle->post($this->endpoint . '/' . $id, $data);
-		$user = Json::decode($response->getBody());
+		$user = json_decode($response->getBody());
 
 		return (object) $user;
 	}

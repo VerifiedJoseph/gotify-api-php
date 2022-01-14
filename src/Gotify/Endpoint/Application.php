@@ -3,8 +3,9 @@
 namespace Gotify\Endpoint;
 
 use Gotify\Api;
-use Gotify\Json;
 use stdClass;
+
+use function Gotify\json_decode;
 
 /**
  * Class for interacting with application API endpoint
@@ -26,7 +27,7 @@ class Application extends Api
 	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
-		$applications = Json::decode($response->getBody());
+		$applications = json_decode($response->getBody());
 
 		return (object) ['apps' => $applications];
 	}
@@ -49,7 +50,7 @@ class Application extends Api
 		);
 
 		$response = $this->guzzle->post($this->endpoint, $data);
-		$application = Json::decode($response->getBody());
+		$application = json_decode($response->getBody());
 
 		return (object) $application;
 	}
@@ -73,7 +74,7 @@ class Application extends Api
 		);
 
 		$response = $this->guzzle->put($this->endpoint . '/' . $id, $data);
-		$application = Json::decode($response->getBody());
+		$application = json_decode($response->getBody());
 
 		return (object) $application;
 	}
@@ -116,7 +117,7 @@ class Application extends Api
 		);
 
 		$response = $this->guzzle->postFile($this->endpoint . '/' . $id . '/image', $data);
-		$application = Json::decode($response->getBody());
+		$application = json_decode($response->getBody());
 
 		return (object) $application;
 	}
