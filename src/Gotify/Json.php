@@ -8,48 +8,42 @@ use JsonException;
 use Gotify\Exception\GotifyException;
 
 /**
- * Class for encoding and decoding JSON
+ * Encode JSON
+ *
+ * @param array<mixed> $data
+ * @return string
+ *
+ * @throws GotifyException if array could not be encoded
  */
-final class Json
+function json_encode(array $data): string
 {
-	/**
-	 * Encode JSON
-	 *
-	 * @param array<mixed> $data
-	 * @return string
-	 *
-	 * @throws GotifyException if array could not be encoded
-	 */
-	static function encode(array $data): string
-	{
-		try {
-			return json_encode($data, flags: JSON_THROW_ON_ERROR);
+	try {
+		return \json_encode($data, flags: JSON_THROW_ON_ERROR);
 
-		} catch (JsonException $err) {
-			throw new GotifyException('JSON Error: ' . $err->getMessage());
-		}
+	} catch (JsonException $err) {
+		throw new GotifyException('JSON Error: ' . $err->getMessage());
 	}
+}
 
-	/**
-	 * Decode JSON
-	 *
-	 * @param string $json
-	 * @return stdClass|array<mixed>
-	 *
-	 * @throws GotifyException if JSON could not be decoded
-	 */
-	public static function decode(string $json): stdClass|array
-	{
-		try {
-			$decoded = json_decode($json, flags: JSON_THROW_ON_ERROR);
+/**
+ * Decode JSON
+ *
+ * @param string $json
+ * @return stdClass|array<mixed>
+ *
+ * @throws GotifyException if JSON could not be decoded
+ */
+function json_decode(string $json): stdClass|array
+{
+	try {
+		$decoded = \json_decode($json, flags: JSON_THROW_ON_ERROR);
 
-			if (is_array($decoded) === true) {
-				return (array) $decoded;
-			}
-			
-			return (object) $decoded;
-		} catch (JsonException $err) {
-			throw new GotifyException('JSON Error: ' . $err->getMessage());
+		if (is_array($decoded) === true) {
+			return (array) $decoded;
 		}
+
+		return (object) $decoded;
+	} catch (JsonException $err) {
+		throw new GotifyException('JSON Error: ' . $err->getMessage());
 	}
 }
