@@ -7,13 +7,14 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
 
-use InvalidArgumentException;
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
 
 // Guzzle exceptions
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+
+use function Gotify\json_decode;
 
 /**
  * Class for making HTTP requests using GuzzleHttp.
@@ -176,7 +177,7 @@ final class Guzzle
 			$contentType = $response->getHeaderLine('Content-Type');
 
 			if ($contentType === 'application/json') {
-				$json = (object) Json::decode($response->getBody());
+				$json = (object) json_decode($response->getBody());
 				$message = $json->error . ': ' . $json->errorDescription . ' (' . $json->errorCode . ')';
 
 				throw new EndpointException($message, $json->errorCode);
