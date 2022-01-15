@@ -1,8 +1,10 @@
 <?php
 
+use Gotify\Endpoint\Application;
+
 class ApplicationTest extends TestCase
 {
-	private static Gotify\Endpoint\Application $application;
+	private static Application $application;
 
 	private static int $appId = 0;
 
@@ -10,7 +12,7 @@ class ApplicationTest extends TestCase
 	{
 		parent::setUpBeforeClass();
 
-		self::$application = new Gotify\Endpoint\Application(
+		self::$application = new Application(
 			self::$server->get(),
 			self::$auth->get()
 		);

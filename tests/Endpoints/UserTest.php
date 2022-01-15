@@ -1,8 +1,11 @@
 <?php
 
+use Gotify\Auth\User as AuthUser;
+use Gotify\Endpoint\User;
+
 class UserTest extends TestCase
 {
-	private static Gotify\Endpoint\User $user;
+	private static User $user;
 
 	private static int $userId = 0;
 
@@ -13,7 +16,7 @@ class UserTest extends TestCase
 	{
 		parent::setUpBeforeClass();
 
-		self::$user = new Gotify\Endpoint\User(
+		self::$user = new User(
 			self::$server->get(),
 			self::$auth->get()
 		);
@@ -83,8 +86,8 @@ class UserTest extends TestCase
 	public function testUpdatePassword(): void
 	{
 		// Login as test user
-		$auth = new Gotify\Auth\User(self::$testUsername, self::$testPassword);
-		$user = new Gotify\Endpoint\User(
+		$auth = new AuthUser(self::$testUsername, self::$testPassword);
+		$user = new User(
 			self::$server->get(),
 			$auth->get()
 		);

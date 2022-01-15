@@ -1,8 +1,10 @@
 <?php
 
+use Gotify\Endpoint\Client;
+
 class ClientTest extends TestCase
 {
-	private static Gotify\Endpoint\Client $client;
+	private static Client $client;
 
 	private static int $clientId = 0;
 
@@ -10,7 +12,7 @@ class ClientTest extends TestCase
 	{
 		parent::setUpBeforeClass();
 
-		self::$client = new Gotify\Endpoint\Client(
+		self::$client = new Client(
 			self::$server->get(),
 			self::$auth->get()
 		);

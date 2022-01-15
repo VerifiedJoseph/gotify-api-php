@@ -1,8 +1,10 @@
 <?php
 
+use Gotify\Endpoint\Plugin;
+
 class PluginTest extends TestCase
 {
-	private static Gotify\Endpoint\Plugin $plugin;
+	private static Plugin $plugin;
 
 	private static int $pluginId = 1;
 
@@ -10,7 +12,7 @@ class PluginTest extends TestCase
 	{
 		parent::setUpBeforeClass();
 
-		self::$plugin = new Gotify\Endpoint\Plugin(
+		self::$plugin = new Plugin(
 			self::$server->get(),
 			self::$auth->get()
 		);

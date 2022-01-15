@@ -1,8 +1,11 @@
 <?php
 
+use Gotify\Endpoint\Application;
+use Gotify\Endpoint\ApplicationMessage;
+
 class ApplicationMessageTest extends TestCase
 {
-	private static Gotify\Endpoint\ApplicationMessage $applicationMessage;
+	private static ApplicationMessage $applicationMessage;
 
 	private static int $appId = 0;
 
@@ -10,13 +13,13 @@ class ApplicationMessageTest extends TestCase
 	{
 		parent::setUpBeforeClass();
 
-		self::$applicationMessage = new Gotify\Endpoint\ApplicationMessage(
+		self::$applicationMessage = new ApplicationMessage(
 			self::$server->get(),
 			self::$auth->get()
 		);
 
 		// Create application to use when testing
-		$application = new Gotify\Endpoint\Application(
+		$application = new Application(
 			self::$server->get(),
 			self::$auth->get()
 		);
@@ -28,7 +31,7 @@ class ApplicationMessageTest extends TestCase
 	public static function tearDownAfterClass(): void
 	{
 		// Delete test application
-		$application = new Gotify\Endpoint\Application(
+		$application = new Application(
 			self::$server->get(),
 			self::$auth->get()
 		);

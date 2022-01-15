@@ -1,5 +1,7 @@
 <?php
 
+use Gotify\Endpoint\Health;
+
 class HealthTest extends TestCase
 {
 	/**
@@ -7,7 +9,7 @@ class HealthTest extends TestCase
 	 */
 	public function testGet(): void
 	{
-		$health = new Gotify\Endpoint\Health(
+		$health = new Health(
 			self::$server->get()
 		);
 
