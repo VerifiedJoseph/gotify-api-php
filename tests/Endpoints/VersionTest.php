@@ -1,5 +1,7 @@
 <?php
 
+use Gotify\Endpoint\Version;
+
 class VersionTest extends TestCase
 {
 	/**
@@ -7,7 +9,7 @@ class VersionTest extends TestCase
 	 */
 	public function testGet(): void
 	{
-		$version = new Gotify\Endpoint\Version(
+		$version = new Version(
 			self::$server->get()
 		);
 

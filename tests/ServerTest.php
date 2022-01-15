@@ -1,5 +1,8 @@
 <?php
 
+use Gotify\Server;
+use Gotify\Exception\GotifyException;
+
 class ServerTest extends TestCase
 {
 	/**
@@ -7,8 +10,8 @@ class ServerTest extends TestCase
 	 */
 	public function testServerUriValidator(): void
 	{
-		$this->expectException(Gotify\Exception\GotifyException::class);
+		$this->expectException(GotifyException::class);
 
-		$server = new Gotify\Server('127.0.0.1');
+		$server = new Server('127.0.0.1');
 	}
 }

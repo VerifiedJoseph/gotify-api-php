@@ -1,6 +1,9 @@
 <?php
 
 use Gotify\Guzzle;
+use Gotify\Auth\Token as AuthToken;
+use Gotify\Auth\User as AuthUser;
+
 use function Gotify\json_decode;
 
 class GuzzleTest extends TestCase
@@ -118,12 +121,12 @@ class GuzzleTest extends TestCase
 		$username = 'admin';
 		$password = 'adminPassword';
 
-		$auth = new Gotify\Auth\User(
+		$auth = new AuthUser(
 			$username,
 			$password
 		);
 
-		$guzzle = new Gotify\Guzzle(self::getHttpBinUri(), $auth->get());
+		$guzzle = new Guzzle(self::getHttpBinUri(), $auth->get());
 
 		$response = $guzzle->get('basic-auth/' . $username . '/' . $password);
 		$body = (object) json_decode($response->getBody());
@@ -143,9 +146,9 @@ class GuzzleTest extends TestCase
 	{
 		$token = 'HelloWorld';
 
-		$auth = new \Gotify\Auth\Token($token);
+		$auth = new AuthToken($token);
 
-		$guzzle = new Gotify\Guzzle(self::$httpBinUri, $auth->get());
+		$guzzle = new Guzzle(self::$httpBinUri, $auth->get());
 
 		$response = $guzzle->get('get');
 		$body = (object) json_decode($response->getBody());

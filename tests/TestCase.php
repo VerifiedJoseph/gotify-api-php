@@ -2,6 +2,9 @@
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
+use Gotify\Server;
+use Gotify\Auth\User as AuthUser;
+
 /**
  * Class TestCase
  * @SuppressWarnings(PHPMD.NumberOfChildren)
@@ -17,13 +20,13 @@ abstract class TestCase extends BaseTestCase
 	protected string $appImage = 'appImage.png';
 	protected string $yaml = 'broadcaster-config.yaml';
 
-	protected static Gotify\Server $server;
-	protected static Gotify\Auth\User $auth;
+	protected static Server $server;
+	protected static AuthUser $auth;
 
 	public static function setUpBeforeClass(): void
 	{
-		self::$server = new Gotify\Server(self::getGotifyUri());
-		self::$auth = new Gotify\Auth\User(self::$username, self::$password);
+		self::$server = new Server(self::getGotifyUri());
+		self::$auth = new AuthUser(self::$username, self::$password);
 	}
 
 	/**

@@ -1,8 +1,12 @@
 <?php
 
+use Gotify\Auth\Token;
+use Gotify\Endpoint\Message;
+use Gotify\Endpoint\Application;
+
 class MessageTest extends TestCase
 {
-	private static Gotify\Endpoint\Message $message;
+	private static Message $message;
 
 	private static string $appToken = '';
 	private static int $appId = 0;
@@ -17,13 +21,13 @@ class MessageTest extends TestCase
 	{
 		parent::setUpBeforeClass();
 
-		self::$message = new Gotify\Endpoint\Message(
+		self::$message = new Message(
 			self::$server->get(),
 			self::$auth->get()
 		);
 
 		// Create application to use when testing creating a message
-		$application = new Gotify\Endpoint\Application(
+		$application = new Application(
 			self::$server->get(),
 			self::$auth->get()
 		);
@@ -36,7 +40,7 @@ class MessageTest extends TestCase
 	public static function tearDownAfterClass(): void
 	{
 		// Delete test application
-		$application = new Gotify\Endpoint\Application(
+		$application = new Application(
 			self::$server->get(),
 			self::$auth->get()
 		);
@@ -50,8 +54,8 @@ class MessageTest extends TestCase
 	public function testCreate(): void
 	{
 		// Authenticate as test application via its token
-		$auth = new Gotify\Auth\Token(self::$appToken);
-		$endpoint = new Gotify\Endpoint\Message(
+		$auth = new Token(self::$appToken);
+		$endpoint = new Message(
 			self::$server->get(),
 			$auth->get()
 		);
@@ -83,8 +87,8 @@ class MessageTest extends TestCase
 	public function testCreateWithExtras(): void
 	{
 		// Authenticate as test application via its token
-		$auth = new Gotify\Auth\Token(self::$appToken);
-		$endpoint = new Gotify\Endpoint\Message(
+		$auth = new Token(self::$appToken);
+		$endpoint = new Message(
 			self::$server->get(),
 			$auth->get()
 		);

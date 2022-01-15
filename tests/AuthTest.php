@@ -1,5 +1,8 @@
 <?php
 
+use Gotify\Auth\User;
+use Gotify\Auth\Token;
+
 class AuthTest extends TestCase
 {
 	/**
@@ -11,7 +14,7 @@ class AuthTest extends TestCase
 		$username = 'username';
 		$password = 'password';
 
-		$auth = new Gotify\Auth\User($username, $password);
+		$auth = new User($username, $password);
 		$values = $auth->get();
 
 		$this->assertIsArray($values);
@@ -32,7 +35,7 @@ class AuthTest extends TestCase
 		$method = 'token';
 		$token = 'TokenHere';
 
-		$auth = new Gotify\Auth\Token($token);
+		$auth = new Token($token);
 		$values = $auth->get();
 
 		$this->assertIsArray($values);
