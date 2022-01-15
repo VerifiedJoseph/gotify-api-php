@@ -49,3 +49,18 @@ jobs:
 
     - name: Run phpcs
       run: phpcs src tests --report=checkstyle | cs2pr
+
+  phpmd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: phpmd
+
+      - name: Run phpmd
+        run: phpmd . github phpmd.ruleset.xml --exclude 'vendor/*'
