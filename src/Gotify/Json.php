@@ -46,7 +46,7 @@ final class Json
 			if (is_array($decoded) === true) {
 				return (array) $decoded;
 			}
-			
+
 			return (object) $decoded;
 		} catch (JsonException $err) {
 			throw new GotifyException('JSON Error: ' . $err->getMessage());
