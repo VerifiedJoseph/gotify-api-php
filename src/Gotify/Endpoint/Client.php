@@ -3,9 +3,8 @@
 namespace Gotify\Endpoint;
 
 use Gotify\Api;
+use Gotify\Json;
 use stdClass;
-
-use function Gotify\json_decode;
 
 /**
  * Class for interacting with client API endpoint
@@ -27,7 +26,7 @@ class Client extends Api
 	public function getAll(): stdClass
 	{
 		$response = $this->guzzle->get($this->endpoint);
-		$clients = json_decode($response->getBody());
+		$clients = Json::decode($response->getBody());
 
 		return (object) ['clients' => $clients];
 	}
@@ -48,7 +47,7 @@ class Client extends Api
 		);
 
 		$response = $this->guzzle->post($this->endpoint, $data);
-		$client = json_decode($response->getBody());
+		$client = Json::decode($response->getBody());
 
 		return (object) $client;
 	}
@@ -70,7 +69,7 @@ class Client extends Api
 		);
 
 		$response = $this->guzzle->put($this->endpoint . '/' . $id, $data);
-		$client = json_decode($response->getBody());
+		$client = Json::decode($response->getBody());
 
 		return (object) $client;
 	}

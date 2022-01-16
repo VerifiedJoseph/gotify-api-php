@@ -35,7 +35,7 @@ class ApplicationMessage extends Api
 		);
 
 		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
-		$messages = json_decode($response->getBody());
+		$messages = Json::decode($response->getBody());
 
 		return (object) $messages;
 	}
