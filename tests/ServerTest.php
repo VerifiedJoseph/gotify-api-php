@@ -7,7 +7,7 @@ class ServerTest extends TestCase
 {
 	/**
 	 * Test server URI validator
-	 * 
+	 *
 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 */
 	public function testServerUriValidator(): void
