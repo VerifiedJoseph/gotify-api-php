@@ -147,7 +147,7 @@ class GuzzleTest extends TestCase
 
 		$auth = new AuthToken($token);
 
-		$guzzle = new Guzzle(self::$httpBinUri, $auth->get());
+		$guzzle = new Guzzle(self::getHttpBinUri(), $auth->get());
 
 		$response = $guzzle->get('get');
 		$body = (object) Json::decode($response->getBody());
