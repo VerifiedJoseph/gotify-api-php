@@ -47,6 +47,12 @@ jobs:
     name: phpcs (php${{ matrix.php-version }})
 
     runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.0', '8.1']
+        operating-system: [ubuntu-latest]
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -64,6 +70,12 @@ jobs:
     name: phpmd (php${{ matrix.php-version }})
 
     runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.0', '8.1']
+        operating-system: [ubuntu-latest]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
