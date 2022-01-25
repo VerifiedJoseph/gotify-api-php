@@ -14,8 +14,14 @@ on:
 
 jobs:
   test:
-    name: PHPUnit
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        php-version: ['8.0', '8.1']
+        operating-system: [ubuntu-latest]
+    
+    name: PHPUnit (php${{ matrix.php-version }})
+
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
       GOTIFY_URI: "http://127.0.0.1:8080"
@@ -28,7 +34,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: ${{ matrix.php-version }}
         extensions: mbstring
         tools: phpunit
     
