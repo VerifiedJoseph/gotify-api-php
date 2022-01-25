@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.6.1](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.6.1) - 2021-01-25
+
+* Fixed issues flagged by phpmd. ([#61](https://github.com/VerifiedJoseph/gotify-api-php/pull/61))
+* Updated supported `gotify/server` version from 2.1.3 to 2.1.4. ([`c227de5`](https://github.com/VerifiedJoseph/gotify-api-php/commit/c227de574ee36380e4d01bd33f6f40f7005cb424))
+* Added dev dependency `phpmd/phpmd`. ([#60](https://github.com/VerifiedJoseph/gotify-api-php/pull/60))
+* Updated dev dependency `phpstan/phpstan`.  ([#57](https://github.com/VerifiedJoseph/gotify-api-php/pull/57), [#58](https://github.com/VerifiedJoseph/gotify-api-php/pull/58), [#62](https://github.com/VerifiedJoseph/gotify-api-php/pull/62), [#63](https://github.com/VerifiedJoseph/gotify-api-php/pull/63), [#63](https://github.com/VerifiedJoseph/gotify-api-php/pull/63), [#64](https://github.com/VerifiedJoseph/gotify-api-php/pull/64), [#65](https://github.com/VerifiedJoseph/gotify-api-php/pull/65), [#66](https://github.com/VerifiedJoseph/gotify-api-php/pull/66))
+
 ## [1.6.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.6.0) - 2021-12-31
 
 * Added message priority constants. ([#53](https://github.com/VerifiedJoseph/gotify-api-php/pull/53), [`cb53aef`](https://github.com/VerifiedJoseph/gotify-api-php/commit/cb53aefc24e7bfc387943649bbc944e2e75f7b00))
