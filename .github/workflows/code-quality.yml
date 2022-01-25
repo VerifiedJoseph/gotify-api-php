@@ -15,14 +15,14 @@ on:
 
 jobs:
   phpstan:
-    name: PHPStan (${{ matrix.php-versions }})
-
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
       matrix:
         php-version: ['8.0', '8.1']
         operating-system: [ubuntu-latest]
+
+    name: PHPStan (${{ matrix.php-versions }})
 
     steps:
     - name: Checkout code

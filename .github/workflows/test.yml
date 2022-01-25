@@ -14,13 +14,13 @@ on:
 
 jobs:
   test:
-    name: PHPUnit (${{ matrix.php-versions }})
-
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
         php-version: ['8.0', '8.1']
         operating-system: [ubuntu-latest]
+    
+    name: PHPUnit (${{ matrix.php-versions }})
 
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
