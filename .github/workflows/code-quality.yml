@@ -15,7 +15,15 @@ on:
 
 jobs:
   phpstan:
-    runs-on: ubuntu-latest
+    name: PHPStan (${{ matrix.php-versions }})
+
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.0', '8.1']
+        operating-system: [ubuntu-latest]
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -23,7 +31,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: ${{ matrix.php-versions }}
         tools: phpstan
 
     - name: "Validate composer.json and composer.lock"
@@ -36,7 +44,9 @@ jobs:
       run: phpstan analyse -c phpstan.neon
 
   phpcs:
-    runs-on: ubuntu-latest
+    name: phpcs (${{ matrix.php-versions }})
+
+    runs-on: ${{ matrix.operating-system }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -44,7 +54,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: ${{ matrix.php-versions }}
         tools: cs2pr, phpcs
 
     - name: Run phpcs
