@@ -15,14 +15,14 @@ on:
 
 jobs:
   phpstan:
+    name: PHPStan (php${{ matrix.php-version }})
+
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
       matrix:
         php-version: ['8.0', '8.1']
         operating-system: [ubuntu-latest]
-
-    name: PHPStan (${{ matrix.php-version }})
 
     steps:
     - name: Checkout code
@@ -44,7 +44,7 @@ jobs:
       run: phpstan analyse -c phpstan.neon
 
   phpcs:
-    name: phpcs (${{ matrix.php-versions }})
+    name: phpcs (php${{ matrix.php-version }})
 
     runs-on: ${{ matrix.operating-system }}
     steps:
@@ -54,14 +54,16 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: ${{ matrix.php-versions }}
+        php-version: ${{ matrix.php-version }}
         tools: cs2pr, phpcs
 
     - name: Run phpcs
       run: phpcs src tests --report=checkstyle | cs2pr
 
   phpmd:
-    runs-on: ubuntu-latest
+    name: phpmd (php${{ matrix.php-version }})
+
+    runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -69,7 +71,7 @@ jobs:
       - name: Setup PHP environment
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: ${{ matrix.php-version }}
           tools: phpmd
 
       - name: Run phpmd
