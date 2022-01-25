@@ -20,7 +20,7 @@ jobs:
         php-version: ['8.0', '8.1']
         operating-system: [ubuntu-latest]
     
-    name: PHPStan (php${{ matrix.php-version }})
+    name: PHPUnit (php${{ matrix.php-version }})
 
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
