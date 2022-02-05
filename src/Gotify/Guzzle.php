@@ -7,7 +7,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
 
-use InvalidArgumentException;
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
 
