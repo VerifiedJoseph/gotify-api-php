@@ -5,12 +5,14 @@ on:
       - "src/Gotify/**.php"
       - "tests/**.php"
       - ".github/workflows/test.yml"
+      - ".ci/docker-compose.yml"
   push:
     branches: main
     paths:
       - "src/Gotify/**.php"
       - "tests/**.php"
       - ".github/workflows/test.yml"
+      - ".ci/docker-compose.yml"
 
 jobs:
   test:
