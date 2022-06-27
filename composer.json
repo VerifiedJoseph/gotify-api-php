@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Gotify\\": "src/Gotify"
+            "Gotify\\": "src/"
         }
     },
     "autoload-dev": {
