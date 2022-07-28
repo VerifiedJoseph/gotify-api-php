@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.6.5](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.6.5) - 2022-07-28
+
+* Updated supported `gotify/server` version from 2.1.4 to 2.1.5. ([#115](https://github.com/VerifiedJoseph/gotify-api-php/pull/115), [`ac4c7c8`](https://github.com/VerifiedJoseph/gotify-api-php/commit/ac4c7c807de09910bdea21faa8738101209be623))
+
 ## [1.6.4](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.6.4) - 2022-06-22
 
 * Updated dependency `guzzlehttp/guzzle` from 7.4.4 to 7.4.5. ([#109](https://github.com/VerifiedJoseph/gotify-api-php/pull/109), [`8294513`](https://github.com/VerifiedJoseph/gotify-api-php/commit/8294513ed3c229797ca2e42fc88ef53041c0e4c5))
