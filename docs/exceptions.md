@@ -9,7 +9,7 @@ Gotify\Exception\GotifyException
 
 Thrown when the Gotify library experiences an error.
 
-Exmaple: [`Gotify\Server`](../src/Gotify/Server.php) will throw `GotifyException` if the given server URI is invalid.
+Exmaple: [`Gotify\Server`](../src/Server.php) will throw `GotifyException` if the given server URI is invalid.
 
 ## EndpointException 
 ```PHP
