@@ -6,7 +6,7 @@
 Gotify\Auth\Token(string $token)
 ```
 
-Class: [Token](../src/Gotify/Auth/Token.php)
+Class: [Token](../src/Auth/Token.php)
 
 ### Examples
 - [Create a message](../examples/Message/create.php)
@@ -26,7 +26,7 @@ get(): array
 Gotify\Auth\User(string $username, string $password)
 ```
 
-Class: [User](../src/Gotify/Auth/User.php)
+Class: [User](../src/Auth/User.php)
 
 ### Examples
 - [Create a client](../examples/Client/create.php)
