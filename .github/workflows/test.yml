@@ -2,14 +2,14 @@ name: Tests
 on:
   pull_request:
     paths:
-      - "src/Gotify/**.php"
+      - "src/**.php"
       - "tests/**.php"
       - ".github/workflows/test.yml"
       - ".ci/docker-compose.yml"
   push:
     branches: main
     paths:
-      - "src/Gotify/**.php"
+      - "src/**.php"
       - "tests/**.php"
       - ".github/workflows/test.yml"
       - ".ci/docker-compose.yml"
