@@ -52,8 +52,8 @@ jobs:
     - name: Install dependencies with composer
       run: composer install --prefer-dist
 
-    - name: Fetch & setup gotify plugin
-      run: bash .ci/setup-plugin.sh
+    #- name: Fetch & setup gotify plugin
+    #  run: bash .ci/setup-plugin.sh
 
     - name: Start gotify & httpbin docker containers
       run: docker-compose up -d
