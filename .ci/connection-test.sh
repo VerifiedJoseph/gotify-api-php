@@ -3,6 +3,8 @@
 # 
 # Test connections to docker containers
 
+sleep 5
+
 connect()
 {
 	echo "Testing connection to ${1}"
