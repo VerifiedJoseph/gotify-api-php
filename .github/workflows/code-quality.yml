@@ -25,22 +25,22 @@ jobs:
         operating-system: [ubuntu-latest]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-version }}
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
 
-    - name: "Validate composer.json and composer.lock"
-      run: "composer validate --strict"
+      - name: "Validate composer.json and composer.lock"
+        run: "composer validate --strict"
 
-    - name: Install dependencies with composer
-      run: composer install --prefer-dist
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
 
-    - name: Run PHPStan
-      run: ./vendor/bin/phpstan analyse
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse
 
   phpcs:
     name: phpcs (php${{ matrix.php-version }})
@@ -53,20 +53,20 @@ jobs:
         operating-system: [ubuntu-latest]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-version }}
-        tools: cs2pr
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: cs2pr
 
-    - name: Install dependencies with composer
-      run: composer install --prefer-dist
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
 
-    - name: Run phpcs
-      run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
+      - name: Run phpcs
+        run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
 
   phpmd:
     name: phpmd (php${{ matrix.php-version }})
