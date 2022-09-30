@@ -38,7 +38,6 @@ jobs:
       with:
         php-version: ${{ matrix.php-version }}
         extensions: mbstring
-        tools: phpunit
     
     - name: Setup problem matchers for PHP
       run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
@@ -59,7 +58,7 @@ jobs:
       run: docker-compose up -d
 
     - name: Run phpunit
-      run: phpunit --configuration phpunit.xml
+      run: ./vendor/bin/phpunit
 
     - name: Stop gotify & httpbin docker docker containers
       run: docker-compose down
