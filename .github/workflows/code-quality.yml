@@ -25,23 +25,22 @@ jobs:
         operating-system: [ubuntu-latest]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-version }}
-        tools: phpstan
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
 
-    - name: "Validate composer.json and composer.lock"
-      run: "composer validate --strict"
+      - name: "Validate composer.json and composer.lock"
+        run: "composer validate --strict"
 
-    - name: Install dependencies with composer
-      run: composer install --prefer-dist
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
 
-    - name: Run PHPStan
-      run: phpstan analyse -c phpstan.neon
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse
 
   phpcs:
     name: phpcs (php${{ matrix.php-version }})
@@ -54,17 +53,20 @@ jobs:
         operating-system: [ubuntu-latest]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-version }}
-        tools: cs2pr, phpcs
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: cs2pr
 
-    - name: Run phpcs
-      run: phpcs src tests --report=checkstyle | cs2pr
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
+
+      - name: Run phpcs
+        run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
 
   phpmd:
     name: phpmd (php${{ matrix.php-version }})
@@ -84,7 +86,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          tools: phpmd
+
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
 
       - name: Run phpmd
-        run: phpmd . github phpmd.ruleset.xml --exclude 'vendor/*'
+        run: ./vendor/bin/phpmd . github phpmd.ruleset.xml --exclude 'vendor/*'
