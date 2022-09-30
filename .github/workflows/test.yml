@@ -57,6 +57,9 @@ jobs:
     - name: Start gotify & httpbin docker containers
       run: docker-compose up -d
 
+    - name: Test connections to docker containers
+      run: bash .ci/connections.sh
+
     - name: Run phpunit
       run: ./vendor/bin/phpunit
 
