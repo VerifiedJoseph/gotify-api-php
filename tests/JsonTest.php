@@ -1,5 +1,6 @@
 <?php
 
+use stdClass;
 use Gotify\Json;
 use Gotify\Exception\GotifyException;
 
