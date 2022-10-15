@@ -12,12 +12,6 @@ class User extends Auth
 	/** @var string $method Authentication method */
 	protected string $method = 'user';
 
-	/** @var string $username Username */
-	private string $username = '';
-
-	/** @var string $password Password */
-	private string $password = '';
-
 	/**
 	 * Set username and password
 	 *
@@ -42,25 +36,5 @@ class User extends Auth
 			'username' => $this->username,
 			'password' => $this->password
 		);
-	}
-
-	/**
-	 * Get username
-	 *
-	 * @return string
-	 */
-	public function getUsername(): string
-	{
-		return $this->username;
-	}
-
-	/**
-	 * Get password
-	 *
-	 * @return string
-	 */
-	public function getPassword(): string
-	{
-		return $this->password;
 	}
 }
