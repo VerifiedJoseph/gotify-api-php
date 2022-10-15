@@ -17,7 +17,7 @@ class UserTest extends TestCase
 		parent::setUpBeforeClass();
 
 		self::$user = new User(
-			self::$server->get(),
+			self::$server,
 			self::$auth
 		);
 	}
@@ -88,7 +88,7 @@ class UserTest extends TestCase
 		// Login as test user
 		$auth = new AuthUser(self::$testUsername, self::$testPassword);
 		$user = new User(
-			self::$server->get(),
+			self::$server,
 			$auth
 		);
 

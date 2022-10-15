@@ -14,13 +14,13 @@ class ApplicationMessageTest extends TestCase
 		parent::setUpBeforeClass();
 
 		self::$applicationMessage = new ApplicationMessage(
-			self::$server->get(),
+			self::$server,
 			self::$auth
 		);
 
 		// Create application to use when testing
 		$application = new Application(
-			self::$server->get(),
+			self::$server,
 			self::$auth
 		);
 
@@ -32,7 +32,7 @@ class ApplicationMessageTest extends TestCase
 	{
 		// Delete test application
 		$application = new Application(
-			self::$server->get(),
+			self::$server,
 			self::$auth
 		);
 

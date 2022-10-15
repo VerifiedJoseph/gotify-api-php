@@ -13,7 +13,7 @@ class ApplicationTest extends TestCase
 		parent::setUpBeforeClass();
 
 		self::$application = new Application(
-			self::$server->get(),
+			self::$server,
 			self::$auth
 		);
 	}
