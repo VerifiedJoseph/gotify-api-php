@@ -14,7 +14,7 @@ class ClientTest extends TestCase
 
 		self::$client = new Client(
 			self::$server->get(),
-			self::$auth->get()
+			self::$auth
 		);
 	}
 

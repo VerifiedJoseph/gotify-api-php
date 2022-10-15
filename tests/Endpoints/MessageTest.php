@@ -23,13 +23,13 @@ class MessageTest extends TestCase
 
 		self::$message = new Message(
 			self::$server->get(),
-			self::$auth->get()
+			self::$auth
 		);
 
 		// Create application to use when testing creating a message
 		$application = new Application(
 			self::$server->get(),
-			self::$auth->get()
+			self::$auth
 		);
 
 		$app = $application->create('test app', '');
@@ -42,7 +42,7 @@ class MessageTest extends TestCase
 		// Delete test application
 		$application = new Application(
 			self::$server->get(),
-			self::$auth->get()
+			self::$auth
 		);
 
 		$application->delete(self::$appId);
@@ -57,7 +57,7 @@ class MessageTest extends TestCase
 		$auth = new Token(self::$appToken);
 		$endpoint = new Message(
 			self::$server->get(),
-			$auth->get()
+			$auth
 		);
 
 		$message = $endpoint->create(
@@ -90,7 +90,7 @@ class MessageTest extends TestCase
 		$auth = new Token(self::$appToken);
 		$endpoint = new Message(
 			self::$server->get(),
-			$auth->get()
+			$auth
 		);
 
 		$extras = array(

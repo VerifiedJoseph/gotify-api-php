@@ -14,7 +14,7 @@ class ApplicationTest extends TestCase
 
 		self::$application = new Application(
 			self::$server->get(),
-			self::$auth->get()
+			self::$auth
 		);
 	}
 

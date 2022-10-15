@@ -14,7 +14,7 @@ class PluginTest extends TestCase
 
 		self::$plugin = new Plugin(
 			self::$server->get(),
-			self::$auth->get()
+			self::$auth
 		);
 	}
 
