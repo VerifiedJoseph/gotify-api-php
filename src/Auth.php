@@ -11,9 +11,12 @@ abstract class Auth
 	protected string $method = '';
 
 	/**
-	 * Get authentication
+	 * Get authentication method
 	 *
-	 * @return array<string, string> Returns array with auth method and values
+	 * @return string
 	 */
-	abstract public function get();
+	final public function getAuthMethod(): string
+	{
+		return $this->method;
+	}
 }
