@@ -28,13 +28,10 @@ class Token extends Auth
 	/**
 	 * Get authentication token
 	 *
-	 * @return array<string, string> Returns array with auth method and token
+	 * @return string
 	 */
-	public function get(): array
+	public function getToken(): string
 	{
-		return array(
-			'method' => $this->method,
-			'token' => $this->token
-		);
+		return $this->token;
 	}
 }
