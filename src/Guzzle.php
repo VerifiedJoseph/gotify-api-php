@@ -30,9 +30,9 @@ final class Guzzle
 	/**
 	 *
 	 * @param string $uri Server URI
-	 * @param array<string, string> $auth Authentication
+	 * @param Auth $auth Authentication
 	 */
-	function __construct(string $uri, array $auth = array())
+	function __construct(string $uri, ?Auth $auth)
 	{
 		$config = $this->getConfig($uri, $auth);
 
@@ -191,11 +191,11 @@ final class Guzzle
 	 * Get GuzzleHttp client config
 	 *
 	 * @param string $uri Server URI
-	 * @param array<string, string> $auth Authentication
+	 * @param ?Auth $auth Authentication
 	 *
 	 * @return array<string, mixed> Returns client config array
 	 */
-	private function getConfig(string $uri, array $auth): array
+	private function getConfig(string $uri, ?Auth $auth): array
 	{
 		$config = array(
 			'base_uri' => $uri,
@@ -215,26 +215,26 @@ final class Guzzle
 	/**
 	 * Get authentication config
 	 *
-	 * @param array<string, string> $auth Authentication
+	 * @param ?Auth $auth Authentication
 	 *
 	 * @return array<string, array<int|string, string>>
 	 */
-	private function getAuthConfig(array $auth): array
+	private function getAuthConfig(?Auth $auth): array
 	{
-		$config = array();
+		$config = [];
 
-		if (isset($auth['method'])) {
-			switch($auth['method']) {
+		if ($auth !== null) {
+			switch($auth->getAuthMethod()) {
 				case 'user':
 					$config[RequestOptions::AUTH] = array(
-						$auth['username'],
-						$auth['password']
+						$auth->getUsername(),
+						$auth->getPassword(),
 					);
 
 					break;
 				case 'token':
 					$config[RequestOptions::HEADERS] = array(
-						'X-Gotify-Key' => $auth['token']
+						'X-Gotify-Key' => $auth->getToken()
 					);
 
 					break;
