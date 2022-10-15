@@ -42,7 +42,7 @@ abstract class TestCase extends BaseTestCase
 	}
 
 	/**
-	 * Retruns app image path
+	 * Returns app image path
 	 */
 	protected function getAppImagePath(): string
 	{
@@ -54,7 +54,7 @@ abstract class TestCase extends BaseTestCase
 	}
 
 	/**
-	 * Retruns app image as a base64 encoded string
+	 * Returns app image as a base64 encoded string
 	 */
 	protected function getAppImageBase64(): string
 	{
