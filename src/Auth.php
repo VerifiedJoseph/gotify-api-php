@@ -3,7 +3,7 @@
 namespace Gotify;
 
 /**
- * Class for setting and vaildating authentication
+ * Class for setting and validating authentication
  */
 abstract class Auth
 {

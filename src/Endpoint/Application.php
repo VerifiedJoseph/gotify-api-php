@@ -21,7 +21,7 @@ class Application extends Api
 	 *
 	 * @return stdClass
 	 *
-	 * @see https://gotify.net/api-docs#/application/getApps API docs for gettings all applications
+	 * @see https://gotify.net/api-docs#/application/getApps API docs for getting all applications
 	 */
 	public function getAll(): stdClass
 	{

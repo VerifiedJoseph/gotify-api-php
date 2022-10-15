@@ -5,7 +5,7 @@ namespace Gotify\Auth;
 use Gotify\Auth;
 
 /**
- * Class for setting and vaildating an authentication token
+ * Class for setting and validating an authentication token
  */
 class Token extends Auth
 {

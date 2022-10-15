@@ -25,7 +25,7 @@ class ApplicationMessage extends Api
 	 *
 	 * @return stdClass
 	 *
-	 * @see https://gotify.net/api-docs#/message/getAppMessages API docs for gettings all messages for an application
+	 * @see https://gotify.net/api-docs#/message/getAppMessages API docs for getting all messages for an application
 	 */
 	public function getAll(int $id, int $limit = 100, int $since = 0): stdClass
 	{
