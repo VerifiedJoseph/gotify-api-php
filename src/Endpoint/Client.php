@@ -21,7 +21,7 @@ class Client extends Api
 	 *
 	 * @return stdClass
 	 *
-	 * @see https://gotify.net/api-docs#/client/getClients API docs for gettings all clients
+	 * @see https://gotify.net/api-docs#/client/getClients API docs for getting all clients
 	 */
 	public function getAll(): stdClass
 	{

@@ -29,7 +29,7 @@ try {
 		admin: false,
 	);
 
-	// Dsiplay user details
+	// Display user details
 	echo 'Id: ' . $details->name . PHP_EOL;
 	echo 'Username: ' . $details->name . PHP_EOL;
 	echo 'Is admin: ' . $details->admin . PHP_EOL;
