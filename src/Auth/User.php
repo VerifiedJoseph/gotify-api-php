@@ -43,4 +43,24 @@ class User extends Auth
 			'password' => $this->password
 		);
 	}
+
+	/**
+	 * Get username
+	 *
+	 * @return string
+	 */
+	public function getUsername(): string
+	{
+		return $this->username;
+	}
+
+	/**
+	 * Get password
+	 *
+	 * @return string
+	 */
+	public function getPassword(): string
+	{
+		return $this->password;
+	}
 }
