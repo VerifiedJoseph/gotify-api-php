@@ -14,7 +14,12 @@ Class: [Token](../src/Auth/Token.php)
 
 ### Methods
 
-Get token and authentication method
+Get authentication method
+```PHP
+getAuthMethod(): string
+```
+
+Get token
 
 ```PHP
 get(): array
@@ -33,8 +38,19 @@ Class: [User](../src/Auth/User.php)
 
 ### Methods
 
-Get username, password and authentication method
+Get authentication method
+```PHP
+getAuthMethod(): string
+```
+
+Get username
 
 ```PHP
-get(): array
+getUsername(): string
+```
+
+Get password
+
+```PHP
+getPassword(): string
 ```
