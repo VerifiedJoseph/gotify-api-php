@@ -14,7 +14,7 @@ Jump to:
 ## Application
 
 ```PHP
-Gotify\Endpoint\Application(string $server, array $auth)
+Gotify\Endpoint\Application(Server $server, ?auth $server)
 ```
 
 Class: [Application](../src/Endpoint/Application.php)
@@ -60,7 +60,7 @@ uploadImage(int $id, string $image): stdClass
 ## ApplicationMessage
 
 ```PHP
-Gotify\Endpoint\ApplicationMessage(string $server, array $auth)
+Gotify\Endpoint\ApplicationMessage(Server $server, ?auth $server)
 ```
 
 Class: [ApplicationMessage](../src/Endpoint/ApplicationMessage.php)
@@ -84,7 +84,7 @@ deleteAll(int $id): boolean
 ## Message
 
 ```PHP
-Gotify\Endpoint\Message(string $server, array $auth)
+Gotify\Endpoint\Message(Server $server, ?auth $server)
 ```
 
 Class: [Message](../src/Endpoint/Message.php)
@@ -151,7 +151,7 @@ deleteAll(): boolean
 ## Client
 
 ```PHP
-Gotify\Endpoint\Client(string $server, array $auth)
+Gotify\Endpoint\Client(Server $server, ?auth $server)
 ```
 
 Class: [Client](../src/Endpoint/Client.php)
@@ -191,7 +191,7 @@ delete(int $id): boolean
 ## User
 
 ```PHP
-Gotify\Endpoint\User(string $server, array $auth)
+Gotify\Endpoint\User(Server $server, ?auth $server)
 ```
 
 Class: [User](../src/Endpoint/User.php)
@@ -248,7 +248,7 @@ delete(int $id): boolean
 ## Health
 
 ```PHP
-Gotify\Endpoint\Health(string $server)
+Gotify\Endpoint\Health(Server $server)
 ```
 
 Class: [Health](../src/Endpoint/Health.php)
@@ -266,7 +266,7 @@ get(): stdClass
 ## Plugin
 
 ```PHP
-Gotify\Endpoint\Plugin(string $server, array $auth)
+Gotify\Endpoint\Plugin(Server $server, ?auth $server)
 ```
 
 Class: [Plugin](../src/Endpoint/Plugin.php)
@@ -314,7 +314,7 @@ disable(int $id): stdClass
 ## Version
 
 ```PHP
-Gotify\Endpoint\Version(string $server)
+Gotify\Endpoint\Version(Server $server)
 ```
 
 Class: [Version](../src/Endpoint/Version.php)
