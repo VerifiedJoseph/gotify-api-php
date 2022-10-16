@@ -14,9 +14,7 @@ try {
 	$server = new Gotify\Server('https://gotify.example.com/');
 
 	// Create Version class instance
-	$version = new Gotify\Endpoint\Version(
-		$server->get()
-	);
+	$version = new Gotify\Endpoint\Version($server);
 
 	// Get version details
 	$details = $version->get();

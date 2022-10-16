@@ -21,10 +21,7 @@ try {
 	$auth = new Token('TokenHere');
 
 	// Create Message class instance
-	$message = new Message(
-		$server->get(),
-		$auth->get()
-	);
+	$message = new Message($server, $auth);
 
 	// Send message and get details
 	$details = $message->create(
@@ -33,7 +30,7 @@ try {
 		priority: Message::PRIORITY_HIGH,
 	);
 
-	// Dsiplay sent message details
+	// Display sent message details
 	echo 'Id: ' . $details->id . PHP_EOL;
 	echo 'Date: ' . $details->date . PHP_EOL;
 	echo 'Title: ' . $details->title . PHP_EOL;

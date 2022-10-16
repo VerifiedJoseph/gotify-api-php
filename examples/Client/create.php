@@ -20,10 +20,7 @@ try {
 	);
 
 	// Create Client class instance
-	$client = new Gotify\Endpoint\Client(
-		$server->get(),
-		$auth->get()
-	);
+	$client = new Gotify\Endpoint\Client($server, $auth);
 
 	// Create a client and get its details
 	$details = $client->create('Example client name');
