@@ -23,18 +23,4 @@ class User extends Auth
 		$this->username = $username;
 		$this->password = $password;
 	}
-
-	/**
-	 * Get authentication
-	 *
-	 * @return array<string, string> Returns array with method, username and password
-	 */
-	public function get(): array
-	{
-		return array(
-			'method' => $this->method,
-			'username' => $this->username,
-			'password' => $this->password
-		);
-	}
 }
