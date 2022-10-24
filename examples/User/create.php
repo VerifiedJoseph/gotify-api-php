@@ -17,10 +17,7 @@ try {
 	$auth = new Gotify\Auth\Token('TokenHere');
 
 	// Create User class instance
-	$user = new Gotify\Endpoint\User(
-		$server->get(),
-		$auth->get()
-	);
+	$user = new Gotify\Endpoint\User($server, $auth);
 
 	// Create a user and get its details
 	$details = $user->create(

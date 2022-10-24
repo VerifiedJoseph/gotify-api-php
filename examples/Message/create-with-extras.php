@@ -23,10 +23,7 @@ try {
 	$auth = new Token('TokenHere');
 
 	// Create Message class instance
-	$message = new Message(
-		$server->get(),
-		$auth->get()
-	);
+	$message = new Message($server, $auth);
 
 	// Message extra for opening a URL on notification click.
 	// https://gotify.net/docs/msgextras#clientnotification

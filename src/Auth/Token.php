@@ -12,9 +12,6 @@ class Token extends Auth
 	/** @var string $method Authentication method */
 	protected string $method = 'token';
 
-	/** @var string $token Authentication token */
-	protected string $token = '';
-
 	/**
 	 * Set authentication token
 	 *
@@ -23,18 +20,5 @@ class Token extends Auth
 	function __construct(string $token)
 	{
 		$this->token = $token;
-	}
-
-	/**
-	 * Get authentication token
-	 *
-	 * @return array<string, string> Returns array with auth method and token
-	 */
-	public function get(): array
-	{
-		return array(
-			'method' => $this->method,
-			'token' => $this->token
-		);
 	}
 }

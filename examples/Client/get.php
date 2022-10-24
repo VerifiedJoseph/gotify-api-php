@@ -17,10 +17,7 @@ try {
 	$auth = new Gotify\Auth\Token('TokenHere');
 
 	// Create Client class instance
-	$client = new Gotify\Endpoint\Client(
-		$server->get(),
-		$auth->get()
-	);
+	$client = new Gotify\Endpoint\Client($server, $auth);
 
 	$clients = $client->getAll();
 

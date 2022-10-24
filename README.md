@@ -28,10 +28,7 @@ $server = new Server('https://gotify.example.com/');
 $auth = new Token('ApplicationTokenHere');
 
 // Create a message class instance
-$message = new Message(
-  $server->get(),
-  $auth->get()
-);
+$message = new Message($server, $auth);
 
 // Send a message
 $message->create(

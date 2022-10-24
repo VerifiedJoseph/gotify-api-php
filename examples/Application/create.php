@@ -17,10 +17,7 @@ try {
 	$auth = new Gotify\Auth\Token('TokenHere');
 
 	// Create Application class instance
-	$application = new Gotify\Endpoint\Application(
-		$server->get(),
-		$auth->get()
-	);
+	$application = new Gotify\Endpoint\Application($server, $auth);
 
 	// Create an application and get its details
 	$details = $application->create(

@@ -17,10 +17,7 @@ try {
 	$auth = new Gotify\Auth\Token('TokenHere');
 
 	// Create Message class instance
-	$message = new Gotify\Endpoint\Message(
-		$server->get(),
-		$auth->get()
-	);
+	$message = new Gotify\Endpoint\Message($server, $auth);
 
 	$messages = $message->getAll();
 

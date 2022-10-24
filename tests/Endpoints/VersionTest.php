@@ -10,7 +10,7 @@ class VersionTest extends TestCase
 	public function testGet(): void
 	{
 		$version = new Version(
-			self::$server->get()
+			self::$server
 		);
 
 		$details = $version->get();

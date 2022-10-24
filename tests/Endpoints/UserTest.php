@@ -17,8 +17,8 @@ class UserTest extends TestCase
 		parent::setUpBeforeClass();
 
 		self::$user = new User(
-			self::$server->get(),
-			self::$auth->get()
+			self::$server,
+			self::$auth
 		);
 	}
 
@@ -79,7 +79,7 @@ class UserTest extends TestCase
 	}
 
 	/**
-	 * Test updating passwrod for the current user
+	 * Test updating password for the current user
 	 *
 	 * @depends testCreate
 	 */
@@ -88,8 +88,8 @@ class UserTest extends TestCase
 		// Login as test user
 		$auth = new AuthUser(self::$testUsername, self::$testPassword);
 		$user = new User(
-			self::$server->get(),
-			$auth->get()
+			self::$server,
+			$auth
 		);
 
 		$updated = $user->updatePassword('NewPassword');

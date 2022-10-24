@@ -13,8 +13,8 @@ class ClientTest extends TestCase
 		parent::setUpBeforeClass();
 
 		self::$client = new Client(
-			self::$server->get(),
-			self::$auth->get()
+			self::$server,
+			self::$auth
 		);
 	}
 

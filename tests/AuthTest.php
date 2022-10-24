@@ -15,16 +15,10 @@ class AuthTest extends TestCase
 		$password = 'password';
 
 		$auth = new User($username, $password);
-		$values = $auth->get();
 
-		$this->assertIsArray($values);
-		$this->assertArrayHasKey('method', $values);
-		$this->assertArrayHasKey('username', $values);
-		$this->assertArrayHasKey('password', $values);
-
-		$this->assertEquals($method, $values['method']);
-		$this->assertEquals($username, $values['username']);
-		$this->assertEquals($password, $values['password']);
+		$this->assertEquals($method, $auth->getAuthMethod());
+		$this->assertEquals($username, $auth->getUsername());
+		$this->assertEquals($password, $auth->getPassword());
 	}
 
 	/**
@@ -36,13 +30,8 @@ class AuthTest extends TestCase
 		$token = 'TokenHere';
 
 		$auth = new Token($token);
-		$values = $auth->get();
 
-		$this->assertIsArray($values);
-		$this->assertArrayHasKey('method', $values);
-		$this->assertArrayHasKey('token', $values);
-
-		$this->assertEquals($method, $values['method']);
-		$this->assertEquals($token, $values['token']);
+		$this->assertEquals($method, $auth->getAuthMethod());
+		$this->assertEquals($token, $auth->getToken());
 	}
 }

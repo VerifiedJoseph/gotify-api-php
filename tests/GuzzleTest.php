@@ -11,7 +11,7 @@ class GuzzleTest extends TestCase
 
 	public static function setUpBeforeClass(): void
 	{
-		self::$guzzle = new Guzzle(self::getHttpBinUri());
+		self::$guzzle = new Guzzle(self::getHttpBinUri(), null);
 	}
 
 	/**
@@ -125,7 +125,7 @@ class GuzzleTest extends TestCase
 			$password
 		);
 
-		$guzzle = new Guzzle(self::getHttpBinUri(), $auth->get());
+		$guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
 		$response = $guzzle->get('basic-auth/' . $username . '/' . $password);
 		$body = (object) Json::decode($response->getBody());
@@ -147,7 +147,7 @@ class GuzzleTest extends TestCase
 
 		$auth = new AuthToken($token);
 
-		$guzzle = new Guzzle(self::getHttpBinUri(), $auth->get());
+		$guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
 		$response = $guzzle->get('get');
 		$body = (object) Json::decode($response->getBody());

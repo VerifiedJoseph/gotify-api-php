@@ -10,7 +10,7 @@ class HealthTest extends TestCase
 	public function testGet(): void
 	{
 		$health = new Health(
-			self::$server->get()
+			self::$server
 		);
 
 		$status = $health->get();

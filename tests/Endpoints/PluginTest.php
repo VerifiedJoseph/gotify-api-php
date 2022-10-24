@@ -13,8 +13,8 @@ class PluginTest extends TestCase
 		parent::setUpBeforeClass();
 
 		self::$plugin = new Plugin(
-			self::$server->get(),
-			self::$auth->get()
+			self::$server,
+			self::$auth
 		);
 	}
 

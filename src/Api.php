@@ -2,6 +2,7 @@
 
 namespace Gotify;
 
+Use Gotify\Server;
 Use Gotify\Guzzle;
 
 /**
@@ -15,11 +16,11 @@ abstract class Api
 	/**
 	 * Create Guzzle instance
 	 *
-	 * @param string $uri Server URI
-	 * @param array<string, string> $auth Authentication
+	 * @param Server $server Server URI
+	 * @param ?Auth $auth Authentication
 	 */
-	final function __construct(string $uri, array $auth = array())
+	final function __construct(Server $server, ?Auth $auth = null)
 	{
-		$this->guzzle = new Guzzle($uri, $auth);
+		$this->guzzle = new Guzzle($server->get(), $auth);
 	}
 }
