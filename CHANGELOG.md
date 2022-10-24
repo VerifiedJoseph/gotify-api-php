@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.7.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.7.0) - 2022-10-43
+
+* Reworked `Auth` and `Server` classes. ([#145](https://github.com/VerifiedJoseph/gotify-api-php/pull/145), [`62a2a98`](https://github.com/VerifiedJoseph/gotify-api-php/commit/62a2a98be18b976c1aa5ce1a864ca5fec61e76ca))
+
 ## [1.6.8](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.6.8) - 2022-09-13
 
 * Updated supported `gotify/server` version from 2.1.5 to 2.1.7. ([#129](https://github.com/VerifiedJoseph/gotify-api-php/pull/129), [`a6e07b0`](https://github.com/VerifiedJoseph/gotify-api-php/commit/a6e07b0ca7862dfa68382e43cde8dcdb5a72ca3c))
