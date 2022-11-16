@@ -1,6 +1,9 @@
 # Composer
 /vendor/
 
+# php-cs-fixer
+.php-cs-fixer.cache
+
 # phpunit
 .phpunit.result.cache
 
