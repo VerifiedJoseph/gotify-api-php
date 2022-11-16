@@ -94,6 +94,8 @@ jobs:
         run: ./vendor/bin/phpmd . github phpmd.ruleset.xml --exclude 'vendor/*'
 
   php-cs-fixer:
+    name: php-cs-fixer (php8.0)
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
