@@ -13,128 +13,128 @@ use stdClass;
  */
 class Message extends Api
 {
-	/**
-	 * High message priority
-	 *
-	 * @see https://github.com/gotify/android#message-priorities
-	 */
-	public const PRIORITY_HIGH = 8;
+    /**
+     * High message priority
+     *
+     * @see https://github.com/gotify/android#message-priorities
+     */
+    public const PRIORITY_HIGH = 8;
 
-	/**
-	 * Default message priority
-	 *
-	 * @see https://github.com/gotify/android#message-priorities
-	 */
-	public const PRIORITY_DEFAULT = 4;
+    /**
+     * Default message priority
+     *
+     * @see https://github.com/gotify/android#message-priorities
+     */
+    public const PRIORITY_DEFAULT = 4;
 
-	/**
-	 * Low message priority
-	 *
-	 * @see https://github.com/gotify/android#message-priorities
-	 */
-	public const PRIORITY_LOW = 1;
+    /**
+     * Low message priority
+     *
+     * @see https://github.com/gotify/android#message-priorities
+     */
+    public const PRIORITY_LOW = 1;
 
-	/**
-	 * Minimum  message priority
-	 *
-	 * @see https://github.com/gotify/android#message-priorities
-	 */
-	public const PRIORITY_MIN = 0;
+    /**
+     * Minimum  message priority
+     *
+     * @see https://github.com/gotify/android#message-priorities
+     */
+    public const PRIORITY_MIN = 0;
 
-	/** @var string $endpoint API endpoint */
-	private string $endpoint = 'message';
+    /** @var string $endpoint API endpoint */
+    private string $endpoint = 'message';
 
-	/**
-	 * Get all messages (ordered by most recent)
-	 *
-	 * @param int $limit Maximum number of messages to return
-	 * @param int $since Return all messages after a message id
-	 *
-	 * @return stdClass
-	 *
-	 * @see https://gotify.net/api-docs#/message/getMessages API docs for getting all messages
-	 */
-	public function getAll(int $limit = 100, int $since = 0): stdClass
-	{
-		$query = array(
-			'limit' => $limit,
-			'since' => $since
-		);
+    /**
+     * Get all messages (ordered by most recent)
+     *
+     * @param int $limit Maximum number of messages to return
+     * @param int $since Return all messages after a message id
+     *
+     * @return stdClass
+     *
+     * @see https://gotify.net/api-docs#/message/getMessages API docs for getting all messages
+     */
+    public function getAll(int $limit = 100, int $since = 0): stdClass
+    {
+        $query = [
+            'limit' => $limit,
+            'since' => $since
+        ];
 
-		$response = $this->guzzle->get($this->endpoint, $query);
-		$messages = Json::decode($response->getBody());
+        $response = $this->guzzle->get($this->endpoint, $query);
+        $messages = Json::decode($response->getBody());
 
-		return (object) $messages;
-	}
+        return (object) $messages;
+    }
 
-	/**
-	 * Create a message
-	 *
-	 * @param string $title	Message title
-	 * @param string $message Message body
-	 * @param int $priority Message priority
-	 * @param array<string, array<string, array<string, mixed>>> $extras Message extras
-	 *
-	 * @return stdClass
-	 *
-	 * @see https://gotify.net/docs/msgextras Documentation for message extras
-	 * @see https://github.com/gotify/android#message-priorities Message priority levels
-	 * @see https://gotify.net/api-docs#/message/createMessage API docs for creating a message
-	 */
-	public function create(string $title, string $message, int $priority = 0, array $extras = array()): stdClass
-	{
-		$data = array(
-			'title' => $title,
-			'message' => $message,
-			'priority' => $priority
-		);
+    /**
+     * Create a message
+     *
+     * @param string $title	Message title
+     * @param string $message Message body
+     * @param int $priority Message priority
+     * @param array<string, array<string, array<string, mixed>>> $extras Message extras
+     *
+     * @return stdClass
+     *
+     * @see https://gotify.net/docs/msgextras Documentation for message extras
+     * @see https://github.com/gotify/android#message-priorities Message priority levels
+     * @see https://gotify.net/api-docs#/message/createMessage API docs for creating a message
+     */
+    public function create(string $title, string $message, int $priority = 0, array $extras = []): stdClass
+    {
+        $data = [
+            'title' => $title,
+            'message' => $message,
+            'priority' => $priority
+        ];
 
-		if (empty($extras) === false) {
-			$data['extras'] = $extras;
-		}
+        if (empty($extras) === false) {
+            $data['extras'] = $extras;
+        }
 
-		$response = $this->guzzle->post($this->endpoint, $data);
-		$message = Json::decode($response->getBody());
+        $response = $this->guzzle->post($this->endpoint, $data);
+        $message = Json::decode($response->getBody());
 
-		return (object) $message;
-	}
+        return (object) $message;
+    }
 
-	/**
-	 * Delete a message
-	 *
-	 * @param int $id Message Id
-	 * @return boolean
-	 *
-	 * @see https://gotify.net/api-docs#/message/deleteMessage API docs for deleting a message
-	 */
-	public function delete(int $id): bool
-	{
-		$response = $this->guzzle->delete($this->endpoint . '/' . $id);
-		$body = $response->getBody()->getContents();
+    /**
+     * Delete a message
+     *
+     * @param int $id Message Id
+     * @return boolean
+     *
+     * @see https://gotify.net/api-docs#/message/deleteMessage API docs for deleting a message
+     */
+    public function delete(int $id): bool
+    {
+        $response = $this->guzzle->delete($this->endpoint . '/' . $id);
+        $body = $response->getBody()->getContents();
 
-		if (empty($body) === true) {
-			return true;
-		}
+        if (empty($body) === true) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * Delete all messages
-	 *
-	 * @return boolean
-	 *
-	 * @see https://gotify.net/api-docs#/message/deleteMessages API docs for deleting all messages
-	 */
-	public function deleteAll(): bool
-	{
-		$response = $this->guzzle->delete($this->endpoint);
-		$body = $response->getBody()->getContents();
+    /**
+     * Delete all messages
+     *
+     * @return boolean
+     *
+     * @see https://gotify.net/api-docs#/message/deleteMessages API docs for deleting all messages
+     */
+    public function deleteAll(): bool
+    {
+        $response = $this->guzzle->delete($this->endpoint);
+        $body = $response->getBody()->getContents();
 
-		if (empty($body) === true) {
-			return true;
-		}
+        if (empty($body) === true) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

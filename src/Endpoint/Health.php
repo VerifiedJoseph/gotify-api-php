@@ -13,21 +13,21 @@ use stdClass;
  */
 class Health extends Api
 {
-	/** @var string $endpoint API endpoint */
-	private string $endpoint = 'health';
+    /** @var string $endpoint API endpoint */
+    private string $endpoint = 'health';
 
-	/**
-	 * Get health information
-	 *
-	 * @return stdClass
-	 *
-	 * @see https://gotify.net/api-docs#/client/getClients API docs for getting health information
-	 */
-	public function get(): stdClass
-	{
-		$response = $this->guzzle->get($this->endpoint);
-		$health = Json::decode($response->getBody());
+    /**
+     * Get health information
+     *
+     * @return stdClass
+     *
+     * @see https://gotify.net/api-docs#/client/getClients API docs for getting health information
+     */
+    public function get(): stdClass
+    {
+        $response = $this->guzzle->get($this->endpoint);
+        $health = Json::decode($response->getBody());
 
-		return (object) $health;
-	}
+        return (object) $health;
+    }
 }
