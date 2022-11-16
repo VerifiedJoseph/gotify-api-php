@@ -5,33 +5,33 @@ use Gotify\Auth\Token;
 
 class AuthTest extends TestCase
 {
-	/**
-	 * Test Auth\User
-	 */
-	public function testUser(): void
-	{
-		$method = 'user';
-		$username = 'username';
-		$password = 'password';
+    /**
+     * Test Auth\User
+     */
+    public function testUser(): void
+    {
+        $method = 'user';
+        $username = 'username';
+        $password = 'password';
 
-		$auth = new User($username, $password);
+        $auth = new User($username, $password);
 
-		$this->assertEquals($method, $auth->getAuthMethod());
-		$this->assertEquals($username, $auth->getUsername());
-		$this->assertEquals($password, $auth->getPassword());
-	}
+        $this->assertEquals($method, $auth->getAuthMethod());
+        $this->assertEquals($username, $auth->getUsername());
+        $this->assertEquals($password, $auth->getPassword());
+    }
 
-	/**
-	 * Test Auth\Token
-	 */
-	public function testToken(): void
-	{
-		$method = 'token';
-		$token = 'TokenHere';
+    /**
+     * Test Auth\Token
+     */
+    public function testToken(): void
+    {
+        $method = 'token';
+        $token = 'TokenHere';
 
-		$auth = new Token($token);
+        $auth = new Token($token);
 
-		$this->assertEquals($method, $auth->getAuthMethod());
-		$this->assertEquals($token, $auth->getToken());
-	}
+        $this->assertEquals($method, $auth->getAuthMethod());
+        $this->assertEquals($token, $auth->getToken());
+    }
 }

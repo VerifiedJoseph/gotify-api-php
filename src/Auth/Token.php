@@ -9,16 +9,16 @@ use Gotify\Auth;
  */
 class Token extends Auth
 {
-	/** @var string $method Authentication method */
-	protected string $method = 'token';
+    /** @var string $method Authentication method */
+    protected string $method = 'token';
 
-	/**
-	 * Set authentication token
-	 *
-	 * @param string $token Authentication token
-	 */
-	function __construct(string $token)
-	{
-		$this->token = $token;
-	}
+    /**
+     * Set authentication token
+     *
+     * @param string $token Authentication token
+     */
+    public function __construct(string $token)
+    {
+        $this->token = $token;
+    }
 }

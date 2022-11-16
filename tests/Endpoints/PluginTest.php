@@ -4,94 +4,94 @@ use Gotify\Endpoint\Plugin;
 
 class PluginTest extends TestCase
 {
-	private static Plugin $plugin;
+    private static Plugin $plugin;
 
-	private static int $pluginId = 1;
+    private static int $pluginId = 1;
 
-	public static function setUpBeforeClass(): void
-	{
-		parent::setUpBeforeClass();
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
 
-		self::$plugin = new Plugin(
-			self::$server,
-			self::$auth
-		);
-	}
+        self::$plugin = new Plugin(
+            self::$server,
+            self::$auth
+        );
+    }
 
-	/**
-	 * Test getting all plugins
-	 */
-	public function testGetAll(): void
-	{
-		$plugins = self::$plugin->getAll();
+    /**
+     * Test getting all plugins
+     */
+    public function testGetAll(): void
+    {
+        $plugins = self::$plugin->getAll();
 
-		$this->assertIsObject($plugins);
-		$this->assertObjectHasAttribute('plugins', $plugins);
+        $this->assertIsObject($plugins);
+        $this->assertObjectHasAttribute('plugins', $plugins);
 
-		if (count($plugins->plugins) > 0) {
-			$this->assertIsObject($plugins->plugins[0]);
+        if (count($plugins->plugins) > 0) {
+            $this->assertIsObject($plugins->plugins[0]);
 
-			$plugin = $plugins->plugins[0];
+            $plugin = $plugins->plugins[0];
 
-			$this->assertObjectHasAttribute('id', $plugin);
-			$this->assertObjectHasAttribute('name', $plugin);
-			$this->assertObjectHasAttribute('token', $plugin);
-		}
-	}
+            $this->assertObjectHasAttribute('id', $plugin);
+            $this->assertObjectHasAttribute('name', $plugin);
+            $this->assertObjectHasAttribute('token', $plugin);
+        }
+    }
 
-	/**
-	 * Test getting config for a plugin
-	 */
-	public function testGetConfig(): void
-	{
-		$config = self::$plugin->getConfig(self::$pluginId);
+    /**
+     * Test getting config for a plugin
+     */
+    public function testGetConfig(): void
+    {
+        $config = self::$plugin->getConfig(self::$pluginId);
 
-		$this->assertNotEmpty($config);
-	}
+        $this->assertNotEmpty($config);
+    }
 
-	/**
-	 * Test updating config for a plugin
-	 */
-	public function testUpdateConfig(): void
-	{
-		$updated = self::$plugin->updateConfig(self::$pluginId, $this->getYaml());
+    /**
+     * Test updating config for a plugin
+     */
+    public function testUpdateConfig(): void
+    {
+        $updated = self::$plugin->updateConfig(self::$pluginId, $this->getYaml());
 
-		$this->assertIsBool($updated);
-		$this->assertEquals(true, $updated);
+        $this->assertIsBool($updated);
+        $this->assertEquals(true, $updated);
 
-		$config = self::$plugin->getConfig(self::$pluginId);
+        $config = self::$plugin->getConfig(self::$pluginId);
 
-		$this->assertEquals($config, $this->getYaml());
-	}
+        $this->assertEquals($config, $this->getYaml());
+    }
 
-	public function testGetDisplayInfo(): void
-	{
-		$info = self::$plugin->getDisplayInfo(self::$pluginId);
+    public function testGetDisplayInfo(): void
+    {
+        $info = self::$plugin->getDisplayInfo(self::$pluginId);
 
-		$this->assertNotEmpty($info);
-	}
+        $this->assertNotEmpty($info);
+    }
 
-	/**
-	 * Test enabling a plugin
-	 */
-	public function testEnable(): void
-	{
-		$enabled = self::$plugin->enable(self::$pluginId);
+    /**
+     * Test enabling a plugin
+     */
+    public function testEnable(): void
+    {
+        $enabled = self::$plugin->enable(self::$pluginId);
 
-		$this->assertIsBool($enabled);
-		$this->assertEquals(true, $enabled);
-	}
+        $this->assertIsBool($enabled);
+        $this->assertEquals(true, $enabled);
+    }
 
-	/**
-	 * Test disabling a plugin
-	 *
-	 * @depends testEnable
-	 */
-	public function testDisable(): void
-	{
-		$disabled = self::$plugin->disable(self::$pluginId);
+    /**
+     * Test disabling a plugin
+     *
+     * @depends testEnable
+     */
+    public function testDisable(): void
+    {
+        $disabled = self::$plugin->disable(self::$pluginId);
 
-		$this->assertIsBool($disabled);
-		$this->assertEquals(true, $disabled);
-	}
+        $this->assertIsBool($disabled);
+        $this->assertEquals(true, $disabled);
+    }
 }

@@ -11,95 +11,95 @@ use Gotify\Auth\User as AuthUser;
  */
 abstract class TestCase extends BaseTestCase
 {
-	protected static string $gotifyUri = 'http://127.0.0.1:8080/';
-	protected static string $httpBinUri = 'https://httpbin.org/';
+    protected static string $gotifyUri = 'http://127.0.0.1:8080/';
+    protected static string $httpBinUri = 'https://httpbin.org/';
 
-	protected static string $username = 'admin';
-	protected static string $password = 'admin';
+    protected static string $username = 'admin';
+    protected static string $password = 'admin';
 
-	protected string $appImage = 'appImage.png';
-	protected string $yaml = 'broadcaster-config.yaml';
+    protected string $appImage = 'appImage.png';
+    protected string $yaml = 'broadcaster-config.yaml';
 
-	protected static Server $server;
-	protected static AuthUser $auth;
+    protected static Server $server;
+    protected static AuthUser $auth;
 
-	public static function setUpBeforeClass(): void
-	{
-		self::$server = new Server(self::getGotifyUri());
-		self::$auth = new AuthUser(self::$username, self::$password);
-	}
+    public static function setUpBeforeClass(): void
+    {
+        self::$server = new Server(self::getGotifyUri());
+        self::$auth = new AuthUser(self::$username, self::$password);
+    }
 
-	/**
-	 * Retruns YAML path
-	 */
-	protected function getYamlPath(): string
-	{
-		$path = __DIR__ . '/TestAssets/' . $this->yaml;
+    /**
+     * Retruns YAML path
+     */
+    protected function getYamlPath(): string
+    {
+        $path = __DIR__ . '/TestAssets/' . $this->yaml;
 
-		$this->assertFileExists($path);
+        $this->assertFileExists($path);
 
-		return $path;
-	}
+        return $path;
+    }
 
-	/**
-	 * Returns app image path
-	 */
-	protected function getAppImagePath(): string
-	{
-		$path = __DIR__ . '/TestAssets/' . $this->appImage;
+    /**
+     * Returns app image path
+     */
+    protected function getAppImagePath(): string
+    {
+        $path = __DIR__ . '/TestAssets/' . $this->appImage;
 
-		$this->assertFileExists($path);
+        $this->assertFileExists($path);
 
-		return $path;
-	}
+        return $path;
+    }
 
-	/**
-	 * Returns app image as a base64 encoded string
-	 */
-	protected function getAppImageBase64(): string
-	{
-		$imageData = (string) file_get_contents($this->getAppImagePath());
-		$imageMimeType = mime_content_type($this->getAppImagePath());
+    /**
+     * Returns app image as a base64 encoded string
+     */
+    protected function getAppImageBase64(): string
+    {
+        $imageData = (string) file_get_contents($this->getAppImagePath());
+        $imageMimeType = mime_content_type($this->getAppImagePath());
 
-		$encoded = base64_encode($imageData);
+        $encoded = base64_encode($imageData);
 
-		return 'data:' . $imageMimeType . ';base64,' . $encoded;
-	}
+        return 'data:' . $imageMimeType . ';base64,' . $encoded;
+    }
 
-	/**
-	 * Retruns example broadcaster config YAML
-	 */
-	protected function getYaml(): string
-	{
-		$data = (string) file_get_contents($this->getYamlPath());
-		return $data;
-	}
+    /**
+     * Retruns example broadcaster config YAML
+     */
+    protected function getYaml(): string
+    {
+        $data = (string) file_get_contents($this->getYamlPath());
+        return $data;
+    }
 
-	/**
-	 * Retruns Gotify server URI
-	 *
-	 * Return value of `self::$gotifyUri` or environment variable `GOTIFY_URI` if set.
-	 */
-	protected static function getGotifyUri(): string
-	{
-		if (getenv('GOTIFY_URI') !== false) {
-			return getenv('GOTIFY_URI');
-		}
+    /**
+     * Retruns Gotify server URI
+     *
+     * Return value of `self::$gotifyUri` or environment variable `GOTIFY_URI` if set.
+     */
+    protected static function getGotifyUri(): string
+    {
+        if (getenv('GOTIFY_URI') !== false) {
+            return getenv('GOTIFY_URI');
+        }
 
-		return self::$gotifyUri;
-	}
+        return self::$gotifyUri;
+    }
 
-	/**
-	 * Retruns httpbin server URI
-	 *
-	 * Return value of `self::$gotifyUri` or  environment variable `HTTPBIN_URI` if set.
-	 */
-	protected static function getHttpBinUri(): string
-	{
-		if (getenv('HTTPBIN_URI') !== false) {
-			return getenv('HTTPBIN_URI');
-		}
+    /**
+     * Retruns httpbin server URI
+     *
+     * Return value of `self::$gotifyUri` or  environment variable `HTTPBIN_URI` if set.
+     */
+    protected static function getHttpBinUri(): string
+    {
+        if (getenv('HTTPBIN_URI') !== false) {
+            return getenv('HTTPBIN_URI');
+        }
 
-		return self::$httpBinUri;
-	}
+        return self::$httpBinUri;
+    }
 }

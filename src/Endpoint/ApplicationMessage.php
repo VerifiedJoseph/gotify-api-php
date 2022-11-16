@@ -13,51 +13,51 @@ use stdClass;
  */
 class ApplicationMessage extends Api
 {
-	/** @var string $endpoint API endpoint */
-	private string $endpoint = 'application';
+    /** @var string $endpoint API endpoint */
+    private string $endpoint = 'application';
 
-	/**
-	 * Get all messages for an application (ordered by most recent)
-	 *
-	 * @param int $id Application Id
-	 * @param int $limit Maximum number of messages to return
-	 * @param int $since Return all messages after a message id
-	 *
-	 * @return stdClass
-	 *
-	 * @see https://gotify.net/api-docs#/message/getAppMessages API docs for getting all messages for an application
-	 */
-	public function getAll(int $id, int $limit = 100, int $since = 0): stdClass
-	{
-		$query = array(
-			'limit' => $limit,
-			'since' => $since
-		);
+    /**
+     * Get all messages for an application (ordered by most recent)
+     *
+     * @param int $id Application Id
+     * @param int $limit Maximum number of messages to return
+     * @param int $since Return all messages after a message id
+     *
+     * @return stdClass
+     *
+     * @see https://gotify.net/api-docs#/message/getAppMessages API docs for getting all messages for an application
+     */
+    public function getAll(int $id, int $limit = 100, int $since = 0): stdClass
+    {
+        $query = [
+            'limit' => $limit,
+            'since' => $since
+        ];
 
-		$response = $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
-		$messages = Json::decode($response->getBody());
+        $response = $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
+        $messages = Json::decode($response->getBody());
 
-		return (object) $messages;
-	}
+        return (object) $messages;
+    }
 
-	/**
-	 * Delete all messages for an application
-	 *
-	 * @param int $id Application Id
-	 *
-	 * @return boolean
-	 *
-	 * @see https://gotify.net/api-docs#/message/deleteAppMessages API docs for deleting all messages for an application
-	 */
-	public function deleteAll(int $id): bool
-	{
-		$response = $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
-		$body = $response->getBody()->getContents();
+    /**
+     * Delete all messages for an application
+     *
+     * @param int $id Application Id
+     *
+     * @return boolean
+     *
+     * @see https://gotify.net/api-docs#/message/deleteAppMessages API docs for deleting all messages for an application
+     */
+    public function deleteAll(int $id): bool
+    {
+        $response = $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
+        $body = $response->getBody()->getContents();
 
-		if (empty($body) === true) {
-			return true;
-		}
+        if (empty($body) === true) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }
