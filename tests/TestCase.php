@@ -30,7 +30,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Retruns YAML path
+     * Returns YAML path
      */
     protected function getYamlPath(): string
     {
@@ -67,7 +67,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Retruns example broadcaster config YAML
+     * Returns example broadcaster config YAML
      */
     protected function getYaml(): string
     {
@@ -76,7 +76,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Retruns Gotify server URI
+     * Returns Gotify server URI
      *
      * Return value of `self::$gotifyUri` or environment variable `GOTIFY_URI` if set.
      */
@@ -90,7 +90,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Retruns httpbin server URI
+     * Returns httpbin server URI
      *
      * Return value of `self::$gotifyUri` or  environment variable `HTTPBIN_URI` if set.
      */

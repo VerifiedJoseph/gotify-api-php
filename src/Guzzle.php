@@ -56,7 +56,7 @@ final class Guzzle
     }
 
     /**
-     * Make POST request a JOSN payload
+     * Make POST request a JSON payload
      *
      * @param string $endpoint API endpoint
      * @param array<string, mixed> $data
@@ -222,7 +222,7 @@ final class Guzzle
         $config = [];
 
         if ($auth !== null) {
-            switch($auth->getAuthMethod()) {
+            switch ($auth->getAuthMethod()) {
                 case 'user':
                     $config[RequestOptions::AUTH] = [
                         $auth->getUsername(),
