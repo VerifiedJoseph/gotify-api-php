@@ -34,6 +34,7 @@
         "friendsofphp/php-cs-fixer": "^3.13"
     },
     "scripts": {
-        "lint": "phpstan && phpcs ."
+        "lint": "phpstan && phpcs .",
+        "fix": "php-cs-fixer fix"
     }
 }
