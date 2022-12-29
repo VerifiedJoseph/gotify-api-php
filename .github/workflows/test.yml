@@ -52,13 +52,13 @@ jobs:
       run: composer install --prefer-dist
 
     #- name: Fetch & setup gotify plugin
-    #  run: bash .ci/setup-plugin.sh
+    #  run: bash .ci/scripts/setup-plugin.sh
 
     - name: Start gotify & httpbin docker containers
       run: docker-compose up -d
 
     - name: Test connections to docker containers
-      run: bash .ci/connections.sh
+      run: bash .ci/scripts/connections.sh
 
     - name: Run phpunit
       run: ./vendor/bin/phpunit
