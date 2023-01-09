@@ -1,0 +1,29 @@
+services:
+  workspace:
+    container_name: workspace
+    build:
+      context: ./docker/workspace
+    tty: true
+    volumes:
+      - ../:/gotify-api-php
+    working_dir: /gotify-api-php
+    environment:
+      - GOTIFY_URI=${GOTIFY_URI}
+      - HTTPBIN_URI=${HTTPBIN_URI}
+
+  gotify:
+    container_name: gotify
+    image: gotify/server:2.2.2
+    ports:
+      - "8080:80"
+    environment:
+      - GOTIFY_DEFAULTUSER_NAME=admin
+      - GOTIFY_DEFAULTUSER_PASS=admin
+      - GOTIFY_DATABASE_DIALECT=sqlite3
+      - GOTIFY_DATABASE_CONNECTION=/app/gotify.db
+
+  httpbin:
+    container_name: httpbin
+    image: kennethreitz/httpbin
+    ports:
+      - "8081:80"
