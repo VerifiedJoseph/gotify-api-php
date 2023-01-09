@@ -29,7 +29,7 @@ class GuzzleTest extends TestCase
         $this->assertIsObject($body);
         $this->assertObjectHasAttribute('args', $body);
         $this->assertObjectHasAttribute('test', $body->args);
-        $this->assertEquals('HelloWorld', $body->args->test);
+        $this->assertEquals('HelloWorld', $body->args->test[0]);
     }
 
     /**
@@ -131,10 +131,10 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('authenticated', $body);
+        $this->assertObjectHasAttribute('authorized', $body);
         $this->assertObjectHasAttribute('user', $body);
 
-        $this->assertEquals(true, $body->authenticated);
+        $this->assertEquals(true, $body->authorized);
         $this->assertEquals($username, $body->user);
     }
 
@@ -158,6 +158,6 @@ class GuzzleTest extends TestCase
 
         $headers = get_object_vars($body->headers);
 
-        $this->assertEquals($token, $headers['X-Gotify-Key']);
+        $this->assertEquals($token, $headers['X-Gotify-Key'][0]);
     }
 }
