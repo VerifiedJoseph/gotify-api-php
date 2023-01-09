@@ -24,6 +24,6 @@ services:
 
   httpbin:
     container_name: httpbin
-    image: mccutchen/go-httpbin
+    image: mccutchen/go-httpbin:v2.5.3
     ports:
       - "8081:8080"
