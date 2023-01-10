@@ -8,3 +8,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/workspace/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "php:8.1-alpine3.17"
+        versions: ["8.2"]
