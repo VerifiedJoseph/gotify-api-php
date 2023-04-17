@@ -15,15 +15,9 @@ on:
 
 jobs:
   phpstan:
-    name: PHPStan (php${{ matrix.php-version }})
+    name: PHPStan
 
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ['8.0', '8.1']
-        operating-system: [ubuntu-22.04]
-
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.5.0
@@ -31,7 +25,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@2.24.0
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: '8.1'
 
       - name: "Validate composer.json and composer.lock"
         run: "composer validate --strict"
@@ -43,58 +37,7 @@ jobs:
         run: ./vendor/bin/phpstan analyse
 
   phpcs:
-    name: phpcs (php${{ matrix.php-version }})
-
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ['8.0', '8.1']
-        operating-system: [ubuntu-22.04]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3.5.0
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.24.0
-        with:
-          php-version: ${{ matrix.php-version }}
-          tools: cs2pr
-
-      - name: Install dependencies with composer
-        run: composer install --prefer-dist
-
-      - name: Run phpcs
-        run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
-
-  phpmd:
-    name: phpmd (php${{ matrix.php-version }})
-
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ['8.0', '8.1']
-        operating-system: [ubuntu-22.04]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.0
-
-      - name: Setup PHP environment
-        uses: shivammathur/setup-php@2.24.0
-        with:
-          php-version: ${{ matrix.php-version }}
-
-      - name: Install dependencies with composer
-        run: composer install --prefer-dist
-
-      - name: Run phpmd
-        run: ./vendor/bin/phpmd . github phpmd.ruleset.xml --exclude 'vendor/*'
-
-  php-cs-fixer:
-    name: php-cs-fixer (php8.0)
+    name: phpcs
 
     runs-on: ubuntu-22.04
     steps:
@@ -104,7 +47,46 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@2.24.0
         with:
-          php-version: '8.0'
+          php-version: '8.1'
+          tools: cs2pr
+
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
+
+      - name: Run phpcs
+        run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
+
+  phpmd:
+    name: phpmd
+
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.0
+
+      - name: Setup PHP environment
+        uses: shivammathur/setup-php@2.24.0
+        with:
+          php-version: '8.1'
+
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
+
+      - name: Run phpmd
+        run: ./vendor/bin/phpmd . github phpmd.ruleset.xml --exclude 'vendor/*'
+
+  php-cs-fixer:
+    name: php-cs-fixer
+
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.5.0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.24.0
+        with:
+          php-version: '8.1'
 
       - name: Install dependencies with composer
         run: composer install --prefer-dist
