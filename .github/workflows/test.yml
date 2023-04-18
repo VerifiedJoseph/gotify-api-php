@@ -14,6 +14,9 @@ on:
       - ".github/workflows/test.yml"
       - ".ci/docker-compose.yml"
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: PHPUnit
