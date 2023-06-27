@@ -76,6 +76,17 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
+     * Returns example broadcaster config YAML as base64 encoded string
+     */
+    protected function getYamlBase64(): string
+    {
+        $data = (string) file_get_contents($this->getYamlPath());
+        $encoded = base64_encode($data);
+
+        return 'data:application/x-yaml;base64,' . $encoded;
+    }
+
+    /**
      * Returns Gotify server URI
      *
      * Return value of `self::$gotifyUri` or environment variable `GOTIFY_URI` if set.
