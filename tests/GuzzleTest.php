@@ -62,7 +62,7 @@ class GuzzleTest extends TestCase
 
         $this->assertIsObject($body);
         $this->assertObjectHasAttribute('data', $body);
-        $this->assertEquals($data, $body->data);
+        $this->assertEquals($this->getYamlBase64(), $body->data);
     }
 
     /**
