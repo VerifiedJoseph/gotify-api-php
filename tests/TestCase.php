@@ -30,6 +30,18 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
+     * Returns text fle path
+     */
+    protected function getTextFilePath(): string
+    {
+        $path = __DIR__ . '/TestAssets/file.txt';
+
+        $this->assertFileExists($path);
+
+        return $path;
+    }
+
+    /**
      * Returns YAML path
      */
     protected function getYamlPath(): string
