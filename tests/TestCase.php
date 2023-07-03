@@ -30,6 +30,18 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
+     * Returns text fle path
+     */
+    protected function getTextFilePath(): string
+    {
+        $path = __DIR__ . '/TestAssets/file.txt';
+
+        $this->assertFileExists($path);
+
+        return $path;
+    }
+
+    /**
      * Returns YAML path
      */
     protected function getYamlPath(): string
@@ -73,6 +85,17 @@ abstract class TestCase extends BaseTestCase
     {
         $data = (string) file_get_contents($this->getYamlPath());
         return $data;
+    }
+
+    /**
+     * Returns example broadcaster config YAML as base64 encoded string
+     */
+    protected function getYamlBase64(): string
+    {
+        $data = (string) file_get_contents($this->getYamlPath());
+        $encoded = base64_encode($data);
+
+        return 'data:application/x-yaml;base64,' . $encoded;
     }
 
     /**
