@@ -71,7 +71,7 @@ class GuzzleTest extends TestCase
     public function testPostFile(): void
     {
         $data = [
-            'file' => $this->getAppImagePath()
+            'file' => $this->getTextFilePath()
         ];
 
         $response = self::$guzzle->postFile('post', $data);
@@ -80,7 +80,7 @@ class GuzzleTest extends TestCase
         $this->assertIsObject($body);
         $this->assertObjectHasAttribute('files', $body);
         $this->assertObjectHasAttribute('file', $body->files);
-        $this->assertEquals($this->getAppImageBase64(), $body->files->file);
+        $this->assertEquals(file_get_contents($this->getTextFilePath()), $body->files->file[0]);
     }
 
     /**
