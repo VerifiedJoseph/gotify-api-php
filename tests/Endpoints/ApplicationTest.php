@@ -32,9 +32,9 @@ class ApplicationTest extends TestCase
         );
 
         $this->assertIsObject($created);
-        $this->assertObjectHasAttribute('id', $created);
-        $this->assertObjectHasAttribute('name', $created);
-        $this->assertObjectHasAttribute('description', $created);
+        $this->assertObjectHasProperty('id', $created);
+        $this->assertObjectHasProperty('name', $created);
+        $this->assertObjectHasProperty('description', $created);
 
         $this->assertEquals($name, $created->name);
         $this->assertEquals($description, $created->description);
@@ -52,17 +52,17 @@ class ApplicationTest extends TestCase
         $applications = self::$application->getAll();
 
         $this->assertIsObject($applications);
-        $this->assertObjectHasAttribute('apps', $applications);
+        $this->assertObjectHasProperty('apps', $applications);
 
         if (count($applications->apps) > 0) {
             $this->assertIsObject($applications->apps[0]);
 
             $app = $applications->apps[0];
 
-            $this->assertObjectHasAttribute('id', $app);
-            $this->assertObjectHasAttribute('name', $app);
-            $this->assertObjectHasAttribute('description', $app);
-            $this->assertObjectHasAttribute('token', $app);
+            $this->assertObjectHasProperty('id', $app);
+            $this->assertObjectHasProperty('name', $app);
+            $this->assertObjectHasProperty('description', $app);
+            $this->assertObjectHasProperty('token', $app);
         }
     }
 
@@ -83,8 +83,8 @@ class ApplicationTest extends TestCase
         );
 
         $this->assertIsObject($updated);
-        $this->assertObjectHasAttribute('name', $updated);
-        $this->assertObjectHasAttribute('description', $updated);
+        $this->assertObjectHasProperty('name', $updated);
+        $this->assertObjectHasProperty('description', $updated);
 
         $this->assertEquals($name, $updated->name);
         $this->assertEquals($description, $updated->description);
@@ -101,7 +101,7 @@ class ApplicationTest extends TestCase
         $uploaded = self::$application->uploadImage(self::$appId, $path);
 
         $this->assertIsObject($uploaded);
-        $this->assertObjectHasAttribute('image', $uploaded);
+        $this->assertObjectHasProperty('image', $uploaded);
     }
 
     /**
