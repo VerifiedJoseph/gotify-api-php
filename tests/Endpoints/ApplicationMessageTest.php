@@ -47,7 +47,7 @@ class ApplicationMessageTest extends TestCase
         $messages = self::$applicationMessage->getAll(self::$appId);
 
         $this->assertIsObject($messages);
-        $this->assertObjectHasAttribute('messages', $messages);
+        $this->assertObjectHasProperty('messages', $messages);
     }
 
     /**

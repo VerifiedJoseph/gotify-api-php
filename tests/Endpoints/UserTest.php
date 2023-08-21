@@ -31,9 +31,9 @@ class UserTest extends TestCase
 
         $this->assertIsObject($current);
 
-        $this->assertObjectHasAttribute('id', $current);
-        $this->assertObjectHasAttribute('name', $current);
-        $this->assertObjectHasAttribute('admin', $current);
+        $this->assertObjectHasProperty('id', $current);
+        $this->assertObjectHasProperty('name', $current);
+        $this->assertObjectHasProperty('admin', $current);
 
         $this->assertEquals(self::$username, $current->name);
     }
@@ -56,7 +56,7 @@ class UserTest extends TestCase
         $users = self::$user->getAll();
 
         $this->assertIsObject($users);
-        $this->assertObjectHasAttribute('users', $users);
+        $this->assertObjectHasProperty('users', $users);
 
         if (count($users->users) > 0) {
             $this->assertIsObject($users->users[0]);
@@ -113,8 +113,8 @@ class UserTest extends TestCase
         );
 
         $this->assertIsObject($updated);
-        $this->assertObjectHasAttribute('name', $updated);
-        $this->assertObjectHasAttribute('id', $updated);
+        $this->assertObjectHasProperty('name', $updated);
+        $this->assertObjectHasProperty('id', $updated);
 
         $this->assertEquals(self::$userId, $updated->id);
         $this->assertEquals($newTestUsername, $updated->name);

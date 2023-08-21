@@ -26,16 +26,16 @@ class PluginTest extends TestCase
         $plugins = self::$plugin->getAll();
 
         $this->assertIsObject($plugins);
-        $this->assertObjectHasAttribute('plugins', $plugins);
+        $this->assertObjectHasProperty('plugins', $plugins);
 
         if (count($plugins->plugins) > 0) {
             $this->assertIsObject($plugins->plugins[0]);
 
             $plugin = $plugins->plugins[0];
 
-            $this->assertObjectHasAttribute('id', $plugin);
-            $this->assertObjectHasAttribute('name', $plugin);
-            $this->assertObjectHasAttribute('token', $plugin);
+            $this->assertObjectHasProperty('id', $plugin);
+            $this->assertObjectHasProperty('name', $plugin);
+            $this->assertObjectHasProperty('token', $plugin);
         }
     }
 

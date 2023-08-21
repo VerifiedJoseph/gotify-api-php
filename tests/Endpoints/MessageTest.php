@@ -67,10 +67,10 @@ class MessageTest extends TestCase
         );
 
         $this->assertIsObject($message);
-        $this->assertObjectHasAttribute('id', $message);
-        $this->assertObjectHasAttribute('title', $message);
-        $this->assertObjectHasAttribute('message', $message);
-        $this->assertObjectHasAttribute('priority', $message);
+        $this->assertObjectHasProperty('id', $message);
+        $this->assertObjectHasProperty('title', $message);
+        $this->assertObjectHasProperty('message', $message);
+        $this->assertObjectHasProperty('priority', $message);
 
         $this->assertEquals(self::$testTitle, $message->title);
         $this->assertEquals(self::$testMessage, $message->message);
@@ -107,10 +107,10 @@ class MessageTest extends TestCase
         );
 
         $this->assertIsObject($message);
-        $this->assertObjectHasAttribute('extras', $message);
-        $this->assertObjectHasAttribute('client::notification', $message->extras);
-        $this->assertObjectHasAttribute('click', $message->extras->{'client::notification'});
-        $this->assertObjectHasAttribute('url', $message->extras->{'client::notification'}->click);
+        $this->assertObjectHasProperty('extras', $message);
+        $this->assertObjectHasProperty('client::notification', $message->extras);
+        $this->assertObjectHasProperty('click', $message->extras->{'client::notification'});
+        $this->assertObjectHasProperty('url', $message->extras->{'client::notification'}->click);
 
         $this->assertEquals(
             $extras['client::notification']['click']['url'],
@@ -126,7 +126,7 @@ class MessageTest extends TestCase
         $messages = self::$message->getAll();
 
         $this->assertIsObject($messages);
-        $this->assertObjectHasAttribute('messages', $messages);
+        $this->assertObjectHasProperty('messages', $messages);
     }
 
     /**
