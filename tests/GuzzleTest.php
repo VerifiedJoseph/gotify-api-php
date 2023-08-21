@@ -27,8 +27,8 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('args', $body);
-        $this->assertObjectHasAttribute('test', $body->args);
+        $this->assertObjectHasProperty('args', $body);
+        $this->assertObjectHasProperty('test', $body->args);
         $this->assertEquals('HelloWorld', $body->args->test[0]);
     }
 
@@ -45,8 +45,8 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('json', $body);
-        $this->assertObjectHasAttribute('test', $body->json);
+        $this->assertObjectHasProperty('json', $body);
+        $this->assertObjectHasProperty('test', $body->json);
         $this->assertEquals('HelloWorld', $body->json->test);
     }
 
@@ -61,7 +61,7 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('data', $body);
+        $this->assertObjectHasProperty('data', $body);
         $this->assertEquals($this->getYamlBase64(), $body->data);
     }
 
@@ -78,8 +78,8 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('files', $body);
-        $this->assertObjectHasAttribute('file', $body->files);
+        $this->assertObjectHasProperty('files', $body);
+        $this->assertObjectHasProperty('file', $body->files);
         $this->assertEquals(file_get_contents($this->getTextFilePath()), $body->files->file[0]);
     }
 
@@ -96,8 +96,8 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('json', $body);
-        $this->assertObjectHasAttribute('test', $body->json);
+        $this->assertObjectHasProperty('json', $body);
+        $this->assertObjectHasProperty('test', $body->json);
         $this->assertEquals('HelloWorld', $body->json->test);
     }
 
@@ -131,8 +131,8 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('authorized', $body);
-        $this->assertObjectHasAttribute('user', $body);
+        $this->assertObjectHasProperty('authorized', $body);
+        $this->assertObjectHasProperty('user', $body);
 
         $this->assertEquals(true, $body->authorized);
         $this->assertEquals($username, $body->user);
@@ -153,8 +153,8 @@ class GuzzleTest extends TestCase
         $body = (object) Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('headers', $body);
-        $this->assertObjectHasAttribute('X-Gotify-Key', $body->headers);
+        $this->assertObjectHasProperty('headers', $body);
+        $this->assertObjectHasProperty('X-Gotify-Key', $body->headers);
 
         $headers = get_object_vars($body->headers);
 
