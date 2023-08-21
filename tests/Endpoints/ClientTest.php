@@ -30,9 +30,9 @@ class ClientTest extends TestCase
         );
 
         $this->assertIsObject($client);
-        $this->assertObjectHasAttribute('id', $client);
-        $this->assertObjectHasAttribute('name', $client);
-        $this->assertObjectHasAttribute('token', $client);
+        $this->assertObjectHasProperty('id', $client);
+        $this->assertObjectHasProperty('name', $client);
+        $this->assertObjectHasProperty('token', $client);
 
         $this->assertEquals($name, $client->name);
 
@@ -49,16 +49,16 @@ class ClientTest extends TestCase
         $clients = self::$client->getAll();
 
         $this->assertIsObject($clients);
-        $this->assertObjectHasAttribute('clients', $clients);
+        $this->assertObjectHasProperty('clients', $clients);
 
         if (count($clients->clients) > 0) {
             $this->assertIsObject($clients->clients[0]);
 
             $client = $clients->clients[0];
 
-            $this->assertObjectHasAttribute('id', $client);
-            $this->assertObjectHasAttribute('name', $client);
-            $this->assertObjectHasAttribute('token', $client);
+            $this->assertObjectHasProperty('id', $client);
+            $this->assertObjectHasProperty('name', $client);
+            $this->assertObjectHasProperty('token', $client);
         }
     }
 
@@ -77,7 +77,7 @@ class ClientTest extends TestCase
         );
 
         $this->assertIsObject($updated);
-        $this->assertObjectHasAttribute('name', $updated);
+        $this->assertObjectHasProperty('name', $updated);
 
         $this->assertEquals($name, $updated->name);
     }
