@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.7.11](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.7.11) - 2023-09-17
+
+* Endpoint\Client: Added `lastUsed` value to tests & code examples. ([#271](https://github.com/VerifiedJoseph/gotify-api-php/pull/271), [`38c834d`](https://github.com/VerifiedJoseph/gotify-api-php/commit/38c834d6bdf74aa904927859f960605ee183efa1))
+* Updated supported `gotify/server` version from 2.3.0 to 2.4.0. ([#270](https://github.com/VerifiedJoseph/gotify-api-php/pull/270), [`5e7e6ee`](https://github.com/VerifiedJoseph/gotify-api-php/commit/5e7e6ee317ac83d9fd74f9a1e0bd9135c4987f18))
+
 ## [1.7.10](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.7.10) - 2023-08-28
 
 * Updated dependency `guzzlehttp/guzzle` from 7.7.0 to 7.8.0 ([#263](https://github.com/VerifiedJoseph/gotify-api-php/pull/263), [`ba6feba`](https://github.com/VerifiedJoseph/gotify-api-php/commit/ba6febaf9d2ea9e8ffba77a7b8068b75361b4669))
