@@ -59,6 +59,7 @@ class ClientTest extends TestCase
             $this->assertObjectHasProperty('id', $client);
             $this->assertObjectHasProperty('name', $client);
             $this->assertObjectHasProperty('token', $client);
+            $this->assertObjectHasProperty('lastUsed', $client);
         }
     }
 
