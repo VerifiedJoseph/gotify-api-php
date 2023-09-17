@@ -8,7 +8,6 @@
   <testsuites>
     <testsuite name="gotify-api-php">
       <directory suffix=".php">./tests/</directory>
-      <exclude>./tests/Endpoints/PluginTest.php</exclude>
     </testsuite>
   </testsuites>
 </phpunit>
