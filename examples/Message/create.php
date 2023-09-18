@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 	Code example for sending a message
+ *  Code example for sending a message
  */
 
 include '../vendor/autoload.php';

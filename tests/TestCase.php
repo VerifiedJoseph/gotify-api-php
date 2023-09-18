@@ -1,7 +1,6 @@
 <?php
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
-
 use Gotify\Server;
 use Gotify\Auth\User as AuthUser;
 

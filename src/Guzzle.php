@@ -6,13 +6,10 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
-
-use Gotify\Exception\GotifyException;
-use Gotify\Exception\EndpointException;
-
-// Guzzle exceptions
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use Gotify\Exception\GotifyException;
+use Gotify\Exception\EndpointException;
 
 /**
  * Class for making HTTP requests using GuzzleHttp.
