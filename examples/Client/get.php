@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 	Code example for getting a list of clients
+ *  Code example for getting a list of clients
  */
 
 include '../vendor/autoload.php';

@@ -3,7 +3,6 @@
 namespace Gotify;
 
 use stdClass;
-
 use JsonException;
 use Gotify\Exception\GotifyException;
 

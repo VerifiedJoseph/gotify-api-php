@@ -70,7 +70,7 @@ class Message extends Api
     /**
      * Create a message
      *
-     * @param string $title	Message title
+     * @param string $title Message title
      * @param string $message Message body
      * @param int $priority Message priority
      * @param array<string, array<string, array<string, mixed>>> $extras Message extras

@@ -1,9 +1,6 @@
 # Composer
 /vendor/
 
-# php-cs-fixer
-.php-cs-fixer.cache
-
 # phpunit
 .phpunit.result.cache
 
@@ -27,6 +24,3 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# =========================
-# Operating System Files
-# =========================

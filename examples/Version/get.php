@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 	Code example for getting server version details
+ *  Code example for getting server version details
  */
 
 include '../vendor/autoload.php';

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 	Code example for getting messages
+ *  Code example for getting messages
  */
 
 include '../vendor/autoload.php';
