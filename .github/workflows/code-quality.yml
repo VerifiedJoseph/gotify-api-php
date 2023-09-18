@@ -57,5 +57,5 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Run phpcs
-        run: composer phpcs . --report=checkstyle | cs2pr
+        run: composer lint-phpcs-action
 
