@@ -37,7 +37,7 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse
+        run: composer lint-phpstan
 
   phpcs:
     name: phpcs
@@ -57,5 +57,5 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Run phpcs
-        run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
+        run: composer phpcs . --report=checkstyle | cs2pr
 
