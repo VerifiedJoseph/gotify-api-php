@@ -9,7 +9,7 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "docker"
-    directory: "/.devcontainer/docker/workspace/"
+    directory: "/.devcontainer/workspace/"
     schedule:
       interval: "weekly"
     ignore:
