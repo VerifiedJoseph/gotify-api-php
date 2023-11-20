@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.8.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.8.0) - 2023-11-20
+
+- Dropped support for PHP 8.0. ([#288](https://github.com/VerifiedJoseph/gotify-api-php/pull/288), [`d844e96`](https://github.com/VerifiedJoseph/gotify-api-php/commit/d844e967d7e41ea333637c1d21cd82d2b18d3854))
+
 ## [1.7.11](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.7.11) - 2023-09-17
 
 * Endpoint\Client: Added `lastUsed` value to tests & code examples. ([#271](https://github.com/VerifiedJoseph/gotify-api-php/pull/271), [`38c834d`](https://github.com/VerifiedJoseph/gotify-api-php/commit/38c834d6bdf74aa904927859f960605ee183efa1))
