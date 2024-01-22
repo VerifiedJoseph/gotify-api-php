@@ -2,7 +2,8 @@ services:
   workspace:
     container_name: workspace
     build:
-      context: ./workspace
+      context: ./dockerfiles
+      dockerfile: ./workspace.dockerfile
     tty: true
     volumes:
       - ../:/gotify-api-php
@@ -13,7 +14,9 @@ services:
 
   gotify:
     container_name: gotify
-    image: gotify/server:2.4.0
+    build:
+      context: ./dockerfiles
+      dockerfile: ./gotify.dockerfile
     ports:
       - "8080:80"
     environment:
@@ -24,7 +27,9 @@ services:
 
   httpbin:
     container_name: httpbin
-    image: mccutchen/go-httpbin:v2.13.2
+    build:
+      context: ./dockerfiles
+      dockerfile: ./httpbin.dockerfile
     ports:
       - "8081:80"
     command: ["go-httpbin", "-port", "80"]
