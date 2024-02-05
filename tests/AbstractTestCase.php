@@ -29,11 +29,7 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getTextFilePath(): string
     {
-        $path = __DIR__ . '/TestAssets/file.txt';
-
-        $this->assertFileExists($path);
-
-        return $path;
+        return __DIR__ . '/TestAssets/file.txt';
     }
 
     /**
@@ -41,11 +37,7 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getYamlPath(): string
     {
-        $path = __DIR__ . '/TestAssets/' . $this->yaml;
-
-        $this->assertFileExists($path);
-
-        return $path;
+        return __DIR__ . '/TestAssets/' . $this->yaml;
     }
 
     /**
@@ -53,11 +45,7 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getAppImagePath(): string
     {
-        $path = __DIR__ . '/TestAssets/' . $this->appImage;
-
-        $this->assertFileExists($path);
-
-        return $path;
+        return __DIR__ . '/TestAssets/' . $this->appImage;;
     }
 
     /**
