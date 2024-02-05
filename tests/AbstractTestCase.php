@@ -1,14 +1,10 @@
 <?php
 
-use PHPUnit\Framework\TestCase as BaseTestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Gotify\Server;
-use Gotify\Auth\User as AuthUser;
+use Gotify\Auth\User as Auth;
 
-/**
- * Class TestCase
- * @SuppressWarnings(PHPMD.NumberOfChildren)
- */
-abstract class TestCase extends BaseTestCase
+abstract class AbstractTestCase extends TestCase
 {
     protected static string $gotifyUri = 'http://127.0.0.1:8080/';
     protected static string $httpBinUri = 'https://httpbin.org/';
@@ -16,16 +12,13 @@ abstract class TestCase extends BaseTestCase
     protected static string $username = 'admin';
     protected static string $password = 'admin';
 
-    protected string $appImage = 'appImage.png';
-    protected string $yaml = 'broadcaster-config.yaml';
-
     protected static Server $server;
-    protected static AuthUser $auth;
+    protected static Auth $auth;
 
     public static function setUpBeforeClass(): void
     {
         self::$server = new Server(self::getGotifyUri());
-        self::$auth = new AuthUser(self::$username, self::$password);
+        self::$auth = new Auth(self::$username, self::$password);
     }
 
     /**
@@ -33,11 +26,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function getTextFilePath(): string
     {
-        $path = __DIR__ . '/TestAssets/file.txt';
-
-        $this->assertFileExists($path);
-
-        return $path;
+        return __DIR__ . '/TestAssets/file.txt';
     }
 
     /**
@@ -45,11 +34,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function getYamlPath(): string
     {
-        $path = __DIR__ . '/TestAssets/' . $this->yaml;
-
-        $this->assertFileExists($path);
-
-        return $path;
+        return __DIR__ . '/TestAssets/broadcaster-config.yaml';
     }
 
     /**
@@ -57,11 +42,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function getAppImagePath(): string
     {
-        $path = __DIR__ . '/TestAssets/' . $this->appImage;
-
-        $this->assertFileExists($path);
-
-        return $path;
+        return __DIR__ . '/TestAssets/appImage.png';
     }
 
     /**

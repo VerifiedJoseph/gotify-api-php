@@ -3,7 +3,7 @@
 use Gotify\Json;
 use Gotify\Exception\GotifyException;
 
-class JsonTest extends TestCase
+class JsonTest extends AbstractTestCase
 {
     public function testEncodeValid(): void
     {

@@ -2,7 +2,7 @@
 
 use Gotify\Endpoint\Health;
 
-class HealthTest extends TestCase
+class HealthTest extends AbstractTestCase
 {
     /**
      * Test getting server health status

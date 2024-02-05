@@ -3,7 +3,7 @@
 use Gotify\Server;
 use Gotify\Exception\GotifyException;
 
-class ServerTest extends TestCase
+class ServerTest extends AbstractTestCase
 {
     /**
      * Test server URI validator

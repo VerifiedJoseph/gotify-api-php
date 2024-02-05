@@ -3,7 +3,7 @@
 use Gotify\Auth\User as AuthUser;
 use Gotify\Endpoint\User;
 
-class UserTest extends TestCase
+class UserTest extends AbstractTestCase
 {
     private static User $user;
 
