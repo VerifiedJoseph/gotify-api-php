@@ -3,7 +3,7 @@
 use Gotify\Auth\User;
 use Gotify\Auth\Token;
 
-class AuthTest extends TestCase
+class AuthTest extends AbstractTestCase
 {
     /**
      * Test Auth\User

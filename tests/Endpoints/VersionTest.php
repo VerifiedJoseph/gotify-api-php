@@ -2,7 +2,7 @@
 
 use Gotify\Endpoint\Version;
 
-class VersionTest extends TestCase
+class VersionTest extends AbstractTestCase
 {
     /**
      * Test getting server version

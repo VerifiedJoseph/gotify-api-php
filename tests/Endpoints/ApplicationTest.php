@@ -2,7 +2,7 @@
 
 use Gotify\Endpoint\Application;
 
-class ApplicationTest extends TestCase
+class ApplicationTest extends AbstractTestCase
 {
     private static Application $application;
 

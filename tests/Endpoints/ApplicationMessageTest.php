@@ -3,7 +3,7 @@
 use Gotify\Endpoint\Application;
 use Gotify\Endpoint\ApplicationMessage;
 
-class ApplicationMessageTest extends TestCase
+class ApplicationMessageTest extends AbstractTestCase
 {
     private static ApplicationMessage $applicationMessage;
 

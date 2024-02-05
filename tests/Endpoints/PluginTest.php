@@ -2,7 +2,7 @@
 
 use Gotify\Endpoint\Plugin;
 
-class PluginTest extends TestCase
+class PluginTest extends AbstractTestCase
 {
     private static Plugin $plugin;
 

@@ -2,7 +2,7 @@
 
 use Gotify\Endpoint\Client;
 
-class ClientTest extends TestCase
+class ClientTest extends AbstractTestCase
 {
     private static Client $client;
 

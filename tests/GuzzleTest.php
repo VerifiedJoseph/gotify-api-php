@@ -5,7 +5,7 @@ use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
 use Gotify\Auth\User as AuthUser;
 
-class GuzzleTest extends TestCase
+class GuzzleTest extends AbstractTestCase
 {
     private static Guzzle $guzzle;
 

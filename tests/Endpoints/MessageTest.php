@@ -4,7 +4,7 @@ use Gotify\Auth\Token;
 use Gotify\Endpoint\Message;
 use Gotify\Endpoint\Application;
 
-class MessageTest extends TestCase
+class MessageTest extends AbstractTestCase
 {
     private static Message $message;
 
