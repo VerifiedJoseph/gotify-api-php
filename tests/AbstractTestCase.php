@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase as TestCase;
 use Gotify\Server;
-use Gotify\Auth\User as AuthUser;
+use Gotify\Auth\User as Auth;
 
 abstract class AbstractTestCase extends TestCase
 {
@@ -12,16 +12,13 @@ abstract class AbstractTestCase extends TestCase
     protected static string $username = 'admin';
     protected static string $password = 'admin';
 
-    protected string $appImage = 'appImage.png';
-    protected string $yaml = 'broadcaster-config.yaml';
-
     protected static Server $server;
-    protected static AuthUser $auth;
+    protected static Auth $auth;
 
     public static function setUpBeforeClass(): void
     {
         self::$server = new Server(self::getGotifyUri());
-        self::$auth = new AuthUser(self::$username, self::$password);
+        self::$auth = new Auth(self::$username, self::$password);
     }
 
     /**
@@ -37,7 +34,7 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getYamlPath(): string
     {
-        return __DIR__ . '/TestAssets/' . $this->yaml;
+        return __DIR__ . '/TestAssets/broadcaster-config.yaml';
     }
 
     /**
@@ -45,7 +42,7 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getAppImagePath(): string
     {
-        return __DIR__ . '/TestAssets/' . $this->appImage;;
+        return __DIR__ . '/TestAssets/appImage.png';
     }
 
     /**
