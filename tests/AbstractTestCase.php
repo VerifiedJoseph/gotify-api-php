@@ -1,14 +1,10 @@
 <?php
 
-use PHPUnit\Framework\TestCase as BaseTestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Gotify\Server;
 use Gotify\Auth\User as AuthUser;
 
-/**
- * Class TestCase
- * @SuppressWarnings(PHPMD.NumberOfChildren)
- */
-abstract class TestCase extends BaseTestCase
+abstract class AbstractTestCase extends TestCase
 {
     protected static string $gotifyUri = 'http://127.0.0.1:8080/';
     protected static string $httpBinUri = 'https://httpbin.org/';
