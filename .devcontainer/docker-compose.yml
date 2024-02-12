@@ -7,6 +7,7 @@ services:
     tty: true
     volumes:
       - ../:/gotify-api-php
+      - vendor:/gotify-api-php/vendor
     working_dir: /gotify-api-php
     environment:
       - GOTIFY_URI=${GOTIFY_URI}
@@ -33,3 +34,6 @@ services:
     ports:
       - "8081:80"
     command: ["go-httpbin", "-port", "80"]
+
+volumes:
+  vendor:
