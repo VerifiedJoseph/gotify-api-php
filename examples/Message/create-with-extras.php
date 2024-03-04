@@ -34,7 +34,7 @@ try {
     ];
 
     // Send message and get details
-    $sentMessage = $message->create(
+    $details = $message->create(
         title: 'hello?',
         message: 'Hello World',
         priority: Message::PRIORITY_HIGH,
