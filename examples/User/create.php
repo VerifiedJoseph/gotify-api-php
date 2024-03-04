@@ -22,14 +22,14 @@ try {
     // Create a user and get its details
     $details = $user->create(
         name: 'Bob',
-        password: 'BobPassword1',
+        password: 'qwerty1234',
         admin: false,
     );
 
     // Display user details
-    echo 'Id: ' . $details->name . PHP_EOL;
+    echo 'Id: ' . $details->id . PHP_EOL;
     echo 'Username: ' . $details->name . PHP_EOL;
-    echo 'Is admin: ' . $details->admin . PHP_EOL;
+    echo 'Admin status: ' . $details->admin . PHP_EOL;
 } catch (EndpointException | GotifyException $err) {
     echo $err->getMessage();
 }
