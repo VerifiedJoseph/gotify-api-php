@@ -4,6 +4,7 @@ use Gotify\Guzzle;
 use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
 use Gotify\Auth\User as AuthUser;
+use Gotify\Exception\GotifyException;
 
 class GuzzleTest extends AbstractTestCase
 {
@@ -81,6 +82,21 @@ class GuzzleTest extends AbstractTestCase
         $this->assertObjectHasProperty('files', $body);
         $this->assertObjectHasProperty('file', $body->files);
         $this->assertEquals(file_get_contents($this->getTextFilePath()), $body->files->file[0]);
+    }
+
+    /**
+     * Test making a POST request with a non-existent file
+     */
+    public function testPostFileWithMissingFile(): void
+    {
+        $this->expectException(GotifyException::class);
+        $this->expectExceptionMessage('Unable to open "not-found.file"');
+
+        $data = [
+            'file' => 'not-found.file'
+        ];
+
+        self::$guzzle->postFile('post', $data);
     }
 
     /**
