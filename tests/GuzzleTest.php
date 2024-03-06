@@ -210,7 +210,11 @@ class GuzzleTest extends AbstractTestCase
     {
         $this->expectException(EndpointException::class);
 
-        $body = (string) json_encode(['error' => 'forbidden', 'code' => 40301, 'http' => 403]);
+        $body = (string) json_encode([
+            'error' => 'Unauthorized',
+            'errorCode' => 401,
+            'errorDescription' => 'you need to provide a valid access token yto access this api'
+        ]);
 
         $mock = new MockHandler([
             new GuzzleHttp\Psr7\Response(403, ['Content-Type' => 'application/json'], $body),
