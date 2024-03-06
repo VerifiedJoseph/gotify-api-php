@@ -5,6 +5,7 @@ use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
 use Gotify\Auth\User as AuthUser;
 use Gotify\Exception\GotifyException;
+use Gotify\Exception\EndpointException;
 
 class GuzzleTest extends AbstractTestCase
 {
@@ -175,5 +176,27 @@ class GuzzleTest extends AbstractTestCase
         $headers = get_object_vars($body->headers);
 
         $this->assertEquals($token, $headers['X-Gotify-Key'][0]);
+    }
+
+    /**
+     * Test making a request that throws a RequestException
+     */
+    public function testRequestException(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $guzzle = new Guzzle(self::getHttpBinUri(), null);
+        $guzzle->get('/status/404');
+    }
+
+    /**
+     * Test making a request that throws a ConnectException
+     */
+    public function testConnectException(): void
+    {
+        $this->expectException(GotifyException::class);
+
+        $guzzle = new Guzzle('http://something.invalid', null);
+        $guzzle->get('/');
     }
 }
