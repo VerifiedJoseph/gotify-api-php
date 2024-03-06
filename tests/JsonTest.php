@@ -17,6 +17,13 @@ class JsonTest extends AbstractTestCase
         self::assertEquals($expected, Json::decode('{"foo": "bar"}'));
     }
 
+    public function testEncodeInvalid(): void
+    {
+        $this->expectException(GotifyException::class);
+        $this->expectExceptionMessage('JSON Error: Malformed UTF-8 characters, possibly incorrectly encoded');
+        Json::encode("\xB1\x31");
+    }
+
     public function testDecodeInvalid(): void
     {
         $this->expectException(GotifyException::class);
