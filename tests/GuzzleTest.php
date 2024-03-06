@@ -4,6 +4,11 @@ use Gotify\Guzzle;
 use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
 use Gotify\Auth\User as AuthUser;
+use Gotify\Exception\GotifyException;
+use Gotify\Exception\EndpointException;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use Psr\Http\Message\ResponseInterface;
 
 class GuzzleTest extends AbstractTestCase
 {
@@ -84,6 +89,21 @@ class GuzzleTest extends AbstractTestCase
     }
 
     /**
+     * Test making a POST request with a non-existent file
+     */
+    public function testPostFileWithMissingFile(): void
+    {
+        $this->expectException(GotifyException::class);
+        $this->expectExceptionMessage('Unable to open "not-found.file"');
+
+        $data = [
+            'file' => 'not-found.file'
+        ];
+
+        self::$guzzle->postFile('post', $data);
+    }
+
+    /**
      * Test making a PUT request
      */
     public function testPut(): void
@@ -159,5 +179,67 @@ class GuzzleTest extends AbstractTestCase
         $headers = get_object_vars($body->headers);
 
         $this->assertEquals($token, $headers['X-Gotify-Key'][0]);
+    }
+
+    /**
+     * Test making a request that throws a RequestException
+     */
+    public function testRequestException(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $guzzle = new Guzzle(self::getHttpBinUri(), null);
+        $guzzle->get('/status/404');
+    }
+
+    /**
+     * Test making a request that throws a ConnectException
+     */
+    public function testConnectException(): void
+    {
+        $this->expectException(GotifyException::class);
+
+        $guzzle = new Guzzle('http://something.invalid', null);
+        $guzzle->get('/');
+    }
+
+    /**
+     * Test making a request that throws a RequestException with a JSON response
+     */
+    public function testRequestExceptionJsonResponse(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $body = (string) json_encode([
+            'error' => 'Unauthorized',
+            'errorCode' => 401,
+            'errorDescription' => 'you need to provide a valid access token yto access this api'
+        ]);
+
+        $mock = new MockHandler([
+            new GuzzleHttp\Psr7\Response(403, ['Content-Type' => 'application/json'], $body),
+        ]);
+
+        $handlerStack = HandlerStack::create($mock);
+        $guzzle = new Guzzle('http://example.com', null, $handlerStack);
+        $guzzle->get('/');
+    }
+
+    /**
+     * Test making a request with an unsupported request method
+     */
+    public function testUnsupportedRequestMethod(): void
+    {
+        $this->expectException(GotifyException::class);
+        $this->expectExceptionMessage('Request method must be GET, POST, PUT, or DELETE');
+
+        $guzzle = new class (self::getHttpBinUri(), null) extends Guzzle {
+            public function head(string $endpoint): ResponseInterface
+            {
+                return $this->request('HEAD', $endpoint);
+            }
+        };
+
+        $guzzle->head('/head');
     }
 }
