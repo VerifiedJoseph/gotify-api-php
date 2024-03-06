@@ -199,4 +199,22 @@ class GuzzleTest extends AbstractTestCase
         $guzzle = new Guzzle('http://something.invalid', null);
         $guzzle->get('/');
     }
+
+    /**
+     * Test making a request with an unsupported request method
+     */
+    public function testUnsupportedRequestMethod(): void
+    {
+        $this->expectException(GotifyException::class);
+        $this->expectExceptionMessage('Request method must be GET, POST, PUT, or DELETE');
+
+        $guzzle = new class (self::getHttpBinUri(), null) extends Guzzle {
+            public function head(string $endpoint): ResponseInterface
+            {
+                return $this->request('HEAD', $endpoint);
+            }
+        };
+
+        $guzzle->head('/head');
+    }
 }
