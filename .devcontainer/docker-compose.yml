@@ -12,6 +12,7 @@ services:
     environment:
       - GOTIFY_URI=${GOTIFY_URI}
       - HTTPBIN_URI=${HTTPBIN_URI}
+      - XDEBUG_MODE=coverage
 
   gotify:
     container_name: gotify
