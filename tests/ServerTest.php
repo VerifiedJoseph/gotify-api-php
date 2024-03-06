@@ -6,14 +6,21 @@ use Gotify\Exception\GotifyException;
 class ServerTest extends AbstractTestCase
 {
     /**
-     * Test server URI validator
-     *
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     * Test server URI validator with missing forward slash
      */
-    public function testServerUriValidator(): void
+    public function testServerUriValidatorWithMissingForwardSlash(): void
+    {
+        $server = new Server('https://example.com');
+        $this->assertEquals('https://example.com/', $server->get());
+    }
+
+    /**
+     * Test server URI validator with invalid URI
+     */
+    public function testServerUriValidatorWithInvalidUri(): void
     {
         $this->expectException(GotifyException::class);
 
-        $server = new Server('127.0.0.1');
+        new Server('127.0.0.1');
     }
 }
