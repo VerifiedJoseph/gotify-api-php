@@ -14,7 +14,7 @@ use Gotify\Exception\EndpointException;
 /**
  * Class for making HTTP requests using GuzzleHttp.
  */
-final class Guzzle
+class Guzzle
 {
     private Client $client;
 
@@ -151,7 +151,7 @@ final class Guzzle
      * @throws GotifyException if a connection cannot be established
      * @throws EndpointException if API returned an error
      */
-    private function request(string $method, string $endpoint, array $options = []): ResponseInterface
+    protected function request(string $method, string $endpoint, array $options = []): ResponseInterface
     {
         try {
             if (in_array($method, $this->requestMethods) === false) {
@@ -162,10 +162,6 @@ final class Guzzle
         } catch (ConnectException $err) {
             throw new GotifyException($err->getMessage());
         } catch (RequestException $err) {
-            if ($err->hasResponse() === false) {
-                throw new EndpointException($err->getMessage(), 0);
-            }
-
             $response = $err->getResponse();
             $contentType = $response->getHeaderLine('Content-Type');
 
