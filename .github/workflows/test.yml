@@ -59,7 +59,12 @@ jobs:
       run: bash .ci/scripts/connections.sh
 
     - name: Run phpunit
-      run: ./vendor/bin/phpunit
+      run: ./vendor/bin/phpunit --coverage-clover=coverage.xml
 
     - name: Stop gotify & httpbin docker docker containers
       run: docker-compose down
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@54bcd8715eee62d40e33596ef5e8f0f48dbbccab # v4.1.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
