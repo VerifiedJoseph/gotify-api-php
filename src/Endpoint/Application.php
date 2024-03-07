@@ -92,7 +92,7 @@ class Application extends Api
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true: false;
+        return $body === '' ? true : false;
     }
 
     /**

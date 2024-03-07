@@ -49,7 +49,7 @@ class User extends Api
         $response = $this->guzzle->post('current/user/password', $data);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true: false;
+        return $body === '' ? true : false;
     }
 
     /**
@@ -149,6 +149,6 @@ class User extends Api
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true: false;
+        return $body === '' ? true : false;
     }
 }
