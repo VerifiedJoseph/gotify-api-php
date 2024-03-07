@@ -88,10 +88,6 @@ class Client extends Api
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        if (empty($body) === true) {
-            return true;
-        }
-
-        return false;
+        return $body === '' ? true : false;
     }
 }

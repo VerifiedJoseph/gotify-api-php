@@ -61,11 +61,7 @@ class Plugin extends Api
         $response = $this->guzzle->postYaml($this->endpoint . '/' . $id . '/config', $config);
         $body = $response->getBody()->getContents();
 
-        if (empty($body) === true) {
-            return true;
-        }
-
-        return false;
+        return $body === '' ? true : false;
     }
 
     /**
@@ -99,11 +95,7 @@ class Plugin extends Api
         $response = $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
         $body = $response->getBody()->getContents();
 
-        if (empty($body) === true) {
-            return true;
-        }
-
-        return false;
+        return $body === '' ? true : false;
     }
 
     /**
@@ -120,10 +112,6 @@ class Plugin extends Api
         $response = $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
         $body = $response->getBody()->getContents();
 
-        if (empty($body) === true) {
-            return true;
-        }
-
-        return false;
+        return $body === '' ? true : false;
     }
 }
