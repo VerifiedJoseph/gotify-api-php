@@ -1,8 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Json;
 use Gotify\Exception\GotifyException;
 
+#[CoversClass(Json::class)]
+#[UsesClass(GotifyException::class)]
 class JsonTest extends AbstractTestCase
 {
     public function testEncodeValid(): void
