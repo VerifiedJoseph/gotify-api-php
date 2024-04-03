@@ -5,7 +5,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Endpoint\Health;
 
 #[CoversClass(Health::class)]
-#[UsesClass(Gotify\Api::class)]
+#[CoversClass(Gotify\Api::class)]
 #[UsesClass(Gotify\Guzzle::class)]
 #[UsesClass(Gotify\Json::class)]
 #[UsesClass(Gotify\Server::class)]
