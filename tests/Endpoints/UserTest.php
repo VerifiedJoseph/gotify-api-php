@@ -145,7 +145,7 @@ class UserTest extends AbstractTestCase
         $this->assertEquals(true, $deleted);
     }
 
-    private static function removeTestUsers()
+    private static function removeTestUsers(): void
     {
         $users = self::$user->getAll();
 
