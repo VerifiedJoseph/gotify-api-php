@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Guzzle;
 use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
@@ -10,6 +12,11 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 
+#[CoversClass(Guzzle::class)]
+#[UsesClass(Json::class)]
+#[UsesClass(AuthUser::class)]
+#[UsesClass(AuthToken::class)]
+#[UsesClass(Gotify\Auth::class)]
 class GuzzleTest extends AbstractTestCase
 {
     private static Guzzle $guzzle;
