@@ -3,8 +3,8 @@
 namespace Tests\Auth;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use Tests\AbstractTestCase;
 use Gotify\Auth\User;
-use AbstractTestCase;
 
 #[CoversClass(User::class)]
 #[CoversClass(\Gotify\Auth::class)]

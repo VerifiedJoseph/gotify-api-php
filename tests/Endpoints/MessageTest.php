@@ -1,8 +1,11 @@
 <?php
 
+namespace Tests\Endpoint;
+
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\Attributes\Depends;
+use Tests\AbstractTestCase;
 use Gotify\Endpoint\Message;
 use Gotify\Endpoint\Application;
 use Gotify\Auth\Token;
@@ -10,11 +13,11 @@ use Gotify\Auth\Token;
 #[CoversClass(Message::class)]
 #[CoversClass(Application::class)]
 #[CoversClass(Token::class)]
-#[UsesClass(Gotify\Api::class)]
-#[UsesClass(Gotify\Auth::class)]
-#[UsesClass(Gotify\Guzzle::class)]
-#[UsesClass(Gotify\Json::class)]
-#[UsesClass(Gotify\Server::class)]
+#[UsesClass(\Gotify\Api::class)]
+#[UsesClass(\Gotify\Auth::class)]
+#[UsesClass(\Gotify\Guzzle::class)]
+#[UsesClass(\Gotify\Json::class)]
+#[UsesClass(\Gotify\Server::class)]
 class MessageTest extends AbstractTestCase
 {
     private static Message $message;

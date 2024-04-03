@@ -1,17 +1,20 @@
 <?php
 
+namespace Tests\Endpoint;
+
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
+use Tests\AbstractTestCase;
 use Gotify\Endpoint\User;
 use Gotify\Auth\User as Auth;
 
 #[CoversClass(User::class)]
-#[UsesClass(Gotify\Api::class)]
-#[UsesClass(Gotify\Guzzle::class)]
-#[UsesClass(Gotify\Json::class)]
-#[UsesClass(Gotify\Server::class)]
-#[UsesClass(Gotify\Auth::class)]
-#[UsesClass(Gotify\Auth\User::class)]
+#[UsesClass(\Gotify\Api::class)]
+#[UsesClass(\Gotify\Guzzle::class)]
+#[UsesClass(\Gotify\Json::class)]
+#[UsesClass(\Gotify\Server::class)]
+#[UsesClass(\Gotify\Auth::class)]
+#[UsesClass(\Gotify\Auth\User::class)]
 class UserTest extends AbstractTestCase
 {
     private static User $user;

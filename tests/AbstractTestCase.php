@@ -1,6 +1,8 @@
 <?php
 
-use PHPUnit\Framework\TestCase as TestCase;
+namespace Tests;
+
+use PHPUnit\Framework\TestCase;
 use Gotify\Server;
 use Gotify\Auth\User;
 
