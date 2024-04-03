@@ -1,5 +1,8 @@
 <?php
 
+namespace Tests\Endpoint;
+
+use Tests\AbstractTestCase;
 use Gotify\Endpoint\Plugin;
 
 class PluginTest extends AbstractTestCase
