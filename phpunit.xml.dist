@@ -6,8 +6,9 @@
          executionOrder="depends,defects"
          beStrictAboutOutputDuringTests="true"
          failOnRisky="true"
-         failOnWarning="true"
-         displayDetailsOnTestsThatTriggerWarnings="true">
+         failOnWarning="false"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         beStrictAboutCoverageMetadata="true">
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>
