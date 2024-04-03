@@ -18,9 +18,6 @@ class UserTest extends AbstractTestCase
 
     private static int $userId = 0;
 
-    private static string $testUsername = 'test';
-    private static string $testPassword = 'test';
-
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
@@ -29,6 +26,13 @@ class UserTest extends AbstractTestCase
             self::$server,
             self::$auth
         );
+
+        self::removeTestUsers();
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        self::removeTestUsers();
     }
 
     /**
@@ -53,7 +57,6 @@ class UserTest extends AbstractTestCase
     public function testGetUser(): void
     {
         $user = self::$user->getUser(self::$userId);
-
         $this->assertIsObject($user);
     }
 
@@ -78,24 +81,23 @@ class UserTest extends AbstractTestCase
     public function testCreate(): void
     {
         $created = self::$user->create(
-            self::$testUsername,
-            self::$testPassword,
+            'createMe',
+            'qwerty',
             false // Admin status
         );
 
         $this->assertIsObject($created);
-        self::$userId = $created->id;
     }
 
     /**
      * Test updating password for the current user
-     *
-     * @depends testCreate
      */
     public function testUpdatePassword(): void
     {
+        self::$user->create('updateMePassword', 'qwerty');
+
         // Login as test user
-        $auth = new Auth(self::$testUsername, self::$testPassword);
+        $auth = new Auth('updateMePassword', 'qwerty');
         $user = new User(
             self::$server,
             $auth
@@ -103,8 +105,7 @@ class UserTest extends AbstractTestCase
 
         $updated = $user->updatePassword('NewPassword');
 
-        $this->assertIsBool($updated);
-        $this->assertEquals(true, $updated);
+        $this->assertTrue($updated);
     }
 
     /**
@@ -115,9 +116,9 @@ class UserTest extends AbstractTestCase
     public function testUpdate(): void
     {
         $newTestUsername = 'test1';
-
+        $created =  self::$user->create('updateMe', 'qwerty');
         $updated = self::$user->update(
-            self::$userId,
+            $created->id,
             $newTestUsername
         );
 
@@ -125,20 +126,30 @@ class UserTest extends AbstractTestCase
         $this->assertObjectHasProperty('name', $updated);
         $this->assertObjectHasProperty('id', $updated);
 
-        $this->assertEquals(self::$userId, $updated->id);
+        $this->assertEquals($created->id, $updated->id);
         $this->assertEquals($newTestUsername, $updated->name);
     }
 
     /**
      * Test deleting a user
-     *
-     * @depends testCreate
      */
     public function testDelete(): void
     {
-        $deleted = self::$user->delete(self::$userId);
+        $created = self::$user->create('deleteMe', 'qwerty');
+        $deleted = self::$user->delete($created->id);
 
         $this->assertIsBool($deleted);
         $this->assertEquals(true, $deleted);
+    }
+
+    private static function removeTestUsers()
+    {
+        $users = self::$user->getAll();
+
+        foreach ($users->users as $user) {
+            if ($user->admin === false) {
+                self::$user->delete($user->id);
+            }
+        }
     }
 }
