@@ -12,16 +12,22 @@ use stdClass;
 #[UsesClass(GotifyException::class)]
 class JsonTest extends AbstractTestCase
 {
-    public function testEncodeValid(): void
+    public function testEncode(): void
     {
-        self::assertEquals('{"foo":"bar"}', Json::encode(['foo' => 'bar']));
+        $this->assertEquals('{"foo":"bar"}', Json::encode(['foo' => 'bar']));
     }
 
-    public function testDecodeValid(): void
+    public function testDecode(): void
     {
         $expected = new stdClass();
         $expected->foo = 'bar';
-        self::assertEquals($expected, Json::decode('{"foo": "bar"}'));
+        $this->assertEquals($expected, Json::decode('{"foo": "bar"}'));
+    }
+
+    public function testDecodeToArray(): void
+    {
+        $expected = ['hello'];
+        $this->assertEquals($expected, Json::decode('["hello"]'));
     }
 
     public function testEncodeInvalid(): void
