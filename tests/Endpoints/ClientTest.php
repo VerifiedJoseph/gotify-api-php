@@ -1,7 +1,17 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\Depends;
 use Gotify\Endpoint\Client;
 
+#[CoversClass(Client::class)]
+#[UsesClass(Gotify\Api::class)]
+#[UsesClass(Gotify\Guzzle::class)]
+#[UsesClass(Gotify\Json::class)]
+#[UsesClass(Gotify\Server::class)]
+#[UsesClass(Gotify\Auth::class)]
+#[UsesClass(Gotify\Auth\User::class)]
 class ClientTest extends AbstractTestCase
 {
     private static Client $client;
@@ -41,9 +51,8 @@ class ClientTest extends AbstractTestCase
 
     /**
      * Test getting all clients
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testGetAll(): void
     {
         $clients = self::$client->getAll();
@@ -65,9 +74,8 @@ class ClientTest extends AbstractTestCase
 
     /**
      * Test updating a client
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testUpdate(): void
     {
         $name = 'New test client';
@@ -85,9 +93,8 @@ class ClientTest extends AbstractTestCase
 
     /**
      * Test deleting a client
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testDelete(): void
     {
         $deleted = self::$client->delete(self::$clientId);
