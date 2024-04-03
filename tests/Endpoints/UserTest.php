@@ -48,7 +48,7 @@ class UserTest extends AbstractTestCase
         $this->assertObjectHasProperty('name', $current);
         $this->assertObjectHasProperty('admin', $current);
 
-        $this->assertEquals(self::$username, $current->name);
+        $this->assertEquals('admin', $current->name);
     }
 
     /**
