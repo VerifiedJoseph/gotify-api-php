@@ -1,8 +1,17 @@
 <?php
 
-use Gotify\Auth\User as AuthUser;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Endpoint\User;
+use Gotify\Auth\User as Auth;
 
+#[CoversClass(User::class)]
+#[UsesClass(Gotify\Api::class)]
+#[UsesClass(Gotify\Guzzle::class)]
+#[UsesClass(Gotify\Json::class)]
+#[UsesClass(Gotify\Server::class)]
+#[UsesClass(Gotify\Auth::class)]
+#[UsesClass(Gotify\Auth\User::class)]
 class UserTest extends AbstractTestCase
 {
     private static User $user;
@@ -86,7 +95,7 @@ class UserTest extends AbstractTestCase
     public function testUpdatePassword(): void
     {
         // Login as test user
-        $auth = new AuthUser(self::$testUsername, self::$testPassword);
+        $auth = new Auth(self::$testUsername, self::$testPassword);
         $user = new User(
             self::$server,
             $auth
