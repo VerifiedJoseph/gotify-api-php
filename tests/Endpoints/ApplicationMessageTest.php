@@ -1,8 +1,18 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Endpoint\Application;
 use Gotify\Endpoint\ApplicationMessage;
 
+#[CoversClass(ApplicationMessage::class)]
+#[UsesClass(Application::class)]
+#[UsesClass(Gotify\Api::class)]
+#[UsesClass(Gotify\Guzzle::class)]
+#[UsesClass(Gotify\Json::class)]
+#[UsesClass(Gotify\Server::class)]
+#[UsesClass(Gotify\Auth::class)]
+#[UsesClass(Gotify\Auth\User::class)]
 class ApplicationMessageTest extends AbstractTestCase
 {
     private static ApplicationMessage $applicationMessage;
