@@ -1,8 +1,14 @@
 <?php
 
+namespace Tests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Server;
 use Gotify\Exception\GotifyException;
 
+#[CoversClass(Server::class)]
+#[UsesClass(GotifyException::class)]
 class ServerTest extends AbstractTestCase
 {
     /**

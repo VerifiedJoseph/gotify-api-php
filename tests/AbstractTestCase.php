@@ -1,24 +1,23 @@
 <?php
 
-use PHPUnit\Framework\TestCase as TestCase;
+namespace Tests;
+
+use PHPUnit\Framework\TestCase;
 use Gotify\Server;
-use Gotify\Auth\User as Auth;
+use Gotify\Auth\User;
 
 abstract class AbstractTestCase extends TestCase
 {
     protected static string $gotifyUri = 'http://127.0.0.1:8080/';
     protected static string $httpBinUri = 'https://httpbin.org/';
 
-    protected static string $username = 'admin';
-    protected static string $password = 'admin';
-
     protected static Server $server;
-    protected static Auth $auth;
+    protected static User $auth;
 
     public static function setUpBeforeClass(): void
     {
         self::$server = new Server(self::getGotifyUri());
-        self::$auth = new Auth(self::$username, self::$password);
+        self::$auth = new User('admin', 'admin');
     }
 
     /**
