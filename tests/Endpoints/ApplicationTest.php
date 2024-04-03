@@ -1,7 +1,17 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\Depends;
 use Gotify\Endpoint\Application;
 
+#[CoversClass(Application::class)]
+#[UsesClass(Gotify\Api::class)]
+#[UsesClass(Gotify\Guzzle::class)]
+#[UsesClass(Gotify\Json::class)]
+#[UsesClass(Gotify\Server::class)]
+#[UsesClass(Gotify\Auth::class)]
+#[UsesClass(Gotify\Auth\User::class)]
 class ApplicationTest extends AbstractTestCase
 {
     private static Application $application;
@@ -44,9 +54,8 @@ class ApplicationTest extends AbstractTestCase
 
     /**
      * Test getting all applications
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testGetAll(): void
     {
         $applications = self::$application->getAll();
@@ -68,9 +77,8 @@ class ApplicationTest extends AbstractTestCase
 
     /**
      * Test updating an application
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testUpdate(): void
     {
         $name = 'test application';
@@ -92,9 +100,8 @@ class ApplicationTest extends AbstractTestCase
 
     /**
      * Test uploading an image for the application
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testUploadImage(): void
     {
         $path = $this->getAppImagePath();
@@ -106,9 +113,8 @@ class ApplicationTest extends AbstractTestCase
 
     /**
      * Test deleting an application
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testDelete(): void
     {
         $deleted = self::$application->delete(self::$appId);
