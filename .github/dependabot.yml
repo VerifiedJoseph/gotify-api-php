@@ -20,9 +20,3 @@ updates:
     ignore:
       - dependency-name: "php"
         update-types: ["version-update:semver-minor"]
-
-  - package-ecosystem: "docker"
-    directory: "/.ci/dockerfiles/"
-    schedule:
-      interval: "monthly"
-
