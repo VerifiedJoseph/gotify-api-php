@@ -5,7 +5,7 @@
 
 PHP library for interacting with a [Gotify](https://github.com/gotify/server) server using the [Gotify REST-API](https://gotify.net/api-docs).
 
-Supports Gotify server version 2.4.0.
+Supports Gotify server version 2.5.0.
 
 ## Install
 
