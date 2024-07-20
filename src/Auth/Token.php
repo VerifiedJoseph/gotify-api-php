@@ -2,12 +2,10 @@
 
 namespace Gotify\Auth;
 
-use Gotify\Auth;
-
 /**
  * Class for setting and validating an authentication token
  */
-class Token extends Auth
+class Token extends AbstractAuth
 {
     /** @var string $method Authentication method */
     protected string $method = 'token';

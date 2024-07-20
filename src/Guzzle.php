@@ -2,6 +2,8 @@
 
 namespace Gotify;
 
+use Gotify\Auth\User;
+use Gotify\Auth\Token;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
@@ -26,12 +28,11 @@ class Guzzle
     private int $timeout = 10;
 
     /**
-     *
      * @param string $uri Server URI
-     * @param Auth $auth Authentication
+     * @param User|Token $auth Authentication class instance
      * @param ?HandlerStack $handlerStack Guzzle handler stack
      */
-    public function __construct(string $uri, ?Auth $auth, ?HandlerStack $handlerStack = null)
+    public function __construct(string $uri, User|Token $auth = null, ?HandlerStack $handlerStack = null)
     {
         $config = $this->getConfig($uri, $auth, $handlerStack);
 
@@ -185,11 +186,11 @@ class Guzzle
      *
      * @param string $uri Server URI
      * @param ?HandlerStack $handlerStack Guzzle handler stack
-     * @param ?Auth $auth Authentication
+     * @param User|Token $auth Authentication class instance
      *
      * @return array<string, mixed> Returns client config array
      */
-    private function getConfig(string $uri, ?Auth $auth, ?HandlerStack $handlerStack): array
+    private function getConfig(string $uri, User|Token $auth = null, ?HandlerStack $handlerStack): array
     {
         $config = [
             'base_uri' => $uri,
@@ -213,11 +214,11 @@ class Guzzle
     /**
      * Get authentication config
      *
-     * @param ?Auth $auth Authentication
+     * @param User|Token $auth Authentication class instance
      *
      * @return array<string, array<int|string, string>>
      */
-    private function getAuthConfig(?Auth $auth): array
+    private function getAuthConfig(User|Token $auth = null): array
     {
         $config = [];
 

@@ -14,8 +14,8 @@ use Gotify\Endpoint\AbstractEndpoint;
 #[UsesClass(\Gotify\Guzzle::class)]
 #[UsesClass(\Gotify\Json::class)]
 #[UsesClass(\Gotify\Server::class)]
-#[UsesClass(\Gotify\Auth::class)]
 #[UsesClass(\Gotify\Auth\User::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
 class ApplicationTest extends AbstractTestCase
 {
     private static Application $application;

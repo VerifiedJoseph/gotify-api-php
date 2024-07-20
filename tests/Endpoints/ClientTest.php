@@ -14,8 +14,10 @@ use Gotify\Endpoint\AbstractEndpoint;
 #[UsesClass(\Gotify\Guzzle::class)]
 #[UsesClass(\Gotify\Json::class)]
 #[UsesClass(\Gotify\Server::class)]
-#[UsesClass(\Gotify\Auth::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
 #[UsesClass(\Gotify\Auth\User::class)]
+#[UsesClass(\Gotify\Server::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
 class ClientTest extends AbstractTestCase
 {
     private static Client $client;

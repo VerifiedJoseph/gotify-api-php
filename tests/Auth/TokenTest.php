@@ -5,9 +5,10 @@ namespace Tests\Auth;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\AbstractTestCase;
 use Gotify\Auth\Token;
+use Gotify\Auth\AbstractAuth;
 
 #[CoversClass(Token::class)]
-#[CoversClass(\Gotify\Auth::class)]
+#[CoversClass(AbstractAuth::class)]
 class TokenTest extends AbstractTestCase
 {
     protected string $method = 'token';

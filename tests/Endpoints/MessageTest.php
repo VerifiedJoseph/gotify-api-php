@@ -15,7 +15,7 @@ use Gotify\Auth\Token;
 #[CoversClass(Application::class)]
 #[CoversClass(Token::class)]
 #[UsesClass(AbstractEndpoint::class)]
-#[UsesClass(\Gotify\Auth::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
 #[UsesClass(\Gotify\Guzzle::class)]
 #[UsesClass(\Gotify\Json::class)]
 #[UsesClass(\Gotify\Server::class)]

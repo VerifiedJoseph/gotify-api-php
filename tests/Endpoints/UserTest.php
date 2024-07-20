@@ -14,8 +14,8 @@ use Gotify\Auth\User as Auth;
 #[UsesClass(\Gotify\Guzzle::class)]
 #[UsesClass(\Gotify\Json::class)]
 #[UsesClass(\Gotify\Server::class)]
-#[UsesClass(\Gotify\Auth::class)]
 #[UsesClass(\Gotify\Auth\User::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
 class UserTest extends AbstractTestCase
 {
     private static User $user;
