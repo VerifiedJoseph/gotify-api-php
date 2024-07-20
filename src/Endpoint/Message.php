@@ -2,7 +2,6 @@
 
 namespace Gotify\Endpoint;
 
-use Gotify\Api;
 use Gotify\Json;
 use stdClass;
 
@@ -11,7 +10,7 @@ use stdClass;
  *
  * @see https://gotify.net/api-docs#/message API docs for message endpoint
  */
-class Message extends Api
+class Message extends AbstractEndpoint
 {
     /**
      * High message priority

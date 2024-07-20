@@ -7,9 +7,10 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\Attributes\Depends;
 use Tests\AbstractTestCase;
 use Gotify\Endpoint\Client;
+use Gotify\Endpoint\AbstractEndpoint;
 
 #[CoversClass(Client::class)]
-#[UsesClass(\Gotify\Api::class)]
+#[UsesClass(AbstractEndpoint::class)]
 #[UsesClass(\Gotify\Guzzle::class)]
 #[UsesClass(\Gotify\Json::class)]
 #[UsesClass(\Gotify\Server::class)]

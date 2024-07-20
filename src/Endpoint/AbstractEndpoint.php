@@ -1,14 +1,15 @@
 <?php
 
-namespace Gotify;
+namespace Gotify\Endpoint;
 
+use Gotify\Auth;
 use Gotify\Server;
 use Gotify\Guzzle;
 
 /**
  * Class for interacting with the Gotify API using Guzzle
  */
-abstract class Api
+abstract class AbstractEndpoint
 {
     /** @var Guzzle $guzzle Guzzle class instance */
     protected Guzzle $guzzle;
