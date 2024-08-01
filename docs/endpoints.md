@@ -179,7 +179,7 @@ create(string $name): stdClass
 Update a client
 
 ```PHP
- update(int $id, string $name): stdClass
+update(int $id, string $name): stdClass
 ```
 
 Delete a client
