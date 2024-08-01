@@ -29,10 +29,10 @@ class Guzzle
 
     /**
      * @param string $uri Server URI
-     * @param User|Token $auth Authentication class instance
+     * @param null|User|Token $auth Authentication class instance
      * @param ?HandlerStack $handlerStack Guzzle handler stack
      */
-    public function __construct(string $uri, User|Token $auth = null, ?HandlerStack $handlerStack = null)
+    public function __construct(string $uri, null|User|Token $auth = null, ?HandlerStack $handlerStack = null)
     {
         $config = $this->getConfig($uri, $auth, $handlerStack);
 
@@ -190,7 +190,7 @@ class Guzzle
      *
      * @return array<string, mixed> Returns client config array
      */
-    private function getConfig(string $uri, User|Token $auth = null, ?HandlerStack $handlerStack): array
+    private function getConfig(string $uri, null|User|Token $auth = null, ?HandlerStack $handlerStack): array
     {
         $config = [
             'base_uri' => $uri,
@@ -218,7 +218,7 @@ class Guzzle
      *
      * @return array<string, array<int|string, string>>
      */
-    private function getAuthConfig(User|Token $auth = null): array
+    private function getAuthConfig(null|User|Token $auth = null): array
     {
         $config = [];
 
