@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.9.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.9.0) - 2024-08-01
+
+- Renamed abstract classes ([#399](https://github.com/VerifiedJoseph/gotify-api-php/pull/399), [`62f2bcb`](https://github.com/VerifiedJoseph/gotify-api-php/commit/62f2bcbddd1834ef31a932050f7e8e79d8a1ee27))
+- Updated dependency `guzzlehttp/guzzle` from 7.9.1 to 7.9.2 ([#402](https://github.com/VerifiedJoseph/gotify-api-php/pull/402), [`476d619`](https://github.com/VerifiedJoseph/gotify-api-php/commit/476d619d647660d79ef15606823b704e304e7ec0))
+
 ## [1.8.4](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.8.4) - 2024-07-20
 
 * Updated dependency `guzzlehttp/guzzle` from 7.9.0 to 7.9.1 ([#396](https://github.com/VerifiedJoseph/gotify-api-php/pull/396), [`dfe3ed4`](https://github.com/VerifiedJoseph/gotify-api-php/commit/dfe3ed452a9fe0e82ca8e2eb38fc028aae6df623))
