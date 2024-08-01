@@ -6,9 +6,10 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use Tests\AbstractTestCase;
 use Gotify\Endpoint\Health;
+use Gotify\Endpoint\AbstractEndpoint;
 
 #[CoversClass(Health::class)]
-#[CoversClass(\Gotify\Api::class)]
+#[CoversClass(AbstractEndpoint::class)]
 #[UsesClass(\Gotify\Guzzle::class)]
 #[UsesClass(\Gotify\Json::class)]
 #[UsesClass(\Gotify\Server::class)]

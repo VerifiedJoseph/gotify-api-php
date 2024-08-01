@@ -1,11 +1,11 @@
 <?php
 
-namespace Gotify;
+namespace Gotify\Auth;
 
 /**
  * Class for setting and validating authentication
  */
-abstract class Auth
+abstract class AbstractAuth
 {
     /** @var string $method Authentication method */
     protected string $method = '';

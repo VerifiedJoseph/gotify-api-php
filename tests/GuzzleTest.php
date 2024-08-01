@@ -8,6 +8,7 @@ use Gotify\Guzzle;
 use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
 use Gotify\Auth\User as AuthUser;
+use Gotify\Auth\AbstractAuth;
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
 use GuzzleHttp\Handler\MockHandler;
@@ -19,7 +20,7 @@ use GuzzleHttp\Psr7\Response;
 #[UsesClass(Json::class)]
 #[UsesClass(AuthUser::class)]
 #[UsesClass(AuthToken::class)]
-#[UsesClass(\Gotify\Auth::class)]
+#[UsesClass(AbstractAuth::class)]
 class GuzzleTest extends AbstractTestCase
 {
     private static Guzzle $guzzle;

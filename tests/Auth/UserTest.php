@@ -5,9 +5,10 @@ namespace Tests\Auth;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\AbstractTestCase;
 use Gotify\Auth\User;
+use Gotify\Auth\AbstractAuth;
 
 #[CoversClass(User::class)]
-#[CoversClass(\Gotify\Auth::class)]
+#[CoversClass(AbstractAuth::class)]
 class UserTest extends AbstractTestCase
 {
     private string $method = 'user';
