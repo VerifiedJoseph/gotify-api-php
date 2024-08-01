@@ -16,12 +16,10 @@ abstract class AbstractEndpoint
     protected Guzzle $guzzle;
 
     /**
-     * Create Guzzle instance
-     *
      * @param Server $server Server URI
-     * @param User|Token $auth Authentication class instance
+     * @param null|User|Token $auth Authentication class instance
      */
-    final public function __construct(Server $server, User|Token $auth = null)
+    final public function __construct(Server $server, null|User|Token $auth = null)
     {
         $this->guzzle = new Guzzle($server->get(), $auth);
     }
