@@ -53,7 +53,7 @@ jobs:
     #  run: bash .ci/scripts/setup-plugin.sh
 
     - name: Start gotify & httpbin docker containers
-      run: docker-compose up -d
+      run: docker compose up -d
 
     - name: Test connections to docker containers
       run: bash .ci/scripts/connections.sh
@@ -62,7 +62,7 @@ jobs:
       run: ./vendor/bin/phpunit --coverage-clover=coverage.xml
 
     - name: Stop gotify & httpbin docker docker containers
-      run: docker-compose down
+      run: docker compose down
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
