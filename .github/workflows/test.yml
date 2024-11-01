@@ -49,8 +49,8 @@ jobs:
     - name: Install dependencies with composer
       run: composer install --prefer-dist
 
-    #- name: Fetch & setup gotify plugin
-    #  run: bash .ci/scripts/setup-plugin.sh
+    - name: Fetch & setup gotify plugin
+      run: bash .ci/scripts/setup-plugin.sh
 
     - name: Start gotify & httpbin docker containers
       run: docker compose up -d
@@ -59,7 +59,7 @@ jobs:
       run: bash .ci/scripts/connections.sh
 
     - name: Run phpunit
-      run: ./vendor/bin/phpunit --coverage-clover=coverage.xml
+      run: ./vendor/bin/phpunit --coverage-clover=coverage.xml --testsuite=default,plugin-endpoint
 
     - name: Stop gotify & httpbin docker docker containers
       run: docker compose down

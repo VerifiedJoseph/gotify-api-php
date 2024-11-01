@@ -15,6 +15,9 @@
             <directory>tests</directory>
             <exclude>./tests/Endpoints/PluginTest.php</exclude>
         </testsuite>
+        <testsuite name="plugin-endpoint">
+            <file>./tests/Endpoints/PluginTest.php</file>
+        </testsuite>
     </testsuites>
     <source restrictDeprecations="true" restrictNotices="true" restrictWarnings="true">
         <include>
