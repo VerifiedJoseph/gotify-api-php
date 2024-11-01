@@ -29,10 +29,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@a4e22b60bbb9c1021113f2860347b0759f66fe5d # v2.30.0
+      uses: shivammathur/setup-php@c541c155eee45413f5b09a52248675b1a2575231 # v2.31.1
       with:
         php-version: '8.1'
         extensions: mbstring
@@ -53,7 +53,7 @@ jobs:
       run: bash .ci/scripts/setup-plugin.sh
 
     - name: Start gotify & httpbin docker containers
-      run: docker-compose up -d
+      run: docker compose up -d
 
     - name: Test connections to docker containers
       run: bash .ci/scripts/connections.sh
@@ -62,9 +62,9 @@ jobs:
       run: ./vendor/bin/phpunit --coverage-clover=coverage.xml --testsuite=default,plugin-endpoint
 
     - name: Stop gotify & httpbin docker docker containers
-      run: docker-compose down
+      run: docker compose down
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@54bcd8715eee62d40e33596ef5e8f0f48dbbccab # v4.1.0
+      uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

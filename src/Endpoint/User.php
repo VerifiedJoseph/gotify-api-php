@@ -2,7 +2,6 @@
 
 namespace Gotify\Endpoint;
 
-use Gotify\Api;
 use Gotify\Json;
 use stdClass;
 
@@ -11,7 +10,7 @@ use stdClass;
  *
  * @see https://gotify.net/api-docs#/user API docs for the user endpoint
  */
-class User extends Api
+class User extends AbstractEndpoint
 {
     /** @var string $endpoint API endpoint */
     private string $endpoint = 'user';

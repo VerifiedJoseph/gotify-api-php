@@ -1,15 +1,26 @@
 <?php
 
+namespace Tests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Gotify\Guzzle;
 use Gotify\Json;
 use Gotify\Auth\Token as AuthToken;
 use Gotify\Auth\User as AuthUser;
+use Gotify\Auth\AbstractAuth;
 use Gotify\Exception\GotifyException;
 use Gotify\Exception\EndpointException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Psr7\Response;
 
+#[CoversClass(Guzzle::class)]
+#[UsesClass(Json::class)]
+#[UsesClass(AuthUser::class)]
+#[UsesClass(AuthToken::class)]
+#[UsesClass(AbstractAuth::class)]
 class GuzzleTest extends AbstractTestCase
 {
     private static Guzzle $guzzle;
@@ -217,7 +228,7 @@ class GuzzleTest extends AbstractTestCase
         ]);
 
         $mock = new MockHandler([
-            new GuzzleHttp\Psr7\Response(403, ['Content-Type' => 'application/json'], $body),
+            new Response(403, ['Content-Type' => 'application/json'], $body),
         ]);
 
         $handlerStack = HandlerStack::create($mock);

@@ -14,7 +14,7 @@ Jump to:
 ## Application
 
 ```PHP
-Gotify\Endpoint\Application(Server $server, ?auth $server)
+Gotify\Endpoint\Application(Server $server, Auth\User|Auth\Token $auth)
 ```
 
 Class: [Application](../src/Endpoint/Application.php)
@@ -60,7 +60,7 @@ uploadImage(int $id, string $image): stdClass
 ## ApplicationMessage
 
 ```PHP
-Gotify\Endpoint\ApplicationMessage(Server $server, ?auth $server)
+Gotify\Endpoint\ApplicationMessage(Server $server, Auth\User|Auth\Token $auth)
 ```
 
 Class: [ApplicationMessage](../src/Endpoint/ApplicationMessage.php)
@@ -84,7 +84,7 @@ deleteAll(int $id): boolean
 ## Message
 
 ```PHP
-Gotify\Endpoint\Message(Server $server, ?auth $server)
+Gotify\Endpoint\Message(Server $server, Auth\User|Auth\Token $auth)
 ```
 
 Class: [Message](../src/Endpoint/Message.php)
@@ -151,7 +151,7 @@ deleteAll(): boolean
 ## Client
 
 ```PHP
-Gotify\Endpoint\Client(Server $server, ?auth $server)
+Gotify\Endpoint\Client(Server $server, Auth\User|Auth\Token $auth)
 ```
 
 Class: [Client](../src/Endpoint/Client.php)
@@ -179,7 +179,7 @@ create(string $name): stdClass
 Update a client
 
 ```PHP
- update(int $id, string $name): stdClass
+update(int $id, string $name): stdClass
 ```
 
 Delete a client
@@ -191,7 +191,7 @@ delete(int $id): boolean
 ## User
 
 ```PHP
-Gotify\Endpoint\User(Server $server, ?auth $server)
+Gotify\Endpoint\User(Server $server, Auth\User|Auth\Token $auth)
 ```
 
 Class: [User](../src/Endpoint/User.php)
@@ -266,7 +266,7 @@ get(): stdClass
 ## Plugin
 
 ```PHP
-Gotify\Endpoint\Plugin(Server $server, ?auth $server)
+Gotify\Endpoint\Plugin(Server $server, Auth\User|Auth\Token $auth)
 ```
 
 Class: [Plugin](../src/Endpoint/Plugin.php)

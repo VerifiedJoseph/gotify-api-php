@@ -1,9 +1,24 @@
 <?php
 
-use Gotify\Auth\Token;
+namespace Tests\Endpoint;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\Depends;
+use Tests\AbstractTestCase;
 use Gotify\Endpoint\Message;
 use Gotify\Endpoint\Application;
+use Gotify\Endpoint\AbstractEndpoint;
+use Gotify\Auth\Token;
 
+#[CoversClass(Message::class)]
+#[CoversClass(Application::class)]
+#[CoversClass(Token::class)]
+#[UsesClass(AbstractEndpoint::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
+#[UsesClass(\Gotify\Guzzle::class)]
+#[UsesClass(\Gotify\Json::class)]
+#[UsesClass(\Gotify\Server::class)]
 class MessageTest extends AbstractTestCase
 {
     private static Message $message;
@@ -81,9 +96,8 @@ class MessageTest extends AbstractTestCase
 
     /**
      * Test creating a message with extras
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testCreateWithExtras(): void
     {
         // Authenticate as test application via its token

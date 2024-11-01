@@ -2,12 +2,10 @@
 
 namespace Gotify\Auth;
 
-use Gotify\Auth;
-
 /**
  * Class for setting and validating username and password authentication
  */
-class User extends Auth
+class User extends AbstractAuth
 {
     /** @var string $method Authentication method */
     protected string $method = 'user';
