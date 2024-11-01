@@ -2,9 +2,23 @@
 
 namespace Tests\Endpoint;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\Depends;
 use Tests\AbstractTestCase;
 use Gotify\Endpoint\Plugin;
+use Gotify\Endpoint\Application;
+use Gotify\Endpoint\AbstractEndpoint;
+use Gotify\Auth\Token;
 
+#[CoversClass(Plugin::class)]
+#[CoversClass(Application::class)]
+#[CoversClass(Token::class)]
+#[UsesClass(AbstractEndpoint::class)]
+#[UsesClass(\Gotify\Auth\AbstractAuth::class)]
+#[UsesClass(\Gotify\Guzzle::class)]
+#[UsesClass(\Gotify\Json::class)]
+#[UsesClass(\Gotify\Server::class)]
 class PluginTest extends AbstractTestCase
 {
     private static Plugin $plugin;
@@ -87,9 +101,8 @@ class PluginTest extends AbstractTestCase
 
     /**
      * Test disabling a plugin
-     *
-     * @depends testEnable
      */
+    #[Depends('testEnable')]
     public function testDisable(): void
     {
         $disabled = self::$plugin->disable(self::$pluginId);
