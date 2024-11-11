@@ -60,7 +60,6 @@ class ApplicationMessageTest extends AbstractTestCase
     {
         $messages = self::$applicationMessage->getAll(self::$appId);
 
-        $this->assertIsObject($messages);
         $this->assertObjectHasProperty('messages', $messages);
     }
 
@@ -71,7 +70,6 @@ class ApplicationMessageTest extends AbstractTestCase
     {
         $deleted = self::$applicationMessage->deleteAll(self::$appId);
 
-        $this->assertIsBool($deleted);
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
     }
 }

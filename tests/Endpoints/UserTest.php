@@ -20,8 +20,6 @@ class UserTest extends AbstractTestCase
 {
     private static User $user;
 
-    private static int $userId = 0;
-
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
@@ -46,8 +44,6 @@ class UserTest extends AbstractTestCase
     {
         $current = self::$user->getCurrent();
 
-        $this->assertIsObject($current);
-
         $this->assertObjectHasProperty('id', $current);
         $this->assertObjectHasProperty('name', $current);
         $this->assertObjectHasProperty('admin', $current);
@@ -60,8 +56,9 @@ class UserTest extends AbstractTestCase
      */
     public function testGetUser(): void
     {
-        $user = self::$user->getUser(self::$userId);
-        $this->assertIsObject($user);
+        $user = self::$user->getUser(self::$user->getCurrent()->id);
+
+        $this->assertEquals('admin', $user->name);
     }
 
     /**
@@ -71,7 +68,6 @@ class UserTest extends AbstractTestCase
     {
         $users = self::$user->getAll();
 
-        $this->assertIsObject($users);
         $this->assertObjectHasProperty('users', $users);
 
         if (count($users->users) > 0) {
@@ -84,13 +80,16 @@ class UserTest extends AbstractTestCase
      */
     public function testCreate(): void
     {
+        $name = 'createMe';
+
         $created = self::$user->create(
-            'createMe',
+            $name,
             'qwerty',
             false // Admin status
         );
 
-        $this->assertIsObject($created);
+        $this->assertEquals($name, $created->name);
+        $this->assertFalse($created->admin);
     }
 
     /**
@@ -126,10 +125,8 @@ class UserTest extends AbstractTestCase
             $newTestUsername
         );
 
-        $this->assertIsObject($updated);
         $this->assertObjectHasProperty('name', $updated);
         $this->assertObjectHasProperty('id', $updated);
-
         $this->assertEquals($created->id, $updated->id);
         $this->assertEquals($newTestUsername, $updated->name);
     }
@@ -142,8 +139,7 @@ class UserTest extends AbstractTestCase
         $created = self::$user->create('deleteMe', 'qwerty');
         $deleted = self::$user->delete($created->id);
 
-        $this->assertIsBool($deleted);
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
     }
 
     private static function removeTestUsers(): void

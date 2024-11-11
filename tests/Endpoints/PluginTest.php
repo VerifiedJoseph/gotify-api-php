@@ -42,7 +42,6 @@ class PluginTest extends AbstractTestCase
     {
         $plugins = self::$plugin->getAll();
 
-        $this->assertIsObject($plugins);
         $this->assertObjectHasProperty('plugins', $plugins);
 
         if (count($plugins->plugins) > 0) {
@@ -73,8 +72,7 @@ class PluginTest extends AbstractTestCase
     {
         $updated = self::$plugin->updateConfig(self::$pluginId, $this->getYaml());
 
-        $this->assertIsBool($updated);
-        $this->assertEquals(true, $updated);
+        $this->assertTrue($updated);
 
         $config = self::$plugin->getConfig(self::$pluginId);
 
@@ -95,8 +93,7 @@ class PluginTest extends AbstractTestCase
     {
         $enabled = self::$plugin->enable(self::$pluginId);
 
-        $this->assertIsBool($enabled);
-        $this->assertEquals(true, $enabled);
+        $this->assertTrue($enabled);
     }
 
     /**
@@ -107,7 +104,6 @@ class PluginTest extends AbstractTestCase
     {
         $disabled = self::$plugin->disable(self::$pluginId);
 
-        $this->assertIsBool($disabled);
-        $this->assertEquals(true, $disabled);
+        $this->assertTrue($disabled);
     }
 }

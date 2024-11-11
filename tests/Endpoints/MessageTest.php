@@ -81,7 +81,6 @@ class MessageTest extends AbstractTestCase
             self::$testPriority
         );
 
-        $this->assertIsObject($message);
         $this->assertObjectHasProperty('id', $message);
         $this->assertObjectHasProperty('title', $message);
         $this->assertObjectHasProperty('message', $message);
@@ -120,7 +119,6 @@ class MessageTest extends AbstractTestCase
             $extras
         );
 
-        $this->assertIsObject($message);
         $this->assertObjectHasProperty('extras', $message);
         $this->assertObjectHasProperty('client::notification', $message->extras);
         $this->assertObjectHasProperty('click', $message->extras->{'client::notification'});
@@ -139,7 +137,6 @@ class MessageTest extends AbstractTestCase
     {
         $messages = self::$message->getAll();
 
-        $this->assertIsObject($messages);
         $this->assertObjectHasProperty('messages', $messages);
     }
 
@@ -152,8 +149,7 @@ class MessageTest extends AbstractTestCase
     {
         $deleted = self::$message->delete(self::$messageId);
 
-        $this->assertIsBool($deleted);
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
     }
 
     /**
@@ -163,7 +159,6 @@ class MessageTest extends AbstractTestCase
     {
         $deleted = self::$message->deleteAll();
 
-        $this->assertIsBool($deleted);
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
     }
 }

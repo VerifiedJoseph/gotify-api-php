@@ -26,6 +26,6 @@ class VersionTest extends AbstractTestCase
 
         $details = $version->get();
 
-        $this->assertIsObject($details);
+        $this->assertObjectHasProperty('version', $details);
     }
 }

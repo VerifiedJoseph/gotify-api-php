@@ -26,6 +26,7 @@ class HealthTest extends AbstractTestCase
 
         $status = $health->get();
 
-        $this->assertIsObject($status);
+        $this->assertObjectHasProperty('health', $status);
+        $this->assertObjectHasProperty('database', $status);
     }
 }
