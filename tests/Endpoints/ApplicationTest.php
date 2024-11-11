@@ -45,7 +45,6 @@ class ApplicationTest extends AbstractTestCase
             $description
         );
 
-        $this->assertIsObject($created);
         $this->assertObjectHasProperty('id', $created);
         $this->assertObjectHasProperty('name', $created);
         $this->assertObjectHasProperty('description', $created);
@@ -64,7 +63,6 @@ class ApplicationTest extends AbstractTestCase
     {
         $applications = self::$application->getAll();
 
-        $this->assertIsObject($applications);
         $this->assertObjectHasProperty('apps', $applications);
 
         if (count($applications->apps) > 0) {
@@ -94,7 +92,6 @@ class ApplicationTest extends AbstractTestCase
             $description
         );
 
-        $this->assertIsObject($updated);
         $this->assertObjectHasProperty('name', $updated);
         $this->assertObjectHasProperty('description', $updated);
 
@@ -111,7 +108,6 @@ class ApplicationTest extends AbstractTestCase
         $path = $this->getAppImagePath();
         $uploaded = self::$application->uploadImage(self::$appId, $path);
 
-        $this->assertIsObject($uploaded);
         $this->assertObjectHasProperty('image', $uploaded);
     }
 
@@ -123,7 +119,6 @@ class ApplicationTest extends AbstractTestCase
     {
         $deleted = self::$application->delete(self::$appId);
 
-        $this->assertIsBool($deleted);
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
     }
 }

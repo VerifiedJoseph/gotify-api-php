@@ -43,11 +43,9 @@ class ClientTest extends AbstractTestCase
             $name,
         );
 
-        $this->assertIsObject($client);
         $this->assertObjectHasProperty('id', $client);
         $this->assertObjectHasProperty('name', $client);
         $this->assertObjectHasProperty('token', $client);
-
         $this->assertEquals($name, $client->name);
 
         self::$clientId = $client->id;
@@ -61,7 +59,6 @@ class ClientTest extends AbstractTestCase
     {
         $clients = self::$client->getAll();
 
-        $this->assertIsObject($clients);
         $this->assertObjectHasProperty('clients', $clients);
 
         if (count($clients->clients) > 0) {
@@ -89,9 +86,7 @@ class ClientTest extends AbstractTestCase
             $name
         );
 
-        $this->assertIsObject($updated);
         $this->assertObjectHasProperty('name', $updated);
-
         $this->assertEquals($name, $updated->name);
     }
 
@@ -103,7 +98,6 @@ class ClientTest extends AbstractTestCase
     {
         $deleted = self::$client->delete(self::$clientId);
 
-        $this->assertIsBool($deleted);
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
     }
 }
