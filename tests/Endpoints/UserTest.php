@@ -4,6 +4,7 @@ namespace Tests\Endpoint;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\Depends;
 use Tests\AbstractTestCase;
 use Gotify\Endpoint\User;
 use Gotify\Endpoint\AbstractEndpoint;
@@ -113,9 +114,8 @@ class UserTest extends AbstractTestCase
 
     /**
      * Test updating a user
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testUpdate(): void
     {
         $newTestUsername = 'test1';

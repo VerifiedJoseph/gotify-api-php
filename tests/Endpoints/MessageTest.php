@@ -142,9 +142,8 @@ class MessageTest extends AbstractTestCase
 
     /**
      * Test deleting a message
-     *
-     * @depends testCreate
      */
+    #[Depends('testCreate')]
     public function testDelete(): void
     {
         $deleted = self::$message->delete(self::$messageId);
