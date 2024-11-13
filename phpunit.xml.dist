@@ -6,6 +6,7 @@
   beStrictAboutOutputDuringTests="true"
   failOnRisky="false" failOnWarning="true"
   displayDetailsOnTestsThatTriggerWarnings="true"
+  displayDetailsOnPhpunitDeprecations="true"
   beStrictAboutCoverageMetadata="true"
   requireCoverageMetadata="true">
   <testsuites>
