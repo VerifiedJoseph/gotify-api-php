@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.10.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.10.0) - 2024-12-10
+
+- Dropped support for php 8.1 ([#422](https://github.com/VerifiedJoseph/gotify-api-php/pull/422), [`bfc8472`](https://github.com/VerifiedJoseph/gotify-api-php/commit/bfc847242f2df938303fb576744b2de70f1ea23c))
+
 ## [1.9.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.9.0) - 2024-08-01
 
 - Renamed abstract classes ([#399](https://github.com/VerifiedJoseph/gotify-api-php/pull/399), [`62f2bcb`](https://github.com/VerifiedJoseph/gotify-api-php/commit/62f2bcbddd1834ef31a932050f7e8e79d8a1ee27))
