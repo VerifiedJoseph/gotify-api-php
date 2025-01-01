@@ -2,8 +2,7 @@ services:
   workspace:
     container_name: workspace
     build:
-      context: ./dockerfiles
-      dockerfile: ./workspace.dockerfile
+      context: ./workspace
     tty: true
     volumes:
       - ../:/gotify-api-php
