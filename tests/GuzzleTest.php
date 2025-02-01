@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -40,7 +42,7 @@ class GuzzleTest extends AbstractTestCase
         ];
 
         $response = self::$guzzle->get('get', $query);
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('args', $body);
         $this->assertObjectHasProperty('test', $body->args);
@@ -57,7 +59,7 @@ class GuzzleTest extends AbstractTestCase
         ];
 
         $response = self::$guzzle->post('post', $data);
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('json', $body);
         $this->assertObjectHasProperty('test', $body->json);
@@ -72,7 +74,7 @@ class GuzzleTest extends AbstractTestCase
         $data = $this->getYaml();
 
         $response = self::$guzzle->PostYaml('post', $data);
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('data', $body);
         $this->assertEquals($this->getYamlBase64(), $body->data);
@@ -88,7 +90,7 @@ class GuzzleTest extends AbstractTestCase
         ];
 
         $response = self::$guzzle->postFile('post', $data);
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('files', $body);
         $this->assertObjectHasProperty('file', $body->files);
@@ -120,7 +122,7 @@ class GuzzleTest extends AbstractTestCase
         ];
 
         $response = self::$guzzle->put('put', $data);
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('json', $body);
         $this->assertObjectHasProperty('test', $body->json);
@@ -133,7 +135,7 @@ class GuzzleTest extends AbstractTestCase
     public function testDelete(): void
     {
         $response = self::$guzzle->delete('delete');
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertEquals('DELETE', $body->method);
     }
@@ -154,7 +156,7 @@ class GuzzleTest extends AbstractTestCase
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
         $response = $guzzle->get('basic-auth/' . $username . '/' . $password);
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('authorized', $body);
         $this->assertObjectHasProperty('user', $body);
@@ -175,7 +177,7 @@ class GuzzleTest extends AbstractTestCase
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
         $response = $guzzle->get('get');
-        $body = (object) Json::decode($response->getBody());
+        $body = (object) Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('headers', $body);
         $this->assertObjectHasProperty('X-Gotify-Key', $body->headers);

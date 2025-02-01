@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Gotify\Endpoint;
 
 use Gotify\Json;
@@ -25,7 +27,7 @@ class Plugin extends AbstractEndpoint
     public function getAll(): stdClass
     {
         $response = $this->guzzle->get($this->endpoint);
-        $plugins = Json::decode($response->getBody());
+        $plugins = Json::decode($response->getBody()->getContents());
 
         return (object) ['plugins' => $plugins];
     }
@@ -42,7 +44,7 @@ class Plugin extends AbstractEndpoint
     public function getConfig(int $id): string
     {
         $response = $this->guzzle->get($this->endpoint . '/' . $id . '/config');
-        return (string) $response->getBody();
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -75,7 +77,7 @@ class Plugin extends AbstractEndpoint
     public function getDisplayInfo(int $id): string
     {
         $response = $this->guzzle->get($this->endpoint . '/' . $id . '/display');
-        $info = (object) Json::decode('{"data": ' . $response->getBody() . '}');
+        $info = (object) Json::decode('{"data": ' . $response->getBody()->getContents() . '}');
 
         return $info->data;
     }

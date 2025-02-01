@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Gotify\Endpoint;
 
 use Gotify\Json;
@@ -25,7 +27,7 @@ class Version extends AbstractEndpoint
     public function get(): stdClass
     {
         $response = $this->guzzle->get($this->endpoint);
-        $version = Json::decode($response->getBody());
+        $version = Json::decode($response->getBody()->getContents());
 
         return (object) $version;
     }

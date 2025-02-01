@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Gotify\Endpoint;
 
 use Gotify\Json;
@@ -25,7 +27,7 @@ class Application extends AbstractEndpoint
     public function getAll(): stdClass
     {
         $response = $this->guzzle->get($this->endpoint);
-        $applications = Json::decode($response->getBody());
+        $applications = Json::decode($response->getBody()->getContents());
 
         return (object) ['apps' => $applications];
     }
@@ -48,7 +50,7 @@ class Application extends AbstractEndpoint
         ];
 
         $response = $this->guzzle->post($this->endpoint, $data);
-        $application = Json::decode($response->getBody());
+        $application = Json::decode($response->getBody()->getContents());
 
         return (object) $application;
     }
@@ -72,7 +74,7 @@ class Application extends AbstractEndpoint
         ];
 
         $response = $this->guzzle->put($this->endpoint . '/' . $id, $data);
-        $application = Json::decode($response->getBody());
+        $application = Json::decode($response->getBody()->getContents());
 
         return (object) $application;
     }
@@ -111,7 +113,7 @@ class Application extends AbstractEndpoint
         ];
 
         $response = $this->guzzle->postFile($this->endpoint . '/' . $id . '/image', $data);
-        $application = Json::decode($response->getBody());
+        $application = Json::decode($response->getBody()->getContents());
 
         return (object) $application;
     }
