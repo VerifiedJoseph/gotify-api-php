@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Gotify\Endpoint;
 
 use Gotify\Json;
@@ -25,7 +27,7 @@ class User extends AbstractEndpoint
     public function getCurrent(): stdClass
     {
         $response = $this->guzzle->get('current/user');
-        $current = Json::decode($response->getBody());
+        $current = Json::decode($response->getBody()->getContents());
 
         return (object) $current;
     }
@@ -63,7 +65,7 @@ class User extends AbstractEndpoint
     public function getUser(int $id): stdClass
     {
         $response = $this->guzzle->get($this->endpoint . '/' . $id);
-        $user = Json::decode($response->getBody());
+        $user = Json::decode($response->getBody()->getContents());
 
         return (object) $user;
     }
@@ -78,7 +80,7 @@ class User extends AbstractEndpoint
     public function getAll(): stdClass
     {
         $response = $this->guzzle->get($this->endpoint);
-        $users = Json::decode($response->getBody());
+        $users = Json::decode($response->getBody()->getContents());
 
         return (object) ['users' => $users];
     }
@@ -103,7 +105,7 @@ class User extends AbstractEndpoint
         ];
 
         $response = $this->guzzle->post($this->endpoint, $data);
-        $user = Json::decode($response->getBody());
+        $user = Json::decode($response->getBody()->getContents());
 
         return (object) $user;
     }
@@ -129,7 +131,7 @@ class User extends AbstractEndpoint
         ];
 
         $response = $this->guzzle->post($this->endpoint . '/' . $id, $data);
-        $user = Json::decode($response->getBody());
+        $user = Json::decode($response->getBody()->getContents());
 
         return (object) $user;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Gotify;
 
 use Gotify\Auth\User;
@@ -169,7 +171,7 @@ class Guzzle
             $contentType = $response->getHeaderLine('Content-Type');
 
             if ($contentType === 'application/json') {
-                $json = (object) Json::decode($response->getBody());
+                $json = (object) Json::decode($response->getBody()->getContents());
                 $message = $json->error . ': ' . $json->errorDescription . ' (' . $json->errorCode . ')';
 
                 throw new EndpointException($message, $json->errorCode);

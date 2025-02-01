@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Gotify\Endpoint;
 
 use Gotify\Json;
@@ -34,7 +36,7 @@ class ApplicationMessage extends AbstractEndpoint
         ];
 
         $response = $this->guzzle->get($this->endpoint . '/' . $id . '/message', $query);
-        $messages = Json::decode($response->getBody());
+        $messages = Json::decode($response->getBody()->getContents());
 
         return (object) $messages;
     }
