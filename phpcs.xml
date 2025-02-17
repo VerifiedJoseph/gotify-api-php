@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="gotify-api-php">
-  <exclude-pattern>./vendor</exclude-pattern>
-  <exclude-pattern>./coverage-reports/</exclude-pattern>
+  <file>./src/</file>
+  <file>./tests/</file>
+  <file>./examples/</file>
 
   <rule ref="PSR12"/>
   <rule ref="Generic.PHP.RequireStrictTypes">
-    <exclude-pattern>./examples</exclude-pattern>
+    <exclude-pattern>./examples/</exclude-pattern>
   </rule>
   <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-    <exclude-pattern>./tests/*</exclude-pattern>
+    <exclude-pattern>./tests/</exclude-pattern>
   </rule>
 </ruleset>
