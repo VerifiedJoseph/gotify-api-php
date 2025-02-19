@@ -1,6 +1,6 @@
 services:
   workspace:
-    container_name: workspace
+    container_name: gotify-workspace
     build:
       context: ./workspace
     tty: true
@@ -14,7 +14,7 @@ services:
       - XDEBUG_MODE=coverage
 
   gotify:
-    container_name: gotify
+    container_name: gotify-server
     image: gotify/server:2.6.1
     ports:
       - "8080:80"
@@ -25,7 +25,7 @@ services:
       - GOTIFY_DATABASE_CONNECTION=/app/gotify.db
 
   httpbin:
-    container_name: httpbin
+    container_name: gotify-httpbin
     image: mccutchen/go-httpbin:v2.13.4
     ports:
       - "8081:80"
