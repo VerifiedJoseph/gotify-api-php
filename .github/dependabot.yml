@@ -27,6 +27,6 @@ updates:
   - package-ecosystem: "docker-compose"
     directories:
       - "/.ci/"
-      - "/.devcontainer"
+      - "/.devcontainer/"
     schedule:
       interval: "weekly"
