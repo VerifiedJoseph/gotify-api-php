@@ -29,4 +29,8 @@ updates:
       - "/.ci/"
       - "/.devcontainer/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      go-httpbin:
+        patterns:
+          - "mccutchen/go-httpbin"
