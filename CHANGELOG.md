@@ -4,6 +4,7 @@ All notable changes to this project are documented in this file.
 
 ## [1.10.1](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.10.1) - 2025-04-01
 
+- Enforced strict typing. ([#448](https://github.com/VerifiedJoseph/gotify-api-php/pull/448), [`497399e`](https://github.com/VerifiedJoseph/gotify-api-php/commit/497399efd94f72cf5cc2a367734a418545b4683e))
 - Updated dependency `guzzlehttp/guzzle` from 7.9.2 to 7.9.3 ([#462](https://github.com/VerifiedJoseph/gotify-api-php/pull/462), [`a55538e`](https://github.com/VerifiedJoseph/gotify-api-php/commit/a55538ed58945b3d11ade33251d718443fdbaec7))
 
 ## [1.10.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.10.0) - 2024-12-10
