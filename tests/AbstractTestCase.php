@@ -87,7 +87,7 @@ abstract class AbstractTestCase extends TestCase
     protected static function getGotifyUri(): string
     {
         if (getenv('GOTIFY_URI') !== false) {
-            return getenv('GOTIFY_URI');
+            return (string) getenv('GOTIFY_URI');
         }
 
         return self::$gotifyUri;
@@ -101,7 +101,7 @@ abstract class AbstractTestCase extends TestCase
     protected static function getHttpBinUri(): string
     {
         if (getenv('HTTPBIN_URI') !== false) {
-            return getenv('HTTPBIN_URI');
+            return (string) getenv('HTTPBIN_URI');
         }
 
         return self::$httpBinUri;
