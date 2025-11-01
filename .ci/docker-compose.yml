@@ -18,4 +18,5 @@ services:
     container_name: ci_httpbin
     image: ghcr.io/mccutchen/go-httpbin:2.18
     ports:
-      - "127.0.0.1:8081:8080"
+      - "127.0.0.1:8081:8081"
+    command: ["go-httpbin", "-port", "8081"]
