@@ -3,7 +3,7 @@ version: "3"
 services:
   gotify:
     container_name: ci_gotify
-    image: gotify/server:2.7.3
+    image: gotify/server:2.8.0
     ports:
       - "127.0.0.1:8080:80"
     environment:
