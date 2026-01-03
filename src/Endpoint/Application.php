@@ -117,4 +117,19 @@ class Application extends AbstractEndpoint
 
         return (object) $application;
     }
+
+    /**
+     * Delete the image of an application
+     *
+     * @param int $id Application Id
+     *
+     * @return boolean
+     *
+     * @see https://gotify.net/api-docs#/application/removeAppImage API docs for deleting an application image
+     */
+    public function deleteImage(int $id): bool
+    {
+        $response = $this->guzzle->delete($this->endpoint . '/' . $id . '/image');
+        return $response->getStatusCode() === 200 ? true : false;
+    }
 }
