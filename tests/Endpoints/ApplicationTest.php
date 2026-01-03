@@ -114,6 +114,16 @@ class ApplicationTest extends AbstractTestCase
     }
 
     /**
+     * Test deleting an image for the application
+     */
+    #[Depends('testUploadImage')]
+    public function testDeleteImage(): void
+    {
+        $deleted = self::$application->deleteImage(self::$appId);
+        $this->assertTrue($deleted);
+    }
+
+    /**
      * Test deleting an application
      */
     #[Depends('testCreate')]
