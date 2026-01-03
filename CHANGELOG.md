@@ -6,6 +6,7 @@ All notable changes to this project are documented in this file.
 
 - Added support for deleting application images. ([#528](https://github.com/VerifiedJoseph/gotify-api-php/pull/528), [`a708150`](https://github.com/VerifiedJoseph/gotify-api-php/commit/a7081500e1fc9df5649f68b39cecdce84e27390d))
 - Reworked endpoint delete methods to check for 200 HTTP status codes ([#529](https://github.com/VerifiedJoseph/gotify-api-php/pull/529), [`5cd8a5e`](https://github.com/VerifiedJoseph/gotify-api-php/commit/5cd8a5eb7d7dc7867f3f7c76090faef1efc4fb26))
+- Updated minimum supported php version from 8.2 to 8.3 ([#531](https://github.com/VerifiedJoseph/gotify-api-php/pull/531), [`d83560a`](https://github.com/VerifiedJoseph/gotify-api-php/commit/d83560a6abfdb8a2829ae15379ea230f71528293))
 
 ## [1.10.2](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.10.2) - 2025-08-27
 
