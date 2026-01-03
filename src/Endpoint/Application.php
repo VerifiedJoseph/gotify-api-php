@@ -93,7 +93,7 @@ class Application extends AbstractEndpoint
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 
     /**
