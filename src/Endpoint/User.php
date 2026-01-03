@@ -50,7 +50,7 @@ class User extends AbstractEndpoint
         $response = $this->guzzle->post('current/user/password', $data);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 
     /**
@@ -150,6 +150,6 @@ class User extends AbstractEndpoint
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 }
