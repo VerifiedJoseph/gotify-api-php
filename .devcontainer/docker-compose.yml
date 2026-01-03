@@ -15,7 +15,7 @@ services:
 
   gotify:
     container_name: gotify-server
-    image: gotify/server:2.7.3
+    image: gotify/server:2.8.0
     ports:
       - "8080:80"
     environment:
