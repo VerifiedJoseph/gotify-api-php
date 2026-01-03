@@ -55,6 +55,6 @@ class ApplicationMessage extends AbstractEndpoint
         $response = $this->guzzle->delete($this->endpoint . '/' . $id . '/message');
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 }

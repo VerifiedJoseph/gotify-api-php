@@ -113,7 +113,7 @@ class Message extends AbstractEndpoint
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 
     /**
@@ -128,6 +128,6 @@ class Message extends AbstractEndpoint
         $response = $this->guzzle->delete($this->endpoint);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 }
