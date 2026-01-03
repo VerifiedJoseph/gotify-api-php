@@ -57,6 +57,12 @@ Upload image for an application
 uploadImage(int $id, string $image): stdClass
 ```
 
+Delete the image for an application
+
+```PHP
+deleteImage(int $id): stdClass
+```
+
 ## ApplicationMessage
 
 ```PHP
