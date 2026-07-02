@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.11.1](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.11.1) - 2026-07-02
+
+- Updated dependency `guzzlehttp/guzzle` from 7.10.0 to 7.12.3 ([`e086d8b`](https://github.com/VerifiedJoseph/gotify-api-php/commit/e086d8b8f469f23e5cfa6617ef18221402e33155), [`f61840f`](https://github.com/VerifiedJoseph/gotify-api-php/commit/f61840f3f54d927eded77a95742b275217550fec))
+
 ## [1.11.0](https://github.com/VerifiedJoseph/gotify-api-php/releases/tag/v1.11.0) - 2026-01-03
 
 - Added support for deleting application images. ([#528](https://github.com/VerifiedJoseph/gotify-api-php/pull/528), [`a708150`](https://github.com/VerifiedJoseph/gotify-api-php/commit/a7081500e1fc9df5649f68b39cecdce84e27390d))
