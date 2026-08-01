@@ -26,7 +26,7 @@ services:
 
   httpbin:
     container_name: gotify-httpbin
-    image: ghcr.io/mccutchen/go-httpbin:2.23
+    image: ghcr.io/mccutchen/go-httpbin:2.24
     ports:
       - "8081:8080"
 
