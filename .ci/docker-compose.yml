@@ -16,6 +16,6 @@ services:
 
   httpbin:
     container_name: ci_httpbin
-    image: ghcr.io/mccutchen/go-httpbin:2.23
+    image: ghcr.io/mccutchen/go-httpbin:2.24
     ports:
       - "127.0.0.1:8081:8080"
