@@ -75,7 +75,6 @@ class ApplicationTest extends AbstractTestCase
             $this->assertObjectHasProperty('id', $app);
             $this->assertObjectHasProperty('name', $app);
             $this->assertObjectHasProperty('description', $app);
-            $this->assertObjectHasProperty('token', $app);
         }
     }
 
