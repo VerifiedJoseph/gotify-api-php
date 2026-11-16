@@ -11,10 +11,17 @@ updates:
       - dependency-name: "phpstan/phpstan"
         update-types: ["version-update:semver-major"]
 
+      - dependency-name: "guzzlehttp/guzzle"
+        update-types: ["version-update:semver-major"]
+    cooldown:
+      default-days: 7
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "docker"
     directory: "/.devcontainer/workspace/"
@@ -22,7 +29,9 @@ updates:
       interval: "monthly"
     ignore:
       - dependency-name: "php"
-        update-types: ["version-update:semver-minor"]
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "docker-compose"
     directories:
@@ -34,3 +43,8 @@ updates:
       go-httpbin:
         patterns:
           - "mccutchen/go-httpbin"
+      gotify:
+        patterns:
+        - "gotify/server"
+    cooldown:
+      default-days: 7

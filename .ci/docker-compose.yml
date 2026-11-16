@@ -3,7 +3,7 @@ version: "3"
 services:
   gotify:
     container_name: ci_gotify
-    image: gotify/server:2.7.3
+    image: gotify/server:3.1.0
     ports:
       - "127.0.0.1:8080:80"
     environment:
@@ -16,7 +16,6 @@ services:
 
   httpbin:
     container_name: ci_httpbin
-    image: ghcr.io/mccutchen/go-httpbin:2.19
+    image: ghcr.io/mccutchen/go-httpbin:2.25
     ports:
-      - "127.0.0.1:8081:8081"
-    command: ["go-httpbin", "-port", "8081"]
+      - "127.0.0.1:8081:8080"

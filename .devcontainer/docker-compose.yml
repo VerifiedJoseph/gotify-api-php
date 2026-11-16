@@ -15,7 +15,7 @@ services:
 
   gotify:
     container_name: gotify-server
-    image: gotify/server:2.7.3
+    image: gotify/server:3.1.0
     ports:
       - "8080:80"
     environment:
@@ -26,10 +26,9 @@ services:
 
   httpbin:
     container_name: gotify-httpbin
-    image: ghcr.io/mccutchen/go-httpbin:2.19
+    image: ghcr.io/mccutchen/go-httpbin:2.25
     ports:
-      - "8081:8081"
-    command: ["go-httpbin", "-port", "8081"]
+      - "8081:8080"
 
 volumes:
   vendor:

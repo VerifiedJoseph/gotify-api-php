@@ -75,7 +75,6 @@ class ApplicationTest extends AbstractTestCase
             $this->assertObjectHasProperty('id', $app);
             $this->assertObjectHasProperty('name', $app);
             $this->assertObjectHasProperty('description', $app);
-            $this->assertObjectHasProperty('token', $app);
         }
     }
 
@@ -114,9 +113,19 @@ class ApplicationTest extends AbstractTestCase
     }
 
     /**
+     * Test deleting an image for the application
+     */
+    #[Depends('testUploadImage')]
+    public function testDeleteImage(): void
+    {
+        $deleted = self::$application->deleteImage(self::$appId);
+        $this->assertTrue($deleted);
+    }
+
+    /**
      * Test deleting an application
      */
-    #[Depends('testCreate')]
+     #[Depends('testDeleteImage')]
     public function testDelete(): void
     {
         $deleted = self::$application->delete(self::$appId);

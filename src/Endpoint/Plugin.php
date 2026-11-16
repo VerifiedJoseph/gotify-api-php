@@ -62,7 +62,7 @@ class Plugin extends AbstractEndpoint
         $response = $this->guzzle->postYaml($this->endpoint . '/' . $id . '/config', $config);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 
     /**
@@ -96,7 +96,7 @@ class Plugin extends AbstractEndpoint
         $response = $this->guzzle->post($this->endpoint . '/' . $id . '/enable');
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 
     /**
@@ -113,6 +113,6 @@ class Plugin extends AbstractEndpoint
         $response = $this->guzzle->post($this->endpoint . '/' . $id . '/disable');
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 }

@@ -93,7 +93,7 @@ class Application extends AbstractEndpoint
         $response = $this->guzzle->delete($this->endpoint . '/' . $id);
         $body = $response->getBody()->getContents();
 
-        return $body === '' ? true : false;
+        return $response->getStatusCode() === 200 ? true : false;
     }
 
     /**
@@ -116,5 +116,20 @@ class Application extends AbstractEndpoint
         $application = Json::decode($response->getBody()->getContents());
 
         return (object) $application;
+    }
+
+    /**
+     * Delete the image of an application
+     *
+     * @param int $id Application Id
+     *
+     * @return boolean
+     *
+     * @see https://gotify.net/api-docs#/application/removeAppImage API docs for deleting an application image
+     */
+    public function deleteImage(int $id): bool
+    {
+        $response = $this->guzzle->delete($this->endpoint . '/' . $id . '/image');
+        return $response->getStatusCode() === 200 ? true : false;
     }
 }
